@@ -1,0 +1,12 @@
+== Krux Map Redistributable ==
+
+Map Name: 	Trollface
+Format:		Krux Map Format v2
+Map Size:	32 x 32 tiles
+Resources:	4 tileset files
+		1 map data file
+Total Size:	approx. 124 kB
+
+Author:		VoaxmasterSpydre
+Created on:	02 May 2011, 01:12 PM
+Created with:   Microtech© Map Studio© 1.60.0423 (KMFv3 Series 1.3.0047)

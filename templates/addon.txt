@@ -1,0 +1,14 @@
+<KRUX_ADDON>
+<THEME>
+ThemeName=Future
+FloorTile=future_floor.png
+StaticBound=future_static.png
+MobileBound=future_mobile.png
+TrackingBound=future_tracker.png
+FProp1=future_fprop1.png
+FProp2=future_fprop2.png
+FProp3=future_fprop3.png
+FProp4=future_fprop4.png
+FProp5=future_fprop5.png
+</THEME>
+</KRUX_ADDON>

@@ -3157,8 +3157,8 @@ public class Oberon_AIDrivenEnemy {
    
    protected void printDebugMessage(String message) {
       if(source.debugMode) {
-         source.printDebug.println("[" + new java.util.Date().getHours() + ":" + new java.util.Date().getMinutes() + ":" + new java.util.Date().getSeconds() + "] OBERON_AI (" + myBotsName + "_" + this.toString() + ") - " + message);
-         // System.out.println("[" + new java.util.Date().getHours() + ":" + new java.util.Date().getMinutes() + ":" + new java.util.Date().getSeconds() + "] OBERON_AI (" + myBotsName + "_" + this.toString() + ") - " + message);
+         source.printDebug.println("[" + new java.util.Date().getHours() + "-" + new java.util.Date().getMinutes() + "-" + new java.util.Date().getSeconds() + "] OBERON_AI (" + myBotsName + "_" + this.toString() + ") - " + message);
+         // System.out.println("[" + new java.util.Date().getHours() + "-" + new java.util.Date().getMinutes() + "-" + new java.util.Date().getSeconds() + "] OBERON_AI (" + myBotsName + "_" + this.toString() + ") - " + message);
       }
    }
    

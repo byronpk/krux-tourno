@@ -1,116 +1,18 @@
-  /**
-*	Krux(c) Tourno Series 3 Release X2
-*	Copyright(c) 2010 MicroTech Technologies Inc. All Rights Reserved.
-*	Copyright(c) 2010 Radioactive Reds Animation
-* ===========================================================================
-*  Copyright Notice for use of Sun Microsystems(c) Propietry Source Code
-* ---------------------------------------------------------------------------
-	* Copyright (c) 2010 Sun Microsystems, Inc. All Rights Reserved.
-	* 
-	* Redistribution and use in source and binary forms, with or without
-	* modification, are permitted provided that the following conditions are met:
-	* 
-	* -Redistribution of source code must retain the above copyright notice, this
-	*  list of conditions and the following disclaimer.
-	* 
-	* -Redistribution in binary form must reproduce the above copyright notice, 
-	*  this list of conditions and the following disclaimer in the documentation
-	*  and/or other materials provided with the distribution.
-	* 
-	* Neither the name of Sun Microsystems, Inc. or the names of contributors may 
-	* be used to endorse or promote products derived from this software without 
-	* specific prior written permission.
-	* 
-* This software is provided "AS IS", without a warranty of any kind. ALL 
-* EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND WARRANTIES, INCLUDING
-* ANY IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE
-* OR NON-INFRINGEMENT, ARE HEREBY EXCLUDED. SUN MICROSYSTEMS, INC. ("SUN")
-* AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY DAMAGES SUFFERED BY LICENSEE
-	* AS A RESULT OF USING, MODIFYING OR DISTRIBUTING THIS SOFTWARE OR ITS
-	* DERIVATIVES. IN NO EVENT WILL SUN OR ITS LICENSORS BE LIABLE FOR ANY LOST 
-	* REVENUE, PROFIT OR DATA, OR FOR DIRECT, INDIRECT, SPECIAL, CONSEQUENTIAL, 
-	* INCIDENTAL OR PUNITIVE DAMAGES, HOWEVER CAUSED AND REGARDLESS OF THE THEORY 
-	* OF LIABILITY, ARISING OUT OF THE USE OF OR INABILITY TO USE THIS SOFTWARE, 
-	* EVEN IF SUN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
-	* 
-	* You acknowledge that this software is not designed, licensed or intended
-	* for use in the design, construction, operation or maintenance of any
-	* nuclear facility.
-* ============================================================================
-*  End-User License Aggreement
-* ----------------------------------------------------------------------------
-* END-USER LICENSE AGREEMENT FOR PRODUCT: KRUX TOURNO RETAIL 3.4.1772.
-* 
-* IMPORTANT-READ CAREFULLY
-* This End-User License Agreement ("EULA") is a legal agreement between you (either an individual or a single entity) and
-* Microtech Technologies for the software that accompanies this EULA, which includes computer software and may include
-* associated media, printed materials, electronic documentation, and Internet-based services.  An amendment or addendum to
-* this EULA may accompany the Software.
-* 
-* YOU AGREE TO BE BOUND BY THE TERMS OF THIS EULA BY INSTALLING, COPYING, OR OTHERWISE USING THE SOFTWARE.
-* IF YOU DO NOT AGREE, DO NOT INSTALL, COPY, OR USE THE SOFTWARE; YOU MAY RETURN IT TO YOUR PLACE OF PURCHASE FOR A FULL
-* REFUND, IF APPLICABLE.
-* 
-* DENOTATIONS IN THIS DOCUMENT
-* 
-* - The 'Product' stated refers to the included product, which is in this case KRUX TOURNO RETAIL 3.4.1772.
-* - The 'User' stated refers to the purchaser or current legal owner of the above mentioned product.
-* - The 'Founder' refers to the founder of Microtech Technologies Incorporated.
-* 		       
-* TERMS AND CONDITIONS FOR USE OF THIS SOFTWARE
-* 
-* - The user may install, use, access, display and run one copy of the Software on a single computer, such as a workstation,
-*   terminal or other device.
-* 
-* - The user may store or install a copy of the Software on a storage device, such as a network server, used only to install
-*   or run the Software on any other Workstation Computers over an internal network; however, the user must acquire
-*   and dedicate an additional license for each separate Workstation Computer on or from which the Software is installed,
-*   used, accessed, displayed or run.
-* 
-* - The user may not reverse engineer, decompile, or disassemble the Software, except and only to the extent that such activity
-*   is expressly permitted by applicable law notwithstanding this limitation.
-* 
-* - The user may not rent, lease, lend or provide commercial hosting services with the Software to any extent that will bring
-*   financial gain to the user without the constent of Microtech Technologies(c) and\or their associates.
-* 
-* - Software identified as "Not for Resale" or "NFR", may not be sold or otherwise transferred for value, or used for any purpose
-*   other than demonstration, test or evaluation.
-* 
-* - This EULA applies to updates, supplements, add-on components, product support services, or Internet-based services components,
-*   of the Software that you may obtain from Microtech after the date you obtain your initial copy of the Software, unless the user
-*   accept updated terms or another agreement governs. Microtech reserves the right to discontinue any services provided to the
-*   user or made available to the user through the use of the Software.
-* 
-* - To use Software identified as an upgrade, the user must first be licensed for the software identified by Microtech as eligible
-*   for the upgrade. After upgrading, the user may no longer use the software that formed the basis for the user's upgrade eligibility. 
-* 
-* - Without prejudice to any other rights, Microtech may terminate this EULA if the user fails to comply with the terms and conditions
-*   of this EULA. In such event, the user must destroy all copies of the Software and all of its component parts.
-* 
-* - The contents of this application installer package is liable to change without prior notice
-* 
-* - Microtech Technologies is not liable for any damage caused to the user, or his\her peers, through the use of the included product.
-* 
-* PLEASE TAKE NOTE
-* MicroTech reserves all rights not expressly granted to the user in this EULA. The Software is protected by copyright and other
-* intellectual property laws and treaties. Microtech or its suppliers own the title, copyright, and other intellectual property rights
-* in the Software.  The Software is licensed, not sold.
-*
-* This software license is only valid within REPUBLIC OF SOUTH AFRICA and the software may as such not be used in any other country without
-* a supplemental license for the required country from Microtech Technologies(c).
-* 
-* - Any queries can be sent to MicroTech Technologies(c) via the email address "byronkleingeld@gmail.com"
-* 		      
-* EULAID: DEC91C.KRX_REM_SYS.140810-KRUX3RTSX
-* ============================================================================
-*  Version Identification
-* ----------------------------------------------------------------------------
-*  Krux 3X2
-*  Version:             3.11.xxxx
-*  Support Version:     3.11.1920
-*  Project "DIAMOND DOG"
-*  Build Number 1920
-	*/
+/**
+ *	Krux(c) Tourno Series 3 Release X2
+ *	Copyright(c) 2010 MicroTech Technologies Inc. All Rights Reserved.
+ *	Copyright(c) 2010 Radioactive Reds Animation      
+ * 
+ *    EULAID: DEC91C.KRX_REM_SYS.140810-KRUX3RTSX
+ *    ============================================================================
+ *    Version Identification
+ *    ----------------------------------------------------------------------------
+ *    Krux 3X2
+ *    Version:             3.11.xxxx
+ *    Support Version:     3.11.1920
+ *    Project "DIAMOND DOG"
+ *    Build Number 1920
+ */
   
 import java.awt.*;
 import java.awt.event.*;
@@ -128,7 +30,7 @@ import xwin.kernel.directsound.*;
 
 /* Bugs found
 * =========================================================================================================
-*	-Infinite Invisibility/Ghost Bug
+*     -Infinite Invisibility/Ghost Bug
 */
 
 /* Intended upgrade to this version (Krux Series 3 Revision X2)
@@ -138,14 +40,14 @@ import xwin.kernel.directsound.*;
 *	-Color Choosing
 * 	-New Soundset (*)
 *	-Multiple Same Type Items
-*  -Add painkiller item
-*  -Allow for remapping of keys
-*  -Weapon reloading
-*  -Add additional map-types
-*  -EXPERIMENTAL: Add joystick support (ticked off, not supported in Java)
-*  -Restructure in-game calculations for better performance
-*  -Transparent NullTile (Completed!) 
-*  -Custom Theme Support
+*     -Add painkiller item
+*     -Allow for remapping of keys
+*     -Weapon reloading
+*     -Add additional map-types
+*     -EXPERIMENTAL: Add joystick support (ticked off, not supported in Java)
+*     -Restructure in-game calculations for better performance
+*     -Transparent NullTile (Completed!) 
+*     -Custom Theme Support
 */
 
 public class kruxloader implements Runnable {
@@ -178,7 +80,7 @@ public class kruxloader implements Runnable {
 	// Team Deathmatch Variable
    protected boolean DEATHMATCHMODE = false;				// Will revert to false after BETA
    protected boolean FRIENDLYFIRE   = true;				// Will be added to New Game section
-   protected boolean	lastWasRed	   = false;				// Manages the last player to be generated
+   protected boolean lastWasRed	= false;				// Manages the last player to be generated
 	
 	// Registration Variables
    protected final regBase4 rB =								// This supplies Krux's unique product ID
@@ -618,14 +520,6 @@ public class kruxloader implements Runnable {
    protected JLabel label4;							// A Label
    protected boolean hasGenerated = false;	   // Keeps track of weather or not the user has generated a map or not
    protected boolean fullScreen = false;        // Defines if the game is played in full-screen mode
-
-   /** Multiplayer Networking Variables
-   * protected boolean isPlayer1 = true;                // Used to define which player will be the red player
-   * protected ServerSocket serverSocket = null;        // Used by the server
-   * protected Socket clientSocket = null;              // Used by the client
-   * protected PrintWriter dataSend = null;             // Data Stream stdout
-   * protected BufferedReader dataReceive = null;       // Data Stream stdin
-   */
    
    /*
    *  CGString Variables
@@ -644,7 +538,7 @@ public class kruxloader implements Runnable {
    *  gems(1/2)         Gems collected by players
    *  hs(0-5)           The current highscore values
    */
-   protected CGString hiScoreStr = new CGString("0", 12);
+   protected CGString hiScoreStr    = new CGString("0", 12);
    protected CGString scoreStr	= new CGString("0", 8, CGString.ALIGN_RIGHT, CGString.DIGITAL);
    protected CGString timerStr	= new CGString("0", 4, CGString.ALIGN_RIGHT, CGString.DIGITAL);
    protected CGString cheatStr 	= new CGString("0", 64);
@@ -838,7 +732,7 @@ public class kruxloader implements Runnable {
       printDebugMessage("DEBUGGER - Session Started");
       printDebugMessage("DEBUGGER - Process:\t" + this.toString());
       printDebugMessage("DEBUGGER - Class:\tkruxloader");
-      printDebugMessage("DEBUGGER - Start Time: " + new java.util.Date().getHours() + ":" + new java.util.Date().getMinutes() + ":" + new java.util.Date().getSeconds() + "\n");
+      printDebugMessage("DEBUGGER - Start Time: " + new java.util.Date().getHours() + "-" + new java.util.Date().getMinutes() + "-" + new java.util.Date().getSeconds() + "\n");
    	
       printDebugMessage("Generic - Process Started");
    	
@@ -5807,7 +5701,6 @@ public class kruxloader implements Runnable {
          }
          gems2 = new CGString(String.valueOf(gemsP2), 3, CGString.ALIGN_RIGHT, CGString.DIGITAL);
       }
-         
       
       scoreStr.setText("" + scrboard.score);
       if(lifeEnemy <= 0) {
@@ -5887,7 +5780,6 @@ public class kruxloader implements Runnable {
             locationPlayerX = (mapsize.x * 2);
             locationPlayerY = (mapsize.y * 2);
             isDead = true;
-            
          }
       }
       
@@ -8585,510 +8477,410 @@ public class kruxloader implements Runnable {
    *  @param      direction     The direction of movement
    *  @return     a boolean representing for the Blue Player can move or not
    */
-   public boolean testBounds(int direction) {
-      boolean out = false;
-      for(int x = 0; x < maxbounds; x++) {
-         if(direction == UP){ //up
-            if ((locationPlayerY - 1) == (bounds[x].y - 1) && locationPlayerX == (bounds[x].x - 1)) {
-               if(isGhost1) {
-                  out = false;
-                  break;
-               }
-               else {
-                  out = true;
-                  break;
-               }
-            }
-            else if ((locationPlayerY - 1) == (mobileBounds[x].y - 1) && locationPlayerX == (mobileBounds[x].x - 1)) {
-               if(isGhost1) {
-                  out = false;
-                  break;
-               }
-               else {
-                  out = true;
-                  break;
-               }
-            }
-            else if (x < trackingBoundsMax && (locationPlayerY - 1) == (trackingbounds[x].y - 1) && locationPlayerX == (trackingbounds[x].x - 1)) {
-               if(isGhost1) {
-                  out = false;
-                  break;
-               }
-               else {
-                  out = true;
-                  break;
-               }
-            }
-            else if (kohmode && (locationPlayerY - 1) == (kohlocat.y - 1) && locationPlayerX == (kohlocat.x - 1)) {
-               getFlagP();
-            }
-            else if ((locationPlayerY - 1) == (lampLocat.y - 1) && locationPlayerX == (lampLocat.x - 1)) {
-               getLampP();
-            }
-            else if ((locationPlayerY - 1) == (healthLocat.y - 1) && locationPlayerX == (healthLocat.x - 1)) {
-               getLifeP();
-            }
-            else if ((locationPlayerY - 1) == (armorLocat.y - 1) && locationPlayerX == (armorLocat.x - 1)) {
-               getArmorP();
-            }
-            else if ((locationPlayerY - 1) == (unoseeLocat.y - 1) && locationPlayerX == (unoseeLocat.x - 1)) {
-               getUNoSeeP();
-            }
-            else if ((locationPlayerY - 1) == (gemLocat.y - 1) && locationPlayerX == (gemLocat.x - 1)) {
-               getGemP();
-            }
-            else if ((locationPlayerY - 1) == (megahealthLocat.y - 1) && locationPlayerX == (megahealthLocat.x - 1)) {
-               getMLifeP();
-            }
-            else if ((locationPlayerY - 1) == (megaexpLocat.y - 1) && locationPlayerX == (megaexpLocat.x - 1)) {
-               getMExpP();
-            }
-            else if ((locationPlayerY - 1) == (ghostpotionLocat.y - 1) && locationPlayerX == (ghostpotionLocat.x - 1)) {
-               getGhostP();
-            }
-            else if ((locationPlayerY - 1) == (extraLifeLocat.y - 1) && locationPlayerX == (extraLifeLocat.x - 1)) {
-               getExLife();
-            }
-            else if ((locationPlayerY - 1) == (painkLocat.y - 1) && locationPlayerX == (painkLocat.x - 1)) {
-               getPainKillerP();
-            }
-            else if ((locationPlayerY - 1) == (weaponboxLocat.y - 1) && locationPlayerX == (weaponboxLocat.x - 1)) {
-               if (playerWeapon == -1) {
-                  getWeaponP();
-               }
-               else {
-                  out = true;
-                  break;
-               }
-            }
-            else if ((locationPlayerY - 1) == (levelboxLocat.y - 1) && locationPlayerX == (levelboxLocat.x - 1)) {
-               if (playerLevel >= (levelMax)) {
-                  out = true;
-                  break;
-               }
-               else {
-                  getLevelP();
-               }
-            }
-            else if (x < floorsVcnt && (locationPlayerY - 1) == (floorsV[x].y) && locationPlayerX == (floorsV[x].x)) {
-               out = true;
-               break;
-            }
-            else {
-               out = false;
-            }
-            for (int i = 0; i < aiEnemies.size(); i++) {
-               Oberon_AIDrivenEnemy aie = (Oberon_AIDrivenEnemy) aiEnemies.elementAt(i);
-               Point typer = aie.getLocat();
-               if ((locationPlayerY - 1) == typer.y && locationPlayerX == typer.x) {
-                  out = true;
-                  break;
-               }
-            }
-         }
-         if(direction == DOWN){ //down
-            if ((locationPlayerY + 1) == (bounds[x].y - 1) && locationPlayerX == (bounds[x].x - 1)) {
-               if(isGhost1) {
-                  out = false;
-                  break;
-               }
-               else {
-                  out = true;
-                  break;
-               }
-            }
-            else if ((locationPlayerY + 1) == (mobileBounds[x].y - 1) && locationPlayerX == (mobileBounds[x].x - 1)) {
-               if(isGhost1) {
-                  out = false;
-                  break;
-               }
-               else {
-                  out = true;
-                  break;
-               }
-            }
-            else if (x < trackingBoundsMax && (locationPlayerY + 1) == (trackingbounds[x].y - 1) && locationPlayerX == (trackingbounds[x].x - 1)) {
-               if(isGhost1) {
-                  out = false;
-                  break;
-               }
-               else {
-                  out = true;
-                  break;
-               }
-            }
-            else if ((locationPlayerY + 1) == (healthLocat.y - 1) && locationPlayerX == (healthLocat.x - 1)) {
-               getLifeP();
-            }
-            else if ((locationPlayerY + 1) == (armorLocat.y - 1) && locationPlayerX == (armorLocat.x - 1)) {
-               getArmorP();
-            }
-            else if ((locationPlayerY + 1) == (unoseeLocat.y - 1) && locationPlayerX == (unoseeLocat.x - 1)) {
-               getUNoSeeP();
-            }
-            else if ((locationPlayerY + 1) == (lampLocat.y - 1) && locationPlayerX == (lampLocat.x - 1)) {
-               getLampP();
-            }
-            else if ((locationPlayerY + 1) == (gemLocat.y - 1) && locationPlayerX == (gemLocat.x - 1)) {
-               getGemP();
-            }
-            else if ((locationPlayerY + 1) == (megahealthLocat.y - 1) && locationPlayerX == (megahealthLocat.x - 1)) {
-               getMLifeP();
-            }
-            else if ((locationPlayerY + 1) == (megaexpLocat.y - 1) && locationPlayerX == (megaexpLocat.x - 1)) {
-               getMExpP();
-            }
-            else if ((locationPlayerY + 1) == (ghostpotionLocat.y - 1) && locationPlayerX == (ghostpotionLocat.x - 1)) {
-               getGhostP();
-            }
-            else if (kohmode && (locationPlayerY + 1) == (kohlocat.y - 1) && locationPlayerX == (kohlocat.x - 1)) {
-               getFlagP();
-            }
-            else if ((locationPlayerY + 1) == (extraLifeLocat.y - 1) && locationPlayerX == (extraLifeLocat.x - 1)) {
-               getExLife();
-            }
-            else if ((locationPlayerY + 1) == (painkLocat.y - 1) && locationPlayerX == (painkLocat.x - 1)) {
-               getPainKillerP();
-            }
-            else if ((locationPlayerY + 1) == (weaponboxLocat.y - 1) && locationPlayerX == (weaponboxLocat.x - 1)) {
-               if (playerWeapon == -1) {
-                  getWeaponP();
-               }
-               else {
-                  out = true;
-                  break;
-               }
-            }
-            else if ((locationPlayerY + 1) == (levelboxLocat.y - 1) && locationPlayerX == (levelboxLocat.x - 1)) {
-               if (playerLevel >= (levelMax)) {
-                  out = true;
-                  break;
-               }
-               else {
-                  getLevelP();
-               }
-            }
-            else if (x < floorsVcnt && (locationPlayerY + 1) == (floorsV[x].y) && locationPlayerX == (floorsV[x].x)) {
-               out = true;
-               break;
-            }
-            else {
-               out = false;
-            }
-            for (int i = 0; i < aiEnemies.size(); i++) {
-               Oberon_AIDrivenEnemy aie = (Oberon_AIDrivenEnemy) aiEnemies.elementAt(i);
-               Point typer = aie.getLocat();
-               if ((locationPlayerY + 1) == typer.y && locationPlayerX == typer.x) {
-                  out = true;
-                  break;
-               }
-            }
-         }
-         if(direction == LEFT){ //left
-            if ((locationPlayerX - 1) == (bounds[x].x - 1) && locationPlayerY == (bounds[x].y - 1)) {
-               if(isGhost1) {
-                  out = false;
-                  break;
-               }
-               else {
-                  out = true;
-                  break;
-               }
-            }
-            else if ((locationPlayerX - 1) == (mobileBounds[x].x - 1) && locationPlayerY == (mobileBounds[x].y - 1)) {
-               if(isGhost1) {
-                  out = false;
-                  break;
-               }
-               else {
-                  out = true;
-                  break;
-               }
-            }
-            else if (x < trackingBoundsMax && (locationPlayerX - 1) == (trackingbounds[x].x - 1) && locationPlayerY == (trackingbounds[x].y - 1)) {
-               if(isGhost1) {
-                  out = false;
-                  break;
-               }
-               else {
-                  out = true;
-                  break;
-               }
-            }
-            else if ((locationPlayerX - 1) == (healthLocat.x - 1) && locationPlayerY == (healthLocat.y - 1)) {
-               getLifeP();
-            }
-            else if ((locationPlayerX - 1) == (armorLocat.x - 1) && locationPlayerY == (armorLocat.y - 1)) {
-               getArmorP();
-            }
-            else if ((locationPlayerX - 1) == (unoseeLocat.x - 1) && locationPlayerY == (unoseeLocat.y - 1)) {
-               getUNoSeeP();
-            }
-            else if ((locationPlayerX - 1) == (lampLocat.x - 1) && locationPlayerY == (lampLocat.y - 1)) {
-               getLampP();
-            }
-            else if ((locationPlayerX - 1) == (gemLocat.x - 1) && locationPlayerY == (gemLocat.y - 1)) {
-               getGemP();
-            }
-            else if ((locationPlayerX - 1) == (megahealthLocat.x - 1) && locationPlayerY == (megahealthLocat.y - 1)) {
-               getMLifeP();
-            }
-            else if ((locationPlayerX - 1) == (megaexpLocat.x - 1) && locationPlayerY == (megaexpLocat.y - 1)) {
-               getMExpP();
-            }
-            else if ((locationPlayerX - 1) == (ghostpotionLocat.x - 1) && locationPlayerY == (ghostpotionLocat.y - 1)) {
-               getGhostP();
-            }
-            else if (kohmode && (locationPlayerX - 1) == (kohlocat.x - 1) && locationPlayerY == (kohlocat.y - 1)) {
-               getFlagP();
-            }
-            else if ((locationPlayerX - 1) == (extraLifeLocat.x - 1) && locationPlayerY == (extraLifeLocat.y - 1)) {
-               getExLife();
-            }
-            else if ((locationPlayerX - 1) == (painkLocat.x - 1) && locationPlayerY == (painkLocat.y - 1)) {
-               getPainKillerP();
-            }
-            else if ((locationPlayerX - 1) == (weaponboxLocat.x - 1) && locationPlayerY == (weaponboxLocat.y - 1)) {
-               if (playerWeapon == -1) {
-                  getWeaponP();
-               }
-               else {
-                  out = true;
-                  break;
-               }
-            }
-            else if ((locationPlayerX - 1) == (levelboxLocat.x - 1) && locationPlayerY == (levelboxLocat.y - 1)) {
-               if (playerLevel >= (levelMax)) {
-                  out = true;
-                  break;
-               }
-               else {
-                  getLevelP();
-               }
-            }
-            else if (x < floorsVcnt && (locationPlayerX - 1) == (floorsV[x].x) && locationPlayerY == (floorsV[x].y)) {
-               out = true;
-               break;
-            }
-            else {
-               out = false;
-            }
-            for (int i = 0; i < aiEnemies.size(); i++) {
-               Oberon_AIDrivenEnemy aie = (Oberon_AIDrivenEnemy) aiEnemies.elementAt(i);
-               Point typer = aie.getLocat();
-                           
-               if ((locationPlayerX - 1) == typer.x && locationPlayerY == typer.y) {
-                  out = true;
-                  break;
-               }
-            }
-         }
-         if(direction == RIGHT){ //right
-            if ((locationPlayerX + 1) == (bounds[x].x - 1) && locationPlayerY == (bounds[x].y - 1)) {
-               if(isGhost1) {
-                  out = false;
-                  break;
-               }
-               else {
-                  out = true;
-                  break;
-               }
-            }
-            else if ((locationPlayerX + 1) == (mobileBounds[x].x - 1) && locationPlayerY == (mobileBounds[x].y - 1)) {
-               if(isGhost1) {
-                  out = false;
-                  break;
-               }
-               else {
-                  out = true;
-                  break;
-               }
-            }
-            else if (x < trackingBoundsMax && (locationPlayerX + 1) == (trackingbounds[x].x - 1) && locationPlayerY == (trackingbounds[x].y - 1)) {
-               if(isGhost1) {
-                  out = false;
-                  break;
-               }
-               else {
-                  out = true;
-                  break;
-               }
-            }
-            else if ((locationPlayerX + 1) == (healthLocat.x - 1) && locationPlayerY == (healthLocat.y - 1)) {
-               getLifeP();
-            }
-            else if ((locationPlayerX + 1) == (armorLocat.x - 1) && locationPlayerY == (armorLocat.y - 1)) {
-               getArmorP();
-            }
-            else if ((locationPlayerX + 1) == (unoseeLocat.x - 1) && locationPlayerY == (unoseeLocat.y - 1)) {
-               getUNoSeeP();
-            }
-            else if ((locationPlayerX + 1) == (lampLocat.x - 1) && locationPlayerY == (lampLocat.y - 1)) {
-               getLampP();
-            }
-            else if ((locationPlayerX + 1) == (gemLocat.x - 1) && locationPlayerY == (gemLocat.y - 1)) {
-               getGemP();
-            }
-            else if ((locationPlayerX + 1) == (megahealthLocat.x - 1) && locationPlayerY == (megahealthLocat.y - 1)) {
-               getMLifeP();
-            }
-            else if ((locationPlayerX + 1) == (megaexpLocat.x - 1) && locationPlayerY == (megaexpLocat.y - 1)) {
-               getMExpP();
-            }
-            else if ((locationPlayerX + 1) == (ghostpotionLocat.x - 1) && locationPlayerY == (ghostpotionLocat.y - 1)) {
-               getGhostP();
-            }
-            else if (kohmode && (locationPlayerX + 1) == (kohlocat.x - 1) && locationPlayerY == (kohlocat.y - 1)) {
-               getFlagP();
-            }
-            else if ((locationPlayerX + 1) == (extraLifeLocat.x - 1) && locationPlayerY == (extraLifeLocat.y - 1)) {
-               getExLife();
-            }
-            else if ((locationPlayerX + 1) == (painkLocat.x - 1) && locationPlayerY == (painkLocat.y - 1)) {
-               getPainKillerP();
-            }
-            else if ((locationPlayerX + 1) == (weaponboxLocat.x - 1) && locationPlayerY == (weaponboxLocat.y - 1)) {
-               if (playerWeapon == -1) {
-                  getWeaponP();
-               }
-               else {
-                  out = true;
-                  break;
-               }
-            }
-            else if ((locationPlayerX + 1) == (levelboxLocat.x - 1) && locationPlayerY == (levelboxLocat.y - 1)) {
-               if (playerLevel >= (levelMax)) {
-                  out = true;
-                  break;
-               }
-               else {
-                  getLevelP();
-               }
-            }
-            else if (x < floorsVcnt && (locationPlayerX + 1) == (floorsV[x].x) && locationPlayerY == (floorsV[x].y)) {
-               out = true;
-               break;
-            }
-            else {
-               out = false;
-            }
-            for (int i = 0; i < aiEnemies.size(); i++) {
-               Oberon_AIDrivenEnemy aie = (Oberon_AIDrivenEnemy) aiEnemies.elementAt(i);
-               Point typer = aie.getLocat();       
-               if ((locationPlayerX + 1) == typer.x && locationPlayerY == typer.y) {
-                  out = true;
-                  break;
-               }
-            }
-         }
+      public boolean testBounds(int direction) {
+            boolean out = false;
+            for(int x = 0; x < maxbounds; x++) {
+                  if(direction == UP) { //up
+                        if(!isGhost1) {
+                              if ((locationPlayerY - 1) == (bounds[x].y - 1) && locationPlayerX == (bounds[x].x - 1)) {
+                                    out = true;
+                                    break;
+                              }
+                              else if ((locationPlayerY - 1) == (mobileBounds[x].y - 1) && locationPlayerX == (mobileBounds[x].x - 1)) {
+                                    out = true;
+                                    break;
+                              }
+                              else if (x < trackingBoundsMax && (locationPlayerY - 1) == (trackingbounds[x].y - 1) && locationPlayerX == (trackingbounds[x].x - 1)) {
+                                    out = true;
+                                    break;
+                              }
+                        } else {
+                              out = false;
+                              break;
+                        }
+                        
+                        if (kohmode && (locationPlayerY - 1) == (kohlocat.y - 1) && locationPlayerX == (kohlocat.x - 1)) {
+                              getFlagP();
+                        }
+                        else if ((locationPlayerY - 1) == (lampLocat.y - 1) && locationPlayerX == (lampLocat.x - 1)) {
+                              getLampP();
+                        }
+                        else if ((locationPlayerY - 1) == (healthLocat.y - 1) && locationPlayerX == (healthLocat.x - 1)) {
+                              getLifeP();
+                        }
+                        else if ((locationPlayerY - 1) == (armorLocat.y - 1) && locationPlayerX == (armorLocat.x - 1)) {
+                              getArmorP();
+                        }
+                        else if ((locationPlayerY - 1) == (unoseeLocat.y - 1) && locationPlayerX == (unoseeLocat.x - 1)) {
+                              getUNoSeeP();
+                        }
+                        else if ((locationPlayerY - 1) == (gemLocat.y - 1) && locationPlayerX == (gemLocat.x - 1)) {
+                              getGemP();
+                        }
+                        else if ((locationPlayerY - 1) == (megahealthLocat.y - 1) && locationPlayerX == (megahealthLocat.x - 1)) {
+                              getMLifeP();
+                        }
+                        else if ((locationPlayerY - 1) == (megaexpLocat.y - 1) && locationPlayerX == (megaexpLocat.x - 1)) {
+                              getMExpP();
+                        }
+                        else if ((locationPlayerY - 1) == (ghostpotionLocat.y - 1) && locationPlayerX == (ghostpotionLocat.x - 1)) {
+                              getGhostP();
+                        }
+                        else if ((locationPlayerY - 1) == (extraLifeLocat.y - 1) && locationPlayerX == (extraLifeLocat.x - 1)) {
+                              getExLife();
+                        }
+                        else if ((locationPlayerY - 1) == (painkLocat.y - 1) && locationPlayerX == (painkLocat.x - 1)) {
+                              getPainKillerP();
+                        }
+                        else if ((locationPlayerY - 1) == (weaponboxLocat.y - 1) && locationPlayerX == (weaponboxLocat.x - 1) && playerWeapon == -1) {
+                              getWeaponP();
+                        }
+                        else if ((locationPlayerY - 1) == (levelboxLocat.y - 1) && locationPlayerX == (levelboxLocat.x - 1) && playerLevel < (levelMax)) {
+                              getLevelP();
+                        }
+                        else if (x < floorsVcnt && (locationPlayerY - 1) == (floorsV[x].y) && locationPlayerX == (floorsV[x].x)) {
+                              out = true;
+                              break;
+                        }
+                        else {
+                              out = false;
+                        }
+                        for (int i = 0; i < aiEnemies.size(); i++) {
+                              Oberon_AIDrivenEnemy aie = (Oberon_AIDrivenEnemy) aiEnemies.elementAt(i);
+                              Point typer = aie.getLocat();
+                              if ((locationPlayerY - 1) == typer.y && locationPlayerX == typer.x) {
+                                    out = true;
+                                    break;
+                              }
+                        }
+                  }
+                  if(direction == DOWN) {  //down
+                        if (!isGhost1) {
+                              if ((locationPlayerY + 1) == (bounds[x].y - 1) && locationPlayerX == (bounds[x].x - 1)) {
+                                    out = true;
+                                    break;
+                              }
+                              else if ((locationPlayerY + 1) == (mobileBounds[x].y - 1) && locationPlayerX == (mobileBounds[x].x - 1)) {
+                                    out = true;
+                                    break;
+                              }
+                              else if (x < trackingBoundsMax && (locationPlayerY + 1) == (trackingbounds[x].y - 1) && locationPlayerX == (trackingbounds[x].x - 1)) {
+                                    out = true;
+                                    break;
+                              }
+                        } else {
+                              out = false;
+                              break;
+                        }
+                        
+                        if ((locationPlayerY + 1) == (healthLocat.y - 1) && locationPlayerX == (healthLocat.x - 1)) {
+                              getLifeP();
+                        }
+                        else if ((locationPlayerY + 1) == (armorLocat.y - 1) && locationPlayerX == (armorLocat.x - 1)) {
+                              getArmorP();
+                        }
+                        else if ((locationPlayerY + 1) == (unoseeLocat.y - 1) && locationPlayerX == (unoseeLocat.x - 1)) {
+                              getUNoSeeP();
+                        }
+                        else if ((locationPlayerY + 1) == (lampLocat.y - 1) && locationPlayerX == (lampLocat.x - 1)) {
+                              getLampP();
+                        }
+                        else if ((locationPlayerY + 1) == (gemLocat.y - 1) && locationPlayerX == (gemLocat.x - 1)) {
+                              getGemP();
+                        }
+                        else if ((locationPlayerY + 1) == (megahealthLocat.y - 1) && locationPlayerX == (megahealthLocat.x - 1)) {
+                              getMLifeP();
+                        }
+                        else if ((locationPlayerY + 1) == (megaexpLocat.y - 1) && locationPlayerX == (megaexpLocat.x - 1)) {
+                              getMExpP();
+                        }
+                        else if ((locationPlayerY + 1) == (ghostpotionLocat.y - 1) && locationPlayerX == (ghostpotionLocat.x - 1)) {
+                              getGhostP();
+                        }
+                        else if (kohmode && (locationPlayerY + 1) == (kohlocat.y - 1) && locationPlayerX == (kohlocat.x - 1)) {
+                              getFlagP();
+                        }
+                        else if ((locationPlayerY + 1) == (extraLifeLocat.y - 1) && locationPlayerX == (extraLifeLocat.x - 1)) {
+                              getExLife();
+                        }
+                        else if ((locationPlayerY + 1) == (painkLocat.y - 1) && locationPlayerX == (painkLocat.x - 1)) {
+                              getPainKillerP();
+                        }
+                        else if ((locationPlayerY + 1) == (weaponboxLocat.y - 1) && locationPlayerX == (weaponboxLocat.x - 1) && playerWeapon == -1) {
+                              getWeaponP();
+                        }
+                        else if ((locationPlayerY + 1) == (levelboxLocat.y - 1) && locationPlayerX == (levelboxLocat.x - 1) && playerLevel < (levelMax)) {
+                              getLevelP();
+                        }
+                        else if (x < floorsVcnt && (locationPlayerY + 1) == (floorsV[x].y) && locationPlayerX == (floorsV[x].x)) {
+                              out = true;
+                              break;
+                        } else {
+                              out = false;
+                        }
+                        for (int i = 0; i < aiEnemies.size(); i++) {
+                              Oberon_AIDrivenEnemy aie = (Oberon_AIDrivenEnemy) aiEnemies.elementAt(i);
+                              Point typer = aie.getLocat();
+                              if ((locationPlayerY + 1) == typer.y && locationPlayerX == typer.x) {
+                                    out = true;
+                                    break;
+                              }
+                        }
+                  }
+                  if(direction == LEFT){ //left
+                        if(!isGhost1) {
+                              if ((locationPlayerX - 1) == (bounds[x].x - 1) && locationPlayerY == (bounds[x].y - 1)) {
+                                    out = true;
+                                    break;
+                              }
+                              else if ((locationPlayerX - 1) == (mobileBounds[x].x - 1) && locationPlayerY == (mobileBounds[x].y - 1)) {
+                                    out = true;
+                                    break;
+                              }
+                              else if (x < trackingBoundsMax && (locationPlayerX - 1) == (trackingbounds[x].x - 1) && locationPlayerY == (trackingbounds[x].y - 1)) {
+                                    out = true;
+                                    break;
+                              } 
+                        } else {
+                              out = false;
+                              break;
+                        }
+                        
+                        if ((locationPlayerX - 1) == (healthLocat.x - 1) && locationPlayerY == (healthLocat.y - 1)) {
+                              getLifeP();
+                        }
+                        else if ((locationPlayerX - 1) == (armorLocat.x - 1) && locationPlayerY == (armorLocat.y - 1)) {
+                              getArmorP();
+                        }
+                        else if ((locationPlayerX - 1) == (unoseeLocat.x - 1) && locationPlayerY == (unoseeLocat.y - 1)) {
+                              getUNoSeeP();
+                        }
+                        else if ((locationPlayerX - 1) == (lampLocat.x - 1) && locationPlayerY == (lampLocat.y - 1)) {
+                              getLampP();
+                        }
+                        else if ((locationPlayerX - 1) == (gemLocat.x - 1) && locationPlayerY == (gemLocat.y - 1)) {
+                              getGemP();
+                        }
+                        else if ((locationPlayerX - 1) == (megahealthLocat.x - 1) && locationPlayerY == (megahealthLocat.y - 1)) {
+                              getMLifeP();
+                        }
+                        else if ((locationPlayerX - 1) == (megaexpLocat.x - 1) && locationPlayerY == (megaexpLocat.y - 1)) {
+                              getMExpP();
+                        }
+                        else if ((locationPlayerX - 1) == (ghostpotionLocat.x - 1) && locationPlayerY == (ghostpotionLocat.y - 1)) {
+                              getGhostP();
+                        }
+                        else if (kohmode && (locationPlayerX - 1) == (kohlocat.x - 1) && locationPlayerY == (kohlocat.y - 1)) {
+                              getFlagP();
+                        }
+                        else if ((locationPlayerX - 1) == (extraLifeLocat.x - 1) && locationPlayerY == (extraLifeLocat.y - 1)) {
+                              getExLife();
+                        }
+                        else if ((locationPlayerX - 1) == (painkLocat.x - 1) && locationPlayerY == (painkLocat.y - 1)) {
+                              getPainKillerP();
+                        }
+                        else if ((locationPlayerX - 1) == (weaponboxLocat.x - 1) && locationPlayerY == (weaponboxLocat.y - 1) && playerWeapon == -1) {
+                              getWeaponP();
+                        }
+                        else if ((locationPlayerX - 1) == (levelboxLocat.x - 1) && locationPlayerY == (levelboxLocat.y - 1) && playerLevel < (levelMax)) {
+                              getLevelP();
+                        }
+                        else if (x < floorsVcnt && (locationPlayerX - 1) == (floorsV[x].x) && locationPlayerY == (floorsV[x].y)) {
+                              out = true;
+                              break;
+                        }
+                        else {
+                              out = false;
+                        }
+                        for (int i = 0; i < aiEnemies.size(); i++) {
+                              Oberon_AIDrivenEnemy aie = (Oberon_AIDrivenEnemy) aiEnemies.elementAt(i);
+                              Point typer = aie.getLocat();
+                                          
+                              if ((locationPlayerX - 1) == typer.x && locationPlayerY == typer.y) {
+                                    out = true;
+                                    break;
+                              }
+                        }
+                  }
+                  if(direction == RIGHT) { //right
+                        if(!isGhost1) {
+                              if ((locationPlayerX + 1) == (bounds[x].x - 1) && locationPlayerY == (bounds[x].y - 1)) {
+                                    out = true;
+                                    break;
+                              }
+                              else if ((locationPlayerX + 1) == (mobileBounds[x].x - 1) && locationPlayerY == (mobileBounds[x].y - 1)) {
+                                    out = true;
+                                    break;
+                              }
+                              else if (x < trackingBoundsMax && (locationPlayerX + 1) == (trackingbounds[x].x - 1) && locationPlayerY == (trackingbounds[x].y - 1)) {
+                                    out = true;
+                                    break;
+                              }
+                        } else {
+                              out = false;
+                              break;
+                        }
+                        
+                        if ((locationPlayerX + 1) == (healthLocat.x - 1) && locationPlayerY == (healthLocat.y - 1)) {
+                              getLifeP();
+                        }
+                        else if ((locationPlayerX + 1) == (armorLocat.x - 1) && locationPlayerY == (armorLocat.y - 1)) {
+                              getArmorP();
+                        }
+                        else if ((locationPlayerX + 1) == (unoseeLocat.x - 1) && locationPlayerY == (unoseeLocat.y - 1)) {
+                              getUNoSeeP();
+                        }
+                        else if ((locationPlayerX + 1) == (lampLocat.x - 1) && locationPlayerY == (lampLocat.y - 1)) {
+                              getLampP();
+                        }
+                        else if ((locationPlayerX + 1) == (gemLocat.x - 1) && locationPlayerY == (gemLocat.y - 1)) {
+                              getGemP();
+                        }
+                        else if ((locationPlayerX + 1) == (megahealthLocat.x - 1) && locationPlayerY == (megahealthLocat.y - 1)) {
+                              getMLifeP();
+                        }
+                        else if ((locationPlayerX + 1) == (megaexpLocat.x - 1) && locationPlayerY == (megaexpLocat.y - 1)) {
+                              getMExpP();
+                        }
+                        else if ((locationPlayerX + 1) == (ghostpotionLocat.x - 1) && locationPlayerY == (ghostpotionLocat.y - 1)) {
+                              getGhostP();
+                        }
+                        else if (kohmode && (locationPlayerX + 1) == (kohlocat.x - 1) && locationPlayerY == (kohlocat.y - 1)) {
+                              getFlagP();
+                        }
+                        else if ((locationPlayerX + 1) == (extraLifeLocat.x - 1) && locationPlayerY == (extraLifeLocat.y - 1)) {
+                              getExLife();
+                        }
+                        else if ((locationPlayerX + 1) == (painkLocat.x - 1) && locationPlayerY == (painkLocat.y - 1)) {
+                              getPainKillerP();
+                        }
+                        else if ((locationPlayerX + 1) == (weaponboxLocat.x - 1) && locationPlayerY == (weaponboxLocat.y - 1) && playerWeapon == -1) {
+                              getWeaponP();
+                        }
+                        else if ((locationPlayerX + 1) == (levelboxLocat.x - 1) && locationPlayerY == (levelboxLocat.y - 1) && playerLevel < (levelMax)) {
+                              getLevelP();
+                        }
+                        else if (x < floorsVcnt && (locationPlayerX + 1) == (floorsV[x].x) && locationPlayerY == (floorsV[x].y)) {
+                              out = true;
+                              break;
+                        }
+                        else {
+                              out = false;
+                        }
+
+                        for (int i = 0; i < aiEnemies.size(); i++) {
+                              Oberon_AIDrivenEnemy aie = (Oberon_AIDrivenEnemy) aiEnemies.elementAt(i);
+                              Point typer = aie.getLocat();       
+                              if ((locationPlayerX + 1) == typer.x && locationPlayerY == typer.y) {
+                                    out = true;
+                                    break;
+                              }
+                        }
+                  }
+            }
+            return out;
       }
-      return out;
-   }
    
 	/*
-   *  Other Methods
+      *  Other Methods
 	* ==================================================================================
 	*  Methods that control other important things
 	*/
    
 	/**
-	*	Generic Method (Krux 4.0 ALPHA)
+	* Generic Method (Krux 4.0 ALPHA)
 	* ==================================================================================
-	*	updateBoundaries
+	* updateBoundaries
 	*
-	*	updates the positions of mobile boundaries
+	* updates the positions of mobile boundaries
 	*/
-   protected void updateBoundaries(int type) {
-      if (type == BOUND_SHIFT) {
-      	// Controls the positions of mobile/shifting boundaries
-         int ran = 0;
-         for(int i = 0; i < countM; i++) {
-            ran = (int) (Math.random() * 12);
-            if(mobileBounds[i].x > lxlimit && mobileBounds[i].y > lylimit && mobileBounds[i].x < uxlimit && mobileBounds[i].y < uylimit) {
-            
-               if (ran > 9) {
-                  if(mBoundClass[i] != 'v')
-                     if(!testBoundsAtLocat(mobileBounds[i], RIGHT) && mobileBounds[i].x != (mapsize.x - 1))
-                        mobileBounds[i].x += (int) (Math.random() * 2);
-                  
-               }
-               else  if (ran > 6) {
-                  if(mBoundClass[i] != 'v')
-                     if(!testBoundsAtLocat(mobileBounds[i], LEFT) && mobileBounds[i].x != 1)
-                        mobileBounds[i].x -= (int) (Math.random() * 2);
-               }
-               if (ran > 3) {
-                  if(mBoundClass[i] != 'h')
-                     if(!testBoundsAtLocat(mobileBounds[i], UP) && mobileBounds[i].y != 1)
-                        mobileBounds[i].y -= (int) (Math.random() * 2);
-               }
-               else  if (ran > 0) {
-                  if(mBoundClass[i] != 'h')
-                     if(!testBoundsAtLocat(mobileBounds[i], DOWN) && mobileBounds[i].y != (mapsize.y - 1))
-                        mobileBounds[i].y += (int) (Math.random() * 2);
-               }
+      protected void updateBoundaries(int type) {
+      //    Shared direction variable
+            int dir = 0;
+            if (type == BOUND_SHIFT) {
+            //    Controls the positions of mobile/shifting boundaries
+                  for(int i = 0; i < countM; i++) {
+                        dir = (int)(Math.random() * 4);
+                        if(mobileBounds[i].x > lxlimit && mobileBounds[i].y > lylimit && mobileBounds[i].x < uxlimit && mobileBounds[i].y < uylimit) {
+                              switch (dir) {
+                                    case 0:
+                                          if(!testBoundsAtLocat(mobileBounds[i], UP) && mobileBounds[i].y != 1 && mBoundClass[i] != 'h') {
+                                                mobileBounds[i].y -= (int)(Math.random() * 2);
+                                          }
+                                          break;
+                                    case 1:
+                                          if(!testBoundsAtLocat(mobileBounds[i], DOWN) && mobileBounds[i].y != (mapsize.y - 1) && mBoundClass[i] != 'h') {
+                                                mobileBounds[i].y += (int)(Math.random() * 2);
+                                          }
+                                          break;
+                                    case 2:
+                                          if(!testBoundsAtLocat(mobileBounds[i], LEFT) && mobileBounds[i].x != 1 && mBoundClass[i] != 'v') {
+                                                mobileBounds[i].x -= (int)(Math.random() * 2);
+                                          }
+                                          break;
+                                    case 3:
+                                          if(!testBoundsAtLocat(mobileBounds[i], RIGHT) && mobileBounds[i].x != (mapsize.x - 1) && mBoundClass[i] != 'v') {
+                                                mobileBounds[i].x += (int)(Math.random() * 2);
+                                          }
+                                          break;
+                                    default:
+                                          continue;
+                              }
+                        }
+                  } 
+            } else if (type == BOUND_TRACK) {
+            //    Controls the positions of tracking boundaries
+                  for(int i = 0; i < countTrackers; i++) {
+                        if(trackingbounds[i].x > lxlimit && trackingbounds[i].y > lylimit && trackingbounds[i].x < uxlimit && trackingbounds[i].y < uylimit) {
+                              if (locationPlayerX > trackingbounds[i].x) {
+                                    dir = 3;
+                              } else if (locationPlayerX < trackingbounds[i].x) {
+                                    dir = 2;
+                              } else if (locationPlayerY < trackingbounds[i].y) {
+                                    dir = 0;
+                              } else if (locationPlayerY > trackingbounds[i].y) {
+                                    dir = 1;
+                              } else {
+                                    dir = (int) Math.round(Math.random() * 4);
+                              }
+                              
+                              switch (dir) {
+                                    case 0:
+                                          if(!testBoundsAtLocat(trackingbounds[i], UP) && trackingbounds[i].y != 1) {
+                                                trackingbounds[i].y -= (int) (Math.random() * 2);
+                                          }
+                                          break;
+                                    case 1:
+                                          if(!testBoundsAtLocat(trackingbounds[i], DOWN) && trackingbounds[i].y != (mapsize.y - 1)) {
+                                                trackingbounds[i].y += (int) (Math.random() * 2);
+                                          }
+                                          break;
+                                    case 2:
+                                          if(!testBoundsAtLocat(trackingbounds[i], LEFT) && trackingbounds[i].x != 1) {
+                                                trackingbounds[i].x -= (int) (Math.random() * 2);
+                                          }
+                                          break;
+                                    case 3:
+                                          if(!testBoundsAtLocat(trackingbounds[i], RIGHT) && trackingbounds[i].x != (mapsize.x - 1)) {
+                                                trackingbounds[i].x += (int) (Math.random() * 2);
+                                          }
+                                          break;
+                              }
+                        }
+                  } 
             }
-         }
-         
       }
-      else if (type == BOUND_TRACK) {
-      	// Controls the positions of tracking boundaries
-         int dir = 0;
-      
-         for(int i = 0; i < countTrackers; i++) {
-            if(trackingbounds[i].x > lxlimit && trackingbounds[i].y > lylimit && trackingbounds[i].x < uxlimit && trackingbounds[i].y < uylimit) {
-               if (locationPlayerX > trackingbounds[i].x) {
-                  dir = 3;
-               }
-               else if (locationPlayerX < trackingbounds[i].x) {
-                  dir = 2;
-               }
-               else if (locationPlayerY < trackingbounds[i].y) {
-                  dir = 0;
-               }
-               else if (locationPlayerY > trackingbounds[i].y) {
-                  dir = 1;
-               }
-               else {
-                  dir = (int) Math.round(Math.random() * 4);
-               }
-            
-               if (dir == 3) {
-                  if(!testBoundsAtLocat(trackingbounds[i], RIGHT) && trackingbounds[i].x != (mapsize.x - 1)) {
-                     trackingbounds[i].x += (int) (Math.random() * 2);
-                  }
-               }
-               else  if (dir == 2) {
-                  if(!testBoundsAtLocat(trackingbounds[i], LEFT) && trackingbounds[i].x != 1) {
-                     trackingbounds[i].x -= (int) (Math.random() * 2);
-                  }
-               }
-               else  if (dir == 0) {
-                  if(!testBoundsAtLocat(trackingbounds[i], UP) && trackingbounds[i].y != 1) {
-                     trackingbounds[i].y -= (int) (Math.random() * 2);
-                  }
-               }
-               else  if (dir == 1) {
-                  if(!testBoundsAtLocat(trackingbounds[i], DOWN) && trackingbounds[i].y != (mapsize.y - 1)) {
-                     trackingbounds[i].y += (int) (Math.random() * 2);
-                  }
-               }
-            }
-         }
-         
-      }
-   }
    
-	/**
-	*	Generic Method (Krux 4.0 ALPHA)
-	* ==================================================================================
-	*	addBounds
-	*	adds boundaries to the map matrix
-	*
-	*	@param		x			The X locator for the boundary
-	*	@param		y			The Y locator for the boundary
-	*	@param		type		The boundary type identifier
-	*/
+/**
+*	Generic Method (Krux 4.0 ALPHA)
+* ==================================================================================
+*	addBounds
+*	adds boundaries to the map matrix
+*
+*	@param		x			The X locator for the boundary
+*	@param		y			The Y locator for the boundary
+*	@param		type		The boundary type identifier
+*/
    protected void addBounds(int x, int y, int type) {
       if(type == BOUND_SOLID) {
          if(!loadedmap) {
@@ -9136,14 +8928,14 @@ public class kruxloader implements Runnable {
       }
    }
 	
-	/**
-	*	Generic Method (Krux 4.0 ALPHA)
-	* ==================================================================================
-	*	addBounds
-	*	adds boundaries to the map matrix at a random location
-	*
-	*	@param		type		The boundary type identifier
-	*/
+/**
+*	Generic Method (Krux 4.0 ALPHA)
+* ==================================================================================
+*	addBounds
+*	adds boundaries to the map matrix at a random location
+*
+*	@param		type		The boundary type identifier
+*/
    protected void addBounds(int type) {
       if(type == BOUND_TRACK) {
          if (countTrackers < trackingbounds.length) {
@@ -9179,7 +8971,7 @@ public class kruxloader implements Runnable {
       }
    }
 	
-	// ============================ System Methods ============================
+// ============================ System Methods ============================
    
   /**
    *  Krux 2 Method
@@ -9262,8 +9054,8 @@ public class kruxloader implements Runnable {
    
    protected void printDebugMessage(String message) {
       if(debugMode) {
-         printDebug.println("[" + new java.util.Date().getHours() + ":" + new java.util.Date().getMinutes() + ":" + new java.util.Date().getSeconds() + "] KRUXTOURN (" + this.toString() + ") - " + message);
-         System.out.println("[" + new java.util.Date().getHours() + ":" + new java.util.Date().getMinutes() + ":" + new java.util.Date().getSeconds() + "] KRUXTOURN (" + this.toString() + ") - " + message);
+         printDebug.println("[" + new java.util.Date().getHours() + "-" + new java.util.Date().getMinutes() + "-" + new java.util.Date().getSeconds() + "] KRUXTOURN (" + this.toString() + ") - " + message);
+         System.out.println("[" + new java.util.Date().getHours() + "-" + new java.util.Date().getMinutes() + "-" + new java.util.Date().getSeconds() + "] KRUXTOURN (" + this.toString() + ") - " + message);
       }
    }
 	
@@ -9298,16 +9090,15 @@ public class kruxloader implements Runnable {
    }
 }
 
-// End of cruxWalker.java
+// End of kruxWalker.java
 // Thanks for playing! :-D
 
 /**
 *	Scoreboard Class
-*
 */
 
 class Scoreboard implements Serializable {
-	// Nominal Constants
+// Nominal Constants
    public static final int MAX_SCORE = 3500;
    public static final int MAX_KILLS = 12;
    public static final int MAX_ITEMS = 6;

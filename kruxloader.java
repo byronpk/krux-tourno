@@ -1,17 +1,18 @@
 /**
  *	Krux(c) Tourno Series 3 Release X2
  *	Copyright(c) 2010 MicroTech Technologies Inc. All Rights Reserved.
- *	Copyright(c) 2010 Radioactive Reds Animation      
+ *	Copyright(c) 2010 Radioactive Reds Animation
+ *    Copyright(c) 2017 Micron Information Services
  * 
  *    EULAID: DEC91C.KRX_REM_SYS.140810-KRUX3RTSX
  *    ============================================================================
  *    Version Identification
  *    ----------------------------------------------------------------------------
- *    Krux 3X2
- *    Version:             3.11.xxxx
- *    Support Version:     3.11.1920
+ *    Krux Tourno
+ *    Version:             3.12.xxxx
+ *    Support Version:     3.12.2225 BETA
  *    Project "DIAMOND DOG"
- *    Build Number 1920
+ *    Build Number 2225
  */
   
 import java.awt.*;
@@ -58,35 +59,51 @@ public class kruxloader implements Runnable {
  * Note all SHARED variables are marked as public
  */
  
- 	// Krux 4.0 ALPHA Constants
-   protected static final int BOUND_SOLID    = 0;
-   protected static final int BOUND_SHIFT    = 1;
-   protected static final int BOUND_TRACK    = 2;
+//    MICRON SYSTEM TEAM CONSTRANTS
+      protected static final int MAIN_PLAYER = 1;
+      protected static final int MAIN_ENEMY = 2;
 
-   // System Constants
-   protected static final String PRODUCT     = "Microtech Krux Tourno Series 3";
-   protected static final String VERSION     = "3.12";
-   protected static final String BUILD       = "2211";
-   protected static final String RELEASE     = "3.12." + BUILD;
-   protected static final String REVISION 	= "KMF Series 3 (1.3.0.048)";
-   protected static final String DATE        = new java.util.Date().toString();
-   protected static final String buildstring = "Build " + BUILD;
-   protected static final String REVIEW      = "";
+      protected static final int HEALTH = 1;
+      protected static final int EXPERIENCE = 2;
+      protected static final int ONE_UP = 3;
+      protected static final int WEAPON = 4;
+      protected static final int MEGA_HEALTH = 5;
+      protected static final int MEGA_EXPERIENCE = 6;
+      protected static final int GHOST_POTION = 7;
+      protected static final int LAMP = 8;
+      protected static final int ARMOR = 9;
+      protected static final int UNOSEE_POTION = 10;
+      protected static final int PAINKILLER = 11;
+
+//    Krux 4.0 ALPHA Constants
+      protected static final int BOUND_SOLID    = 0;
+      protected static final int BOUND_SHIFT    = 1;
+      protected static final int BOUND_TRACK    = 2;
+
+//    System Constants
+      protected static final String PRODUCT     = "Krux Tourno";
+      protected static final String VERSION     = "3.12";
+      protected static final String BUILD       = "2225";
+      protected static final String RELEASE     = "3.12." + BUILD + "(BETA)";
+      protected static final String REVISION 	= "KMF Series 3 (1.3.0.048)";
+      protected static final String DATE        = new java.util.Date().toString();
+      protected static final String buildstring = "Build " + BUILD;
+      protected static final String REVIEW      = "";
 	
-	// Scoreboard
-   protected Scoreboard scrboard;
-   protected boolean showNominal = false;
+//    Scoreboard
+      protected Scoreboard scrboard;
+      protected boolean showNominal = false;
    
 	// Team Deathmatch Variable
-   protected boolean DEATHMATCHMODE = false;				// Will revert to false after BETA
-   protected boolean FRIENDLYFIRE   = true;				// Will be added to New Game section
-   protected boolean lastWasRed	= false;				// Manages the last player to be generated
+   protected boolean DEATHMATCHMODE = false;		// Will revert to false after BETA
+   protected boolean FRIENDLYFIRE   = true;		// Will be added to New Game section
+   protected boolean lastWasRed	= false;		// Manages the last player to be generated
 	
 	// Registration Variables
-   protected final regBase4 rB =								// This supplies Krux's unique product ID
-   			new regBase4(111821); 							// This key is locked and unique
-   protected String prodcode = "";							// The product key buffer
-   protected boolean isRegist = false;						// Defines registration
+   protected final regBase4 rB =				// This supplies Krux's unique product ID
+   			new regBase4(111821); 			// This key is locked and unique
+   protected String prodcode = "";				// The product key buffer
+   protected boolean isRegist = false;			// Defines registration
    
 	// Adventure Maze Mode
    private int mapnumber = 0;
@@ -99,18 +116,18 @@ public class kruxloader implements Runnable {
    protected PrintWriter printDebug;                  // The debug output stream
    protected final JFrame notneeded = new JFrame();   // A simingly vestigial JFrame
    protected JFrame mainwin = null;                   // The main krux window
-   protected JFrame nominal = null;							// The nominal rates screen
+   protected JFrame nominal = null;				// The nominal rates screen
    protected Thread controlThread = null;             // The main thread for krux
-   protected JDialog startdiag = new JDialog();			// The Game Generator Dialog
+   protected JDialog startdiag = new JDialog();	      // The Game Generator Dialog
    protected File tempo;                              // The temporary file link needed for sound
    protected byte[] soundBuffer = new byte[24576];    // 24 kB Sound Buffer
-   protected int revive = 0; 									// Amount of times player has revived
+   protected int revive = 0; 					// Amount of times player has revived
    protected final int levelMax = 100;                // Game level maximum
    
    // Map Constraints
-   protected Point mapsize = new Point(12,12); 		   // The mapsize variable
-   protected String mapdata[][] =							// The buffer representing the layout of the map
-   new String[mapsize.x][mapsize.y];
+   protected Point mapsize = new Point(12,12); 		// The mapsize variable
+   protected String mapdata[][] =                     // The buffer representing the layout of the map
+      new String[mapsize.x][mapsize.y];
    protected int maxbounds = 32;                      // The boundary limit variable
    protected Point spawnPoint1 = new Point(0,0);      // Spawnpoint for Player
    protected Point spawnPoint2 =                      // Spawnpoint for Enemy
@@ -333,8 +350,8 @@ public class kruxloader implements Runnable {
 
    protected int gemsP1 = 0;
    protected int armorP1 = 0;
-   protected int maximumP = CalculateHP(lifeIVP1, lifeEVP1, playerLevel); 
-   protected int lifePlayer = maximumP;
+   protected int maxHealthP = CalculateHP(lifeIVP1, lifeEVP1, playerLevel); 
+   protected int curHealthP = maxHealthP;
    protected int levelPlayer = 0;
    protected int eyesP = 0; 
    protected int locationPlayerX = spawnPoint1.x;
@@ -404,9 +421,9 @@ public class kruxloader implements Runnable {
    protected Point searchLocation = new Point( -1, -1 );
    protected int gemsP2 = 0;
    protected int armorP2 = 0;
-   protected int maximumE = CalculateHP(lifeIVP2, lifeEVP2, enemyLevel);
+   protected int maxHealthE = CalculateHP(lifeIVP2, lifeEVP2, enemyLevel);
    protected int levelEnemy = 0; 
-   protected int lifeEnemy = maximumE; 
+   protected int curHealthE = maxHealthE; 
    protected int eyesE = 0;
    protected int locationEnemyX = spawnPoint2.x;
    protected int locationEnemyY = spawnPoint2.y;
@@ -819,8 +836,8 @@ public class kruxloader implements Runnable {
       */
          printDebugMessage("GDI - Frame Buffer Loaded");
          notneeded.setSize(800,600);
-         lifePlayer = maximumP;
-         lifeEnemy = maximumE;
+         curHealthP = maxHealthP;
+         curHealthE = maxHealthE;
       
       // The required panels...
          JPanel creator = new JPanel();
@@ -1040,7 +1057,7 @@ public class kruxloader implements Runnable {
          final JButton terminate = new JButton("Generate a Custom Map");
          terminate.setToolTipText("Generates a Random Map");
       
-         final JButton kruxabout = new JButton("About Krux Tourno RTS X2");
+         final JButton kruxabout = new JButton("About Krux Tourno");
       
          final JPanel AboutPanel = 
                new JPanel() {
@@ -1064,7 +1081,7 @@ public class kruxloader implements Runnable {
                   // Copyright Notice
                      g.setFont(new Font("Tahoma", Font.PLAIN, 9));
                      g.drawString("Parts of this application were created by external authors and are copyrights of their respective owners and", 78, 75);
-                     g.drawString("are not maintained by Microtech Technologies. The KMF file format is a trademark of Radioactive Reds", 78, 87);
+                     g.drawString("are not maintained by Micron Information Services. The KMF file format is a trademark of Radioactive Reds", 78, 87);
                      g.drawString("Animation Studios. Krux Tourno is a shared trademark of Radioactive Reds Animation, Nature's", 78, 99);
                      g.drawString("Little Helpers and Micron Information Systems.", 78, 111);
                      g.drawString("", 78, 123);
@@ -1561,7 +1578,7 @@ public class kruxloader implements Runnable {
          creator.add(Box.createRigidArea(VGAP10));
       
       // The XWindows Dialog implementation method call
-         startdiag = implementDialog("Krux RTS X2 New Game", creator, 570, 674, false);
+         startdiag = implementDialog("Krux New Game", creator, 570, 674, false);
          startdiag.addWindowListener(
                   new WindowAdapter() {
                      public void windowClosing(WindowEvent e) {
@@ -1812,12 +1829,12 @@ public class kruxloader implements Runnable {
             AUX = "May the force be with you";
          }
          else if(cheat.equals("pharmo friendly")) {
-            getLifeP();
+            getItem(MAIN_PLAYER, HEALTH);
             hasAUX = true;
             AUX = "Drug Addict";
          }
          else if(cheat.equals("senzu bean")) {
-            MegaHPRemain = maximumP - lifePlayer;
+            MegaHPRemain = maxHealthP - curHealthP;
             hasMegaHP = true;
             hasAUX = true;
             AUX = "I feel my strength returning";
@@ -1829,10 +1846,10 @@ public class kruxloader implements Runnable {
             AUX = "I feel like a god!";
          }
          else if(cheat.equals("ectoplasmer")) {
-            getGhostP();
+            getItem(MAIN_PLAYER, GHOST_POTION);
          }
          else if(cheat.equals("nybble")) {
-            getMLifeP();
+            getItem(MAIN_PLAYER, MEGA_HEALTH);
             hasAUX = true;
             AUX = "How Refreshing";
          }
@@ -1850,12 +1867,12 @@ public class kruxloader implements Runnable {
                                     ops[0]);
          }
          else if(cheat.equals("tools for wimps")) {
-            getLevelP();
+            getItem(MAIN_PLAYER, EXPERIENCE);
             hasAUX = true;
             AUX = "WIMP";
          }
          else if(cheat.equals("i will never die")) {
-            getExLife();
+            getItem(MAIN_PLAYER, ONE_UP);
             hasAUX = true;
             AUX = "ONE UP";
          }
@@ -1865,7 +1882,7 @@ public class kruxloader implements Runnable {
             AUX = "Such a Loser";
          }
          else if(cheat.equals("cold hearted")) {
-            lifeEnemy = (1);
+            curHealthE = (1);
             hasAUX = true;
             AUX = "Mwahahahaha";
          }
@@ -1881,7 +1898,7 @@ public class kruxloader implements Runnable {
             AUX = "The first step is acceptance";
          }
          else if(cheat.equals("i can see clearly now")) {
-            getLampP();
+            getItem(MAIN_PLAYER, LAMP);
          }
          else if(cheat.equals("darkness shall reign")) {
             if(nightMode) {
@@ -1919,13 +1936,13 @@ public class kruxloader implements Runnable {
             }
          }
          else if(cheat.equals("fuller up")) {
-            lifePlayer = maximumP;
+            curHealthP = maxHealthP;
             hasAUX = true;
             AUX = "Fountain of Youth";
          }
          else if(cheat.equals("you cant touch me")) {
-            maximumP = 25000;
-            lifePlayer = 25000;
+            maxHealthP = 25000;
+            curHealthP = 25000;
             hasAUX = true;
             AUX = "25000 Point comin up";
          }
@@ -2150,7 +2167,7 @@ public class kruxloader implements Runnable {
    	 * would make the code leaner and more memory efficient, but right now...I JUST DON'T FEEL LIKE RECODING
    	 * THE WHOLE DAMN APPLICATION!
    	 
-   	 * Doesn't "int something = lifePlayer" work the same as "int something = lifePlayer" ?
+   	 * Doesn't "int something = curHealthP" work the same as "int something = curHealthP" ?
    	 * It does, but the latter being a whole 11 characters shorter cuts 11 bytes off the overall filesize, 11
    	 * bytes that one can surely tolerate, no?
    	 
@@ -2465,7 +2482,7 @@ public class kruxloader implements Runnable {
                            }
                            
                         // variable controls, added to prevent bad looking variable over-runs
-                           float hpRatio = (float)aie.life / maximumE; 
+                           float hpRatio = (float)aie.life / maxHealthE; 
                            float armRatio = (float)aie.armor / 200;
                            float expRatio = (float)(aie.exp_E - aie.expLast_E) / (aie.expForNext_E  - aie.expLast_E);
                            
@@ -2484,9 +2501,9 @@ public class kruxloader implements Runnable {
                               g.drawString("" + aie.enemyLevel, (t.x * 30) + 42 + scrollOffset.x,(t.y * 30) + 23 + scrollOffset.y);
                            
                               Image LifeLevel = null;
-                              if(((float)aie.life / aie.maximumE) > 0.5f)
+                              if(((float)aie.life / aie.maxHealthE) > 0.5f)
                                  LifeLevel = OVERLAY_LIFEBARH;
-                              else if(((float)aie.life / aie.maximumE) > 0.66f)
+                              else if(((float)aie.life / aie.maxHealthE) > 0.66f)
                                  LifeLevel = OVERLAY_LIFEBARM;
                               else
                                  LifeLevel = OVERLAY_LIFEBAR;
@@ -2515,9 +2532,9 @@ public class kruxloader implements Runnable {
                               }
                            
                               Image LifeLevel = null;
-                              if(((float)aie.life / aie.maximumE) > 0.66f)
+                              if(((float)aie.life / aie.maxHealthE) > 0.66f)
                                  LifeLevel = OVERLAY_LIFEBARH;
-                              else if(((float)aie.life / aie.maximumE) > 0.33f)
+                              else if(((float)aie.life / aie.maxHealthE) > 0.33f)
                                  LifeLevel = OVERLAY_LIFEBARM;
                               else
                                  LifeLevel = OVERLAY_LIFEBAR;
@@ -2588,7 +2605,7 @@ public class kruxloader implements Runnable {
                         
                         // Life and armour bars
                            g.setColor(Color.BLACK);
-                        int goose = (int)((float) 222 * ((float)lifePlayer / maximumP));
+                        int goose = (int)((float) 222 * ((float)curHealthP / maxHealthP));
                         g.fillRect(20 + (222 - goose), 3, goose, 7);
                         g.setColor(Color.BLACK);
                         g.fillRect(388, 3, (int)((float) 222 * ((float)armorP1 / 200)), 7);
@@ -2684,14 +2701,14 @@ public class kruxloader implements Runnable {
                         // New code added
                         
                            Image LifeLevel = null;
-                           if(((float)lifePlayer / maximumP) > 0.66f)
+                           if(((float)curHealthP / maxHealthP) > 0.66f)
                               LifeLevel = OVERLAY_LIFEBARH;
-                           else if(((float)lifePlayer / maximumP) > 0.33f)
+                           else if(((float)curHealthP / maxHealthP) > 0.33f)
                               LifeLevel = OVERLAY_LIFEBARM;
                            else
                               LifeLevel = OVERLAY_LIFEBAR;
                         
-                           g.drawImage(LifeLevel, (locationPlayerX * 30) + 47 + scrollOffset.x,(locationPlayerY * 30) + 30 + scrollOffset.y, (int)((float) 21 * ((float)lifePlayer / maximumP)), 3, this);
+                           g.drawImage(LifeLevel, (locationPlayerX * 30) + 47 + scrollOffset.x,(locationPlayerY * 30) + 30 + scrollOffset.y, (int)((float) 21 * ((float)curHealthP / maxHealthP)), 3, this);
                            g.drawImage(OVERLAY_ARMORBAR, (locationPlayerX * 30) + 47 + scrollOffset.x,(locationPlayerY * 30) + 31 + scrollOffset.y, (int)((float) 21 * ((float)armorP1 / 200)), 2, this);
                         
                            if (redrawsP == 15) {
@@ -2713,14 +2730,14 @@ public class kruxloader implements Runnable {
                            g.drawString("" + enemyLevel, (locationEnemyX * 30) + 42 + scrollOffset.x,(locationEnemyY * 30) + 23 + scrollOffset.y);
                         
                            Image LifeLevel = null;
-                           if(((float)lifeEnemy / maximumE) > 0.5f)
+                           if(((float)curHealthE / maxHealthE) > 0.5f)
                               LifeLevel = OVERLAY_LIFEBARH;
-                           else if(((float)lifeEnemy / maximumE) > 0.66f)
+                           else if(((float)curHealthE / maxHealthE) > 0.66f)
                               LifeLevel = OVERLAY_LIFEBARM;
                            else
                               LifeLevel = OVERLAY_LIFEBAR;
                         
-                           g.drawImage(LifeLevel, (locationEnemyX * 30) + 47 + scrollOffset.x,(locationEnemyY * 30) + 24 + scrollOffset.y, (int)((float) 21 * ((float)lifeEnemy / maximumE)), 3, this);
+                           g.drawImage(LifeLevel, (locationEnemyX * 30) + 47 + scrollOffset.x,(locationEnemyY * 30) + 24 + scrollOffset.y, (int)((float) 21 * ((float)curHealthE / maxHealthE)), 3, this);
                            g.drawImage(OVERLAY_ARMORBAR, (locationEnemyX * 30) + 47 + scrollOffset.x,(locationEnemyY * 30) + 25 + scrollOffset.y, (int)((float) 21 * ((float)armorP2 / 200)), 2, this);
                            g.drawImage(OVERLAY_EXPBAR, (locationEnemyX * 30) + 47 + scrollOffset.x,(locationEnemyY * 30) + 30 + scrollOffset.y, (int)((float) 21 * ((float) (exp_E - expLast_E) / (expForNext_E  - expLast_E))), 3, this);
                         }
@@ -2743,14 +2760,14 @@ public class kruxloader implements Runnable {
                            }
                         
                            Image LifeLevel = null;
-                           if(((float)lifeEnemy / maximumE) > 0.66f)
+                           if(((float)curHealthE / maxHealthE) > 0.66f)
                               LifeLevel = OVERLAY_LIFEBARH;
-                           else if(((float)lifeEnemy / maximumE) > 0.33f)
+                           else if(((float)curHealthE / maxHealthE) > 0.33f)
                               LifeLevel = OVERLAY_LIFEBARM;
                            else
                               LifeLevel = OVERLAY_LIFEBAR;
                         
-                           g.drawImage(LifeLevel, (locationEnemyX * 30) + 47 + scrollOffset.x,(locationEnemyY * 30) + 30 + scrollOffset.y, (int)((float) 21 * ((float)lifeEnemy / maximumE)), 3, this);
+                           g.drawImage(LifeLevel, (locationEnemyX * 30) + 47 + scrollOffset.x,(locationEnemyY * 30) + 30 + scrollOffset.y, (int)((float) 21 * ((float)curHealthE / maxHealthE)), 3, this);
                            g.drawImage(OVERLAY_ARMORBAR, (locationEnemyX * 30) + 47 + scrollOffset.x,(locationEnemyY * 30) + 31 + scrollOffset.y, (int)((float) 21 * ((float)armorP2 / 200)), 2, this);
                         }
                      
@@ -2777,13 +2794,13 @@ public class kruxloader implements Runnable {
                            g.setColor(Color.BLACK);
                            g.fillRect(501, 67, (int)((float) 75 * ((float) pWeapLeft / pWeapUses)), 7);
                            g.fillRect(501, 54, (int)((float) 75 * ((float)levelPlayer / levelMax)), 7);
-                           g.fillRect(501, 41, (int)((float) 75 * ((float)lifePlayer / maximumP)), 7);
+                           g.fillRect(501, 41, (int)((float) 75 * ((float)curHealthP / maxHealthP)), 7);
                            g.fillRect(501, 114, (int)((float) 75 * ((float) (exp - expLast) / (expForNext  - expLast))), 7);
                            g.fillRect(501, 85, (int)((float) 75 * ((float) strengthP1 / 100)), 7);
                            g.fillRect(501, 98, (int)((float) 75 * ((float) enduranceP1 / 100)), 7);
                         
                            g.drawImage(scoreStr.getDrawnString(), 567, 26, this);
-                           g.drawImage(new CGString("" + lifePlayer, 6, CGString.ALIGN_RIGHT, CGString.DIGITAL).getDrawnString(), 581, 39, this);
+                           g.drawImage(new CGString("" + curHealthP, 6, CGString.ALIGN_RIGHT, CGString.DIGITAL).getDrawnString(), 581, 39, this);
                            g.drawImage(new CGString("" + levelPlayer, 6, CGString.ALIGN_RIGHT, CGString.DIGITAL).getDrawnString(), 581, 52, this);
                            g.drawImage(new CGString("" + pWeapLeft, 6, CGString.ALIGN_RIGHT, CGString.DIGITAL).getDrawnString(), 581, 65, this);
                         
@@ -2820,9 +2837,9 @@ public class kruxloader implements Runnable {
                            g.drawString("[0]   View OBERON AI Target" , 11, 231);
                            g.drawString("== Player Monitor ==" , 11, 260);
                            g.drawString("Blue Player Positional: (" + locationPlayerX + " , " + locationPlayerY + ")" , 11, 276);
-                           g.drawString("Blue Player Life Value: (" + lifePlayer + " /" + maximumP + ") (" + armorP1 + ")" , 11, 291);
+                           g.drawString("Blue Player Life Value: (" + curHealthP + " /" + maxHealthP + ") (" + armorP1 + ")" , 11, 291);
                            g.drawString("Red Player Positional:  (" + locationEnemyX + " , " + locationEnemyY + ")" , 11, 306);
-                           g.drawString("Red Player Life Value:  (" + lifeEnemy + " /" + maximumE + ") (" + armorP2 + ")" , 11, 321);
+                           g.drawString("Red Player Life Value:  (" + curHealthE + " /" + maxHealthE + ") (" + armorP2 + ")" , 11, 321);
                            g.setColor(Color.YELLOW);
                            g.drawString("== Developer Mode ==", 10, 35);
                            g.drawString("Krux Series 3, Version " + VERSION + " Build " + BUILD, 10, 50);
@@ -2839,9 +2856,9 @@ public class kruxloader implements Runnable {
                            g.drawString("[0]   View OBERON AI Target" , 10, 230);
                            g.drawString("== Player Monitor ==" , 10, 260);
                            g.drawString("Blue Player Positional: (" + locationPlayerX + " , " + locationPlayerY + ")" , 10, 275);
-                           g.drawString("Blue Player Life Value: (" + lifePlayer + " /" + maximumP + ") (" + armorP1 + ")" , 10, 290);
+                           g.drawString("Blue Player Life Value: (" + curHealthP + " /" + maxHealthP + ") (" + armorP1 + ")" , 10, 290);
                            g.drawString("Red Player Positional:  (" + locationEnemyX + " , " + locationEnemyY + ")" , 10, 305);
-                           g.drawString("Red Player Life Value:  (" + lifeEnemy + " /" + maximumE + ") (" + armorP2 + ")" , 10, 320);
+                           g.drawString("Red Player Life Value:  (" + curHealthE + " /" + maxHealthE + ") (" + armorP2 + ")" , 10, 320);
                         }
                      
                         if(showHighScores) {
@@ -2869,7 +2886,7 @@ public class kruxloader implements Runnable {
       controlThread 		= new Thread(this); // This game's extra Thread
    	
    	// Here we go boys! The main frame is about to be made
-      mainwin = implementWindow("Krux RTS X2", grid, new ImageIcon(getClass().getResource("/krux/icosml.gif")), 640, 480, false);
+      mainwin = implementWindow("Krux Tourno", grid, new ImageIcon(getClass().getResource("/krux/icosml.gif")), 640, 480, false);
       
       if(fullScreen) {
          printDebugMessage("KRUXTOURN - Now Rendering in FSE Mode");
@@ -3307,7 +3324,7 @@ public class kruxloader implements Runnable {
                               case KeyEvent.VK_1: 
                                  {
                                     hasAUX = true;
-                                    AUX = "Player Life " + lifePlayer + " of " + maximumP;
+                                    AUX = "Player Life " + curHealthP + " of " + maxHealthP;
                                     break;
                                  }
                               case KeyEvent.VK_2: 
@@ -3325,7 +3342,7 @@ public class kruxloader implements Runnable {
                               case KeyEvent.VK_4: 
                                  {
                                     hasAUX = true;
-                                    AUX = "Enemy Life " + lifeEnemy + " of " + maximumE;
+                                    AUX = "Enemy Life " + curHealthE + " of " + maxHealthE;
                                     break;
                                  }
                               case KeyEvent.VK_5: 
@@ -3720,8 +3737,8 @@ public class kruxloader implements Runnable {
       weaponboxLocat = new Point(mapsize.x * 2, mapsize.y * 2); 	// Extra Life Box location (default is off-screen)
    
    // Maximum Hit Points calculations
-      maximumP = CalculateHP(lifeIVP1, lifeEVP1, playerLevel); // Player's max HP
-      maximumE = CalculateHP(lifeIVP2, lifeEVP2, enemyLevel); // Enemy's max HP
+      maxHealthP = CalculateHP(lifeIVP1, lifeEVP1, playerLevel); // Player's max HP
+      maxHealthE = CalculateHP(lifeIVP2, lifeEVP2, enemyLevel); // Enemy's max HP
    
    // Other variables and constants
       count = 0; 							// static boundaries buffer 
@@ -3733,8 +3750,8 @@ public class kruxloader implements Runnable {
       hasGenerated = false;	// Keeps track of weather or not the user has generated a map or not
    
    // Life/Level bars of players
-      lifePlayer = 0; 		// Player Life
-      lifeEnemy = 0; 		// Enemy Life
+      curHealthP = 0; 		// Player Life
+      curHealthE = 0; 		// Enemy Life
    
       levelPlayer = 0; 		// Player Level
       levelEnemy = 0; 		// Enemy Level
@@ -3995,7 +4012,7 @@ public class kruxloader implements Runnable {
          scrollOffset.y = (164 - locationEnemyY * 30);   
       }  
       
-      if(lifeEnemy <= 0) {
+      if(curHealthE <= 0) {
          printDebugMessage("KRUXTOURN - Player 2 was killed");
          playSound("krux/explode.wav");
          if(extremeRules)
@@ -4011,7 +4028,7 @@ public class kruxloader implements Runnable {
          rebornE();
       }
     
-      if(lifePlayer <= 0 && !isDead) {
+      if(curHealthP <= 0 && !isDead) {
          printDebugMessage("KRUXTOURN - Player 1 was killed");
          playSound("krux/explode.wav");
          locationPlayerX = (mapsize.x * 2);
@@ -4019,11 +4036,11 @@ public class kruxloader implements Runnable {
          isDead = true;
       }
          
-      if(lifeEnemy > maximumE)
-         lifeEnemy = maximumE;
+      if(curHealthE > maxHealthE)
+         curHealthE = maxHealthE;
       		
-      if(lifePlayer > maximumP)
-         lifePlayer = maximumP;
+      if(curHealthP > maxHealthP)
+         curHealthP = maxHealthP;
    }
    
    public void handleExperience() {
@@ -4039,13 +4056,13 @@ public class kruxloader implements Runnable {
          strengthP1 = CalculateStat(strengthIVP1, strengthBP1, strengthEVP1, playerLevel);
          enduranceP1 = CalculateStat(enduranceIVP1, enduranceBP1, enduranceEVP1, playerLevel);
                
-         int lastLife = maximumP;
-         maximumP = CalculateHP(lifeIVP1, lifeEVP1, playerLevel);
+         int lastLife = maxHealthP;
+         maxHealthP = CalculateHP(lifeIVP1, lifeEVP1, playerLevel);
                
-         lifePlayer = (int) (((float)lifePlayer / (float)lastLife) * (float)maximumP);
+         curHealthP = (int) (((float)curHealthP / (float)lastLife) * (float)maxHealthP);
                
          hasAUX = true;
-         AUX = "Level: " + playerLevel + ", STR: " + strengthP1 + ", END: " + enduranceP1 + ", HP: " + maximumP;
+         AUX = "Level: " + playerLevel + ", STR: " + strengthP1 + ", END: " + enduranceP1 + ", HP: " + maxHealthP;
       }
             
       if(exp_E >= expForNext_E) {
@@ -4060,10 +4077,10 @@ public class kruxloader implements Runnable {
          strengthP2 = CalculateStat(strengthIVP2, strengthBP2, strengthEVP2, enemyLevel);
          enduranceP2 = CalculateStat(enduranceIVP2, enduranceBP2, enduranceEVP2, enemyLevel);
             
-         int lastLife = maximumE;
-         maximumE = CalculateHP(lifeIVP2, lifeEVP2, enemyLevel);
+         int lastLife = maxHealthE;
+         maxHealthE = CalculateHP(lifeIVP2, lifeEVP2, enemyLevel);
                
-         lifeEnemy = (int) (((float)lifeEnemy / (float)lastLife) * (float)maximumE);
+         curHealthE = (int) (((float)curHealthE / (float)lastLife) * (float)maxHealthE);
                
          hpDrawn = true;
          hpTime = 25;
@@ -4094,11 +4111,11 @@ public class kruxloader implements Runnable {
          	*/           
       if(hasMegaHP) {
          if(MegaHPRemain > (1 * playerLevel)) {
-            lifePlayer = (lifePlayer + (1 * playerLevel));
+            curHealthP = (curHealthP + (1 * playerLevel));
             MegaHPRemain -= (1 * playerLevel);
          }
          else {
-            lifePlayer = (lifePlayer + MegaHPRemain);
+            curHealthP = (curHealthP + MegaHPRemain);
             MegaHPRemain = 0;
             hasMegaHP = false;
          }
@@ -4106,11 +4123,11 @@ public class kruxloader implements Runnable {
             
       if(hasMegaHP_E) {
          if(MegaHPRemain_E > (1 * enemyLevel)) {
-            lifeEnemy = (lifeEnemy + (1 * enemyLevel));
+            curHealthE = (curHealthE + (1 * enemyLevel));
             MegaHPRemain_E -= (1 * enemyLevel);
          }
          else {
-            lifeEnemy = (lifeEnemy + MegaHPRemain_E);
+            curHealthE = (curHealthE + MegaHPRemain_E);
             MegaHPRemain_E = 0;
             hasMegaHP_E = false;
             hpDrawn = false;
@@ -4123,11 +4140,11 @@ public class kruxloader implements Runnable {
       if(painKillerP1) {
          if(pkcount1 == 3) {
             if(painKillerRemP1 > 1) {
-               lifePlayer -= 1;
+               curHealthP -= 1;
                painKillerRemP1 -= 1;
             }
             else {
-               lifePlayer -= painKillerRemP1;
+               curHealthP -= painKillerRemP1;
                painKillerRemP1 = 0;
                painKillerP1 = false;
             }
@@ -4140,11 +4157,11 @@ public class kruxloader implements Runnable {
       if(painKillerP2) {
          if(pkcount2 == 3) {
             if(painKillerRemP2 > 1) {
-               lifeEnemy -= 1;
+               curHealthE -= 1;
                painKillerRemP2 -= 1;
             }
             else {
-               lifeEnemy -= painKillerRemP2;
+               curHealthE -= painKillerRemP2;
                painKillerRemP2 = 0;
                painKillerP2 = false;
             }
@@ -4172,11 +4189,11 @@ public class kruxloader implements Runnable {
     // The state of Poisoned
       if(isPoisoned1) {
          if(extremeRules)
-            lifePlayer = (lifePlayer - (poisonLevel1 * 2));
+            curHealthP = (curHealthP - (poisonLevel1 * 2));
          else
-            lifePlayer = (lifePlayer - poisonLevel1);
+            curHealthP = (curHealthP - poisonLevel1);
                   
-         if(lifePlayer <= 0) {
+         if(curHealthP <= 0) {
             isDead = true;
             poisonLevel1 = 0;
             isPoisoned1 = false;
@@ -4184,8 +4201,8 @@ public class kruxloader implements Runnable {
       }
             
       if(isPoisoned2) {
-         lifeEnemy = (lifeEnemy - poisonLevel2);
-         if(lifeEnemy <= 0) {
+         curHealthE = (curHealthE - poisonLevel2);
+         if(curHealthE <= 0) {
             playSound("krux/explode.wav");
             if(extremeRules)
                scrboard.score += (ENEMY_DEFEAT * enemyLevel * 2);
@@ -4590,7 +4607,7 @@ public class kruxloader implements Runnable {
             searchLocation = findFreeBlock();
             enemyTarget = "unosee";
          }
-         else if(((((float) lifeEnemy / maximumE) * 100) <= healthlust) && (hpr <= 5 || mhr <= enemyLineOfSight)) {
+         else if(((((float) curHealthE / maxHealthE) * 100) <= healthlust) && (hpr <= 5 || mhr <= enemyLineOfSight)) {
             if(Math.min(Math.min(hpr,mhr), enemyLineOfSight) < enemyLineOfSight) {
                if(hpr < mhr) {
                   searchLocation = findFreeBlock();
@@ -4968,7 +4985,7 @@ public class kruxloader implements Runnable {
          else {
             think = (int) Math.round(Math.random() * 5);
             if (think >= 2) {
-               if (((float)lifeEnemy / (float)maximumP) < ((float)healthlust / 100) && healthLocat.x < 20 && healthLocat.y < 20) {
+               if (((float)curHealthE / (float)maxHealthP) < ((float)healthlust / 100) && healthLocat.x < 20 && healthLocat.y < 20) {
                   if (healthLocat.x > locationEnemyX) {
                      dir = 3;
                   }
@@ -5529,7 +5546,7 @@ public class kruxloader implements Runnable {
       hpDrawn = true;
       hpTime = 25;
       if (playerWeapon == 6) {
-         lifeEnemy = (0);
+         curHealthE = (0);
       }
       else if (playerWeapon == 2) {
          isPoisoned2 = true;
@@ -5547,7 +5564,7 @@ public class kruxloader implements Runnable {
             armorP2 = 0;
          }
          
-         lifeEnemy = (lifeEnemy - damageE);
+         curHealthE = (curHealthE - damageE);
          damageEnemyPaint = true;
          isZapped2 = true;
          zaptimer2 = (int) Math.round(Math.random() * 20);
@@ -5565,22 +5582,22 @@ public class kruxloader implements Runnable {
             armorP2 = 0;
          }
          
-         lifeEnemy = (lifeEnemy - damageE);
+         curHealthE = (curHealthE - damageE);
          damageEnemyPaint = true;
          
          int lifeget = damageE / 2;
       
-         if((lifePlayer + lifeget) > maximumP) {
-            int temp = maximumP;
+         if((curHealthP + lifeget) > maxHealthP) {
+            int temp = maxHealthP;
          
-            maximumP = lifePlayer + lifeget;
-            lifePlayer = (maximumP);
+            maxHealthP = curHealthP + lifeget;
+            curHealthP = (maxHealthP);
          
             hasAUX = true;
-            AUX = "HP Maxed out from " + temp + " to " + maximumP;
+            AUX = "HP Maxed out from " + temp + " to " + maxHealthP;
          }
          else
-            lifePlayer = (lifePlayer + lifeget);
+            curHealthP = (curHealthP + lifeget);
       }
       else if (playerWeapon == 5) {
          damageE = CalculateDamage(playerLevel, strengthP1, 120, enduranceP2);
@@ -5594,7 +5611,7 @@ public class kruxloader implements Runnable {
             armorP2 = 0;
          }
          
-         lifeEnemy = (lifeEnemy - damageE);
+         curHealthE = (curHealthE - damageE);
          damageEnemyPaint = true;
          isZapped2 = true;
          zaptimer2 = (int) Math.round(Math.random() * 50);
@@ -5605,11 +5622,11 @@ public class kruxloader implements Runnable {
          damageE = CalculateDamage(playerLevel, strengthP1, 80, enduranceP2);
          damageP = damageE / 4; // Calculate Recoil Damage        
       	
-         if(lifePlayer < damageP) {
+         if(curHealthP < damageP) {
             playerWeapon = -1;
          }
          else {
-            lifePlayer = (lifePlayer - damageP);
+            curHealthP = (curHealthP - damageP);
             damagePlayerPaint = true;
          
          /* (This weapon pierces armor)
@@ -5650,7 +5667,7 @@ public class kruxloader implements Runnable {
                }
             }
          
-            lifeEnemy = (lifeEnemy - damageE);
+            curHealthE = (curHealthE - damageE);
             damageEnemyPaint = true;
             isPoisoned2 = true;
             poisonLevel2 += 1;
@@ -5676,7 +5693,7 @@ public class kruxloader implements Runnable {
             armorP2 = 0;
          }
          
-         lifeEnemy = (lifeEnemy - damageE);
+         curHealthE = (curHealthE - damageE);
          damageEnemyPaint = true;
       }
       if(playerWeapon != -1) { // If I have a weapon substract one AMMO from it
@@ -5703,7 +5720,7 @@ public class kruxloader implements Runnable {
       }
       
       scoreStr.setText("" + scrboard.score);
-      if(lifeEnemy <= 0) {
+      if(curHealthE <= 0) {
          playSound("krux/explode.wav");
          if(extremeRules)
             scrboard.score += (ENEMY_DEFEAT * enemyLevel * 2);
@@ -5740,7 +5757,7 @@ public class kruxloader implements Runnable {
          hpDrawn = true;
          hpTime = 25;
          
-         lifeEnemy = (lifeEnemy - ((int) (damage / (enp + 0.0001f))));
+         curHealthE = (curHealthE - ((int) (damage / (enp + 0.0001f))));
          damageEnemyPaint = true;
          
          isZapped2 = true;
@@ -5748,7 +5765,7 @@ public class kruxloader implements Runnable {
          isPoisoned2 = true;
          poisonLevel2 += (int) (200 / (enp + 0.0001f));
          
-         if(lifeEnemy <= 0) {
+         if(curHealthE <= 0) {
             playSound("krux/explode.wav");
             if(extremeRules)
                scrboard.score += (ENEMY_DEFEAT * enemyLevel * 2);
@@ -5765,7 +5782,7 @@ public class kruxloader implements Runnable {
       }
       
       {
-         lifePlayer = (lifePlayer - ((int) (damage / (pnp + 0.0001f))));
+         curHealthP = (curHealthP - ((int) (damage / (pnp + 0.0001f))));
          damagePlayerPaint = true;
          isZapped1 = true;
          zaptimer1 = (int) Math.round(Math.random() * ((mapsize.x - pnp) * 200));
@@ -5775,7 +5792,7 @@ public class kruxloader implements Runnable {
          hasAUX = true;
          AUX = "You were hit by an atomic bomb!";
          
-         if(lifePlayer <= 0) {
+         if(curHealthP <= 0) {
             playSound("krux/explode.wav");
             locationPlayerX = (mapsize.x * 2);
             locationPlayerY = (mapsize.y * 2);
@@ -5886,9 +5903,8 @@ public class kruxloader implements Runnable {
    *  Calculates and processes damage done by the enemy to the player
    */
    public void doDamageEP() {
-   
       if (enemyWeapon == 6) {
-         lifePlayer = (0);
+         curHealthP = (0);
       }
       else if (enemyWeapon == 8) {
          doDamageWeapon7(locationEnemyX, locationEnemyY);
@@ -5911,7 +5927,7 @@ public class kruxloader implements Runnable {
             armorP1 = 0;
          }
          
-         lifePlayer = (lifePlayer - damageP);
+         curHealthP = (curHealthP - damageP);
          damagePlayerPaint = true;
          isZapped1 = true;
          zaptimer1 = (int) Math.round(Math.random() * 20);
@@ -5930,23 +5946,23 @@ public class kruxloader implements Runnable {
             armorP1 = 0;
          }
          
-         lifePlayer = (lifePlayer - damageP);
+         curHealthP = (curHealthP - damageP);
          damagePlayerPaint = true;
          
          int lifeget = damageP / 2;
       
-         if((lifeEnemy + lifeget) > maximumE) {
-            int temp = maximumE;
+         if((curHealthE + lifeget) > maxHealthE) {
+            int temp = maxHealthE;
          
-            maximumE = lifeEnemy + lifeget;
+            maxHealthE = curHealthE + lifeget;
             
-            lifeEnemy = (maximumE);
+            curHealthE = (maxHealthE);
          
             hasAUX = true;
-            AUX = "HP Maxed out from " + temp + " to " + maximumE;
+            AUX = "HP Maxed out from " + temp + " to " + maxHealthE;
          }
          else
-            lifeEnemy = (lifeEnemy + lifeget);
+            curHealthE = (curHealthE + lifeget);
       }
       else if (enemyWeapon == 5) {
          damageP = CalculateDamage(enemyLevel, strengthP2, 120, enduranceP1);
@@ -5960,7 +5976,7 @@ public class kruxloader implements Runnable {
             armorP1 = 0;
          }
          
-         lifePlayer = (lifePlayer - damageP);
+         curHealthP = (curHealthP - damageP);
          damagePlayerPaint = true;
          isZapped1 = true;
          zaptimer1 = (int) Math.round(Math.random() * 50);
@@ -5973,11 +5989,11 @@ public class kruxloader implements Runnable {
          damageE = CalculateDamage(enemyLevel, strengthP2, 80, enduranceP1);
          damageP = damageE / 4; // Calculate Recoil Damage        
       	
-         if(lifeEnemy < damageP) {
+         if(curHealthE < damageP) {
             enemyWeapon = -1;
          }
          else {
-            lifeEnemy = (lifeEnemy - damageP);
+            curHealthE = (curHealthE - damageP);
             damageEnemyPaint = true;
          
          // Test for the radius damage
@@ -6007,7 +6023,7 @@ public class kruxloader implements Runnable {
                }
             }
          
-            lifePlayer = (lifeEnemy - damageE);
+            curHealthP = (curHealthE - damageE);
             damagePlayerPaint = true;
             isPoisoned1 = true;
             poisonLevel1 += 1;
@@ -6030,7 +6046,7 @@ public class kruxloader implements Runnable {
             armorP1 = 0;
          }
          
-         lifePlayer = (lifePlayer - damageP);
+         curHealthP = (curHealthP - damageP);
          damagePlayerPaint = true;
       }
       if(enemyWeapon != -1) {
@@ -6052,7 +6068,7 @@ public class kruxloader implements Runnable {
          gems1 = new CGString(String.valueOf(gemsP1), 3, CGString.ALIGN_RIGHT, CGString.DIGITAL);
       }
       
-      if(lifePlayer <= 0) {
+      if(curHealthP <= 0) {
          playSound("krux/explode.wav");
          scoreStr.setText("" + scrboard.score);
          locationPlayerX = (mapsize.x * 2);
@@ -6062,45 +6078,45 @@ public class kruxloader implements Runnable {
       }
    }
    
-	/*
-   *  Recovery Methods
-	* ==================================================================================
-	*  Controls the recovery from Health Crates
-	*/
-   
-	/**
-   *  Krux 2 Method
-   * ==================================================================================
-   *  getLifeE
-   *  Calculates and processes the player's ability to get Life Boxes and Crates
-   */
+/*
+*  Recovery Methods
+* ==================================================================================
+*  Controls the recovery from Health Crates
+*/
+
+/**
+*  Krux 2 Method
+* ==================================================================================
+*  getLifeE
+*  Calculates and processes the player's ability to get Life Boxes and Crates
+*/
    public void getLifeE() { // Enemy picks up a health box
       hpDrawn = true;
       hpTime = 25;
       int lifeget = 0;
       
       if(hpboxtype == 2) {
-         lifeget = maximumE * 2 - lifeEnemy;
+         lifeget = maxHealthE * 2 - curHealthE;
       }
       else if(hpboxtype == 1) {
-         lifeget = maximumE - lifeEnemy;
+         lifeget = maxHealthE - curHealthE;
       }
       else {
          lifeget = (int) Math.round(Math.random() * (32 * enemyLevel));
       }
       
-      if((lifeEnemy + lifeget) > maximumE) {
-         int temp = maximumE;
+      if((curHealthE + lifeget) > maxHealthE) {
+         int temp = maxHealthE;
       
-         maximumE = lifeEnemy + lifeget;
+         maxHealthE = curHealthE + lifeget;
          
-         lifeEnemy = (maximumE);
+         curHealthE = (maxHealthE);
          
          hasAUX = true;
-         AUX = "HP Maxed out from " + temp + " to " + maximumE;
+         AUX = "HP Maxed out from " + temp + " to " + maxHealthE;
       }
       else {
-         lifeEnemy = (lifeEnemy + lifeget);
+         curHealthE = (curHealthE + lifeget);
       }
       scoreStr.setText("" + scrboard.score);
       healthLocat = findFreeBlock();
@@ -6114,103 +6130,14 @@ public class kruxloader implements Runnable {
          hpboxtype = 0;
       
       
-   }   
-   
-	/**
-   *  Krux 2 Method
-   * ==================================================================================
-   *  getLifeP
-   *  Calculates and processes the player's ability to get Life Boxes and Crates
-   */
-   public void getLifeP() { // Player picks up a health box
-      int lifeget = 0;
-      if(hpboxtype == 2) {
-         lifeget = maximumP * 2 - lifePlayer;
-      }
-      else if(hpboxtype == 1) {
-         lifeget = maximumP - lifePlayer;
-      }
-      else {
-         if(extremeRules)
-            lifeget = (int) Math.round(Math.random() * (18 * playerLevel));
-         else
-            lifeget = (int) Math.round(Math.random() * (24 * playerLevel));
-      }
-      
-      if((lifePlayer + lifeget) > maximumP) {
-         int temp = maximumP;
-      
-         maximumP = lifePlayer + lifeget;
-         
-         lifePlayer = (maximumP);
-         
-         hasAUX = true;
-         AUX = "HP Maxed out from " + temp + " to " + maximumP;
-      }
-      else {
-         hasAUX = true;
-         AUX = "Health Crate";
-      
-         lifePlayer = (lifePlayer + lifeget);
-      }
-      scrboard.score += HEALTHGET;
-      playSound("krux/itemget.wav");
-      
-      scoreStr.setText("" + scrboard.score);
-      
-      healthLocat = findFreeBlock();
-      int g2e = (int) ((double) Math.random() * 9);
-               
-      if (g2e > 7)
-         hpboxtype = 2;
-      else if (g2e > 6)
-         hpboxtype = 1;
-      else
-         hpboxtype = 0;
-   		
-      items++;
-      
    }
 	
-	/**
-   *  Krux 3 RTS 13 Method
-   * ==================================================================================
-   *  getPainKillerP1
-   *  Calculates and processes the player's ability to get Painkillers
-   */
-   protected void getPainKillerP() {
-      painKillerP1 = true;
-   	
-   	// Life gain depends on the painKillerType
-      if(painKillType == 0)
-         painKillerRemP1 = 50;
-      else 
-         painKillerRemP1 = 200;
-      
-   	// Painkillers will only fill life to the maximum and will not push life open...
-   	// ...if the painkiller does not provide it's full life, it will reduced its...
-   	// ...life reducing effect.
-      if((maximumP - lifePlayer) < painKillerRemP1) {
-         painKillerRemP1 = (maximumP - lifePlayer);
-         lifePlayer = maximumP;
-      }
-      else
-         lifePlayer += painKillerRemP1;
-   	
-      scrboard.score += ITEMGET;
-      playSound("krux/itemget.wav");
-      
-      scoreStr.setText("" + scrboard.score);
-      items++;
-      painkLocat = OFFSCREEN;
-   }
-	
-	/**
-   *  Krux 3 RTS 13 Method
-   * ==================================================================================
-   *  getPainKillerE
-   *  Calculates and processes the enemys's ability to get Painkillers
-   */
+/**
+ *  Krux 3 RTS 13 Method
+ * ==================================================================================
+ *  getPainKillerE
+ *  Calculates and processes the enemys's ability to get Painkillers
+ */
    protected void getPainKillerE() {
       painKillerP2 = true;
    	
@@ -6223,55 +6150,14 @@ public class kruxloader implements Runnable {
    	// Painkillers will only fill life to the maximum and will not push life open...
    	// ...if the painkiller does not provide it's full life, it will reduced its...
    	// ...life reducing effect.
-      if((maximumE - lifeEnemy) < painKillerRemP2) {
-         painKillerRemP2 = (maximumE - lifeEnemy);
-         lifeEnemy = maximumE;
+      if((maxHealthE - curHealthE) < painKillerRemP2) {
+         painKillerRemP2 = (maxHealthE - curHealthE);
+         curHealthE = maxHealthE;
       }
       else
-         lifeEnemy += painKillerRemP2;
+         curHealthE += painKillerRemP2;
    	
       painkLocat = OFFSCREEN;
-   }
-   
-   /**
-   *  Krux 3 RTS 7 Method
-   * ==================================================================================
-   *  getArmorP
-   *  Calculates and processes the player's ability to get Armor
-   */
-   protected void getArmorP() {
-      if(armorP1 < 200) {
-         armorP1 += 50;
-      }
-      else {
-         armorP1 = 200;
-      }
-      
-      scrboard.score += ITEMGET;
-      playSound("krux/itemget.wav");
-      
-      scoreStr.setText("" + scrboard.score);
-      items++;
-      armorLocat = findFreeBlock();
-   }
-   
-   /**
-   *  Krux 3 RTS X2 Method
-   * ==================================================================================
-   *  getUNoSeeP
-   *  Calculates and processes the player's ability to get the U-No-See Potion
-   */
-   protected void getUNoSeeP() {
-      u_no_see1 = true;
-      isGhost1 = false;
-      kohtimer.setText("" + (50 + (50 * (int) (Math.round(Math.random() * 4) + 1))));
-      
-      scrboard.score += ITEMGET;
-      playSound("krux/itemget.wav");
-      
-      scoreStr.setText("" + scrboard.score);
-      items++;
-      unoseeLocat = new Point(mapsize.x * 2, mapsize.y * 2);
    }
    
    /**
@@ -6308,55 +6194,6 @@ public class kruxloader implements Runnable {
    }
    
    /**
-   *  Krux 3 RTS 5 Method
-   * ==================================================================================
-   *  getLampP
-   *  Processes the pickup of the Lamp Item
-   */
-   public void getLampP() {
-      LampRemain = 200;
-      hasLamp = true;
-      lampLocat = new Point (mapsize.x * 2, mapsize.y * 2);
-      
-      hasAUX = true;
-      AUX = "Let there be light!";
-      
-      scrboard.score += ITEMGET;
-      playSound("krux/itemget.wav");
-      
-      scoreStr.setText("" + scrboard.score);
-      items++;
-      
-   }
-   
-   /**
-   *  Krux 3 Method
-   * ==================================================================================
-   *  getMLifeP
-   *  Processes the pickup of the Elixir Item
-   */
-   public void getMLifeP() { // Player picks up a mega health box
-      if(extremeRules)
-         MegaHPRemain = (int) Math.round(Math.random() * (24 * playerLevel));
-      else
-         MegaHPRemain = (int) Math.round(Math.random() * (32 * playerLevel));
-      hasMegaHP = true;
-      
-      hasAUX = true;
-      AUX = "Elixir of Life";
-   
-      scrboard.score += ITEMGET;
-      playSound("krux/itemget.wav");
-      
-      scoreStr.setText("" + scrboard.score);
-      
-      megahealthLocat.x = (mapsize.x * 2);
-      megahealthLocat.y = (mapsize.y * 2);
-      items++;
-      
-   }
-   
-   /**
    *  Krux 3 Method
    * ==================================================================================
    *  getMLifeE
@@ -6385,55 +6222,6 @@ public class kruxloader implements Runnable {
       expTime = -1;
       megaexpLocat.x = (mapsize.x * 2);
       megaexpLocat.y = (mapsize.y * 2);
-      
-   }
-   
-   /**
-   *  Krux 3 Method
-   * ==================================================================================
-   *  getMExpP
-   *  Processes the pickup of the Vial Item
-   */
-   public void getMExpP() { // Player picks up a mega exp box
-      MegaExpRemain = 300;
-      hasMegaExp = true;
-      
-      hasAUX = true;
-      AUX = "Vial of Wisdom";
-   
-      scrboard.score += ITEMGET;
-      playSound("krux/itemget.wav");
-      
-      scoreStr.setText("" + scrboard.score);
-      
-      megaexpLocat.x = (mapsize.x * 2);
-      megaexpLocat.y = (mapsize.y * 2);
-      items++;
-      
-   }
-   
-   /**
-   *  Krux 3 Method
-   * ==================================================================================
-   *  getGhostP
-   *  Processes the pickup of the Ghosting Potion Item
-   */
-   public void getGhostP() { // Player the Ghosting Potion
-      isGhost1 = true;
-      u_no_see1 = false;
-      kohtimer.setText("" + (50 + (50 * (int) (Math.round(Math.random() * 4) + 1))));
-      
-      hasAUX = true;
-      AUX = "He goes unseen";
-   
-      scrboard.score += ITEMGET;
-      playSound("krux/itemget.wav");
-      
-      scoreStr.setText("" + scrboard.score);
-      
-      ghostpotionLocat.x = (mapsize.x * 2);
-      ghostpotionLocat.y = (mapsize.y * 2);
-      items++;
       
    }
    
@@ -6473,45 +6261,6 @@ public class kruxloader implements Runnable {
       expDrawn = true;
       expTime = 25;
       levelboxLocat = findFreeBlock();
-      
-   }
-
-   /**
-   *  Krux 2 Method
-   * ==================================================================================
-   *  getLevelP
-   *  Calculates and processes the BLUE PLAYER's ability to get LEVEL CRATES
-   */
-   public void getLevelP() { // Player picks up a level box
-      exp += 200;
-      hasAUX = true;
-      AUX = "Level Crate";
-      playSound("krux/itemget.wav");
-      scrboard.score += ITEMGET;
-      
-      scoreStr.setText("" + scrboard.score);
-      levelboxLocat = findFreeBlock();
-      items++;
-      
-   }
-
-   /**
-   *  Krux 2 Method
-   * ==================================================================================
-   *  getExLife
-   *  Calculates and processes the BLUE PLAYER's ability to get extra lifes in non-unlimited mode
-   */
-   public void getExLife() { // Player picks up an extra life box
-      revivelimit++;
-      hasAUX = true;
-      AUX = "ONE-UP";
-      playSound("krux/oneup.WAV");
-      scrboard.score += ONEUPGET;
-      
-      scoreStr.setText("" + scrboard.score);
-      extraLifeLocat.x = (mapsize.x * 2);
-      extraLifeLocat.y = (mapsize.y * 2);
-      items++;
       
    }
    
@@ -6646,50 +6395,12 @@ public class kruxloader implements Runnable {
    /**
    *  Krux 2 Method
    * ==================================================================================
-   *  getWeaponP
-   *  Calculates and processes the player's ability to get Weapon Crates
-   */
-   public void getWeaponP() { // Player picks up a weapon box
-      int weaponcounter = (int) ((Math.random() * 20) + 1);
-      if(weaponcounter == 20) {
-         playerWeapon = 8;
-      }
-      else {
-         playerWeapon = (int) (Math.random() * 8);
-      }
-      
-      hasAUX = true;
-      AUX = weaponNames[playerWeapon] + " found";
-      playSound("krux/itemget.wav");
-      scrboard.score += WEAPONGET;
-      
-      scoreStr.setText("" + scrboard.score);
-      weaponboxLocat = findFreeBlock();
-      if(playerWeapon >= 5 && playerWeapon != 7) {
-         pWeapUses = 1;
-         pWeapLeft = pWeapUses;
-      }
-      else if(playerWeapon == 2) {
-         pWeapUses = 5;
-         pWeapLeft = pWeapUses;
-      }
-      else {
-         pWeapUses = (int) ((9 - playerWeapon) * 10);
-         pWeapLeft = pWeapUses; 
-      }   
-      items++;
-      
-   }
-
-   /**
-   *  Krux 2 Method
-   * ==================================================================================
    *  rebornP
    *  Controls BLUE PLAYER respawning
    */
    public void rebornP() { // Player is revived
       try {
-         maximumP = CalculateHP(lifeIVP1, lifeEVP1, playerLevel);
+         maxHealthP = CalculateHP(lifeIVP1, lifeEVP1, playerLevel);
          revive++;
          if (!revivesUnlimited) {
             if (revive >= revivelimit) {
@@ -6732,7 +6443,7 @@ public class kruxloader implements Runnable {
                scoreStr.setText("" + scrboard.score);
                levelPlayer = (playerLevel);
             
-               lifePlayer = (maximumP);
+               curHealthP = (maxHealthP);
                locationPlayerX = spawnPoint1.x;
                locationPlayerY = spawnPoint1.y;
                isDead = false;
@@ -6747,7 +6458,7 @@ public class kruxloader implements Runnable {
             scrboard.score -= (DEFEAT * playerLevel);
             scoreStr.setText("" + scrboard.score);
             levelPlayer = (playerLevel);
-            lifePlayer = (maximumP);
+            curHealthP = (maxHealthP);
             locationPlayerX = spawnPoint1.x;
             locationPlayerY = spawnPoint1.y;
             isDead = false;
@@ -6771,10 +6482,10 @@ public class kruxloader implements Runnable {
    *  Controls RED PLAYER respawning
    */
    public void rebornE() { // Enemy is reborn
-      maximumE = CalculateHP(lifeIVP2, lifeEVP2, enemyLevel);
+      maxHealthE = CalculateHP(lifeIVP2, lifeEVP2, enemyLevel);
       levelEnemy = (enemyLevel);
       
-      lifeEnemy = (maximumE);
+      curHealthE = (maxHealthE);
       locationEnemyX = spawnPoint2.x;
       locationEnemyY = spawnPoint2.y;
       enemyWeapon = -1;
@@ -6992,17 +6703,17 @@ public class kruxloader implements Runnable {
    *  Resets the map back to it default state
    */
    protected void resetMap() {
-      maximumE = (strengthP2 + enduranceP2);
+      maxHealthE = (strengthP2 + enduranceP2);
       levelEnemy = (enemyLevel);
       
-      lifeEnemy = (maximumE);
+      curHealthE = (maxHealthE);
       checkSpawnPoint("e");
       locationEnemyX = spawnPoint2.x;
       locationEnemyY = spawnPoint2.y;
       enemyWeapon = -1;
       levelPlayer = (playerLevel);
       
-      lifePlayer = (maximumP);
+      curHealthP = (maxHealthP);
       checkSpawnPoint("p");
       locationPlayerX = spawnPoint1.x;
       locationPlayerY = spawnPoint1.y;
@@ -8503,40 +8214,40 @@ public class kruxloader implements Runnable {
                               getFlagP();
                         }
                         else if ((locationPlayerY - 1) == (lampLocat.y - 1) && locationPlayerX == (lampLocat.x - 1)) {
-                              getLampP();
+                              getItem(MAIN_PLAYER, LAMP);
                         }
                         else if ((locationPlayerY - 1) == (healthLocat.y - 1) && locationPlayerX == (healthLocat.x - 1)) {
-                              getLifeP();
+                              getItem(MAIN_PLAYER, HEALTH);
                         }
                         else if ((locationPlayerY - 1) == (armorLocat.y - 1) && locationPlayerX == (armorLocat.x - 1)) {
-                              getArmorP();
+                              getItem(MAIN_PLAYER, ARMOR);
                         }
                         else if ((locationPlayerY - 1) == (unoseeLocat.y - 1) && locationPlayerX == (unoseeLocat.x - 1)) {
-                              getUNoSeeP();
+                              getItem(MAIN_PLAYER, UNOSEE_POTION);
                         }
                         else if ((locationPlayerY - 1) == (gemLocat.y - 1) && locationPlayerX == (gemLocat.x - 1)) {
                               getGemP();
                         }
                         else if ((locationPlayerY - 1) == (megahealthLocat.y - 1) && locationPlayerX == (megahealthLocat.x - 1)) {
-                              getMLifeP();
+                              getItem(MAIN_PLAYER, MEGA_HEALTH);
                         }
                         else if ((locationPlayerY - 1) == (megaexpLocat.y - 1) && locationPlayerX == (megaexpLocat.x - 1)) {
-                              getMExpP();
+                              getItem(MAIN_PLAYER, MEGA_EXPERIENCE);
                         }
                         else if ((locationPlayerY - 1) == (ghostpotionLocat.y - 1) && locationPlayerX == (ghostpotionLocat.x - 1)) {
-                              getGhostP();
+                              getItem(MAIN_PLAYER, GHOST_POTION);
                         }
                         else if ((locationPlayerY - 1) == (extraLifeLocat.y - 1) && locationPlayerX == (extraLifeLocat.x - 1)) {
-                              getExLife();
+                              getItem(MAIN_PLAYER, ONE_UP);
                         }
                         else if ((locationPlayerY - 1) == (painkLocat.y - 1) && locationPlayerX == (painkLocat.x - 1)) {
-                              getPainKillerP();
+                              getItem(MAIN_PLAYER, PAINKILLER);
                         }
                         else if ((locationPlayerY - 1) == (weaponboxLocat.y - 1) && locationPlayerX == (weaponboxLocat.x - 1) && playerWeapon == -1) {
-                              getWeaponP();
+                              getItem(MAIN_PLAYER, WEAPON);
                         }
                         else if ((locationPlayerY - 1) == (levelboxLocat.y - 1) && locationPlayerX == (levelboxLocat.x - 1) && playerLevel < (levelMax)) {
-                              getLevelP();
+                              getItem(MAIN_PLAYER, EXPERIENCE);
                         }
                         else if (x < floorsVcnt && (locationPlayerY - 1) == (floorsV[x].y) && locationPlayerX == (floorsV[x].x)) {
                               out = true;
@@ -8574,43 +8285,43 @@ public class kruxloader implements Runnable {
                         }
                         
                         if ((locationPlayerY + 1) == (healthLocat.y - 1) && locationPlayerX == (healthLocat.x - 1)) {
-                              getLifeP();
+                              getItem(MAIN_PLAYER, HEALTH);
                         }
                         else if ((locationPlayerY + 1) == (armorLocat.y - 1) && locationPlayerX == (armorLocat.x - 1)) {
-                              getArmorP();
+                              getItem(MAIN_PLAYER, ARMOR);
                         }
                         else if ((locationPlayerY + 1) == (unoseeLocat.y - 1) && locationPlayerX == (unoseeLocat.x - 1)) {
-                              getUNoSeeP();
+                              getItem(MAIN_PLAYER, UNOSEE_POTION);
                         }
                         else if ((locationPlayerY + 1) == (lampLocat.y - 1) && locationPlayerX == (lampLocat.x - 1)) {
-                              getLampP();
+                              getItem(MAIN_PLAYER, LAMP);
                         }
                         else if ((locationPlayerY + 1) == (gemLocat.y - 1) && locationPlayerX == (gemLocat.x - 1)) {
                               getGemP();
                         }
                         else if ((locationPlayerY + 1) == (megahealthLocat.y - 1) && locationPlayerX == (megahealthLocat.x - 1)) {
-                              getMLifeP();
+                              getItem(MAIN_PLAYER, MEGA_HEALTH);
                         }
                         else if ((locationPlayerY + 1) == (megaexpLocat.y - 1) && locationPlayerX == (megaexpLocat.x - 1)) {
-                              getMExpP();
+                              getItem(MAIN_PLAYER, MEGA_EXPERIENCE);
                         }
                         else if ((locationPlayerY + 1) == (ghostpotionLocat.y - 1) && locationPlayerX == (ghostpotionLocat.x - 1)) {
-                              getGhostP();
+                              getItem(MAIN_PLAYER, GHOST_POTION);
                         }
                         else if (kohmode && (locationPlayerY + 1) == (kohlocat.y - 1) && locationPlayerX == (kohlocat.x - 1)) {
                               getFlagP();
                         }
                         else if ((locationPlayerY + 1) == (extraLifeLocat.y - 1) && locationPlayerX == (extraLifeLocat.x - 1)) {
-                              getExLife();
+                              getItem(MAIN_PLAYER, ONE_UP);
                         }
                         else if ((locationPlayerY + 1) == (painkLocat.y - 1) && locationPlayerX == (painkLocat.x - 1)) {
-                              getPainKillerP();
+                              getItem(MAIN_PLAYER, PAINKILLER);
                         }
                         else if ((locationPlayerY + 1) == (weaponboxLocat.y - 1) && locationPlayerX == (weaponboxLocat.x - 1) && playerWeapon == -1) {
-                              getWeaponP();
+                              getItem(MAIN_PLAYER, WEAPON);
                         }
                         else if ((locationPlayerY + 1) == (levelboxLocat.y - 1) && locationPlayerX == (levelboxLocat.x - 1) && playerLevel < (levelMax)) {
-                              getLevelP();
+                              getItem(MAIN_PLAYER, EXPERIENCE);
                         }
                         else if (x < floorsVcnt && (locationPlayerY + 1) == (floorsV[x].y) && locationPlayerX == (floorsV[x].x)) {
                               out = true;
@@ -8647,43 +8358,43 @@ public class kruxloader implements Runnable {
                         }
                         
                         if ((locationPlayerX - 1) == (healthLocat.x - 1) && locationPlayerY == (healthLocat.y - 1)) {
-                              getLifeP();
+                              getItem(MAIN_PLAYER, HEALTH);
                         }
                         else if ((locationPlayerX - 1) == (armorLocat.x - 1) && locationPlayerY == (armorLocat.y - 1)) {
-                              getArmorP();
+                              getItem(MAIN_PLAYER, ARMOR);
                         }
                         else if ((locationPlayerX - 1) == (unoseeLocat.x - 1) && locationPlayerY == (unoseeLocat.y - 1)) {
-                              getUNoSeeP();
+                              getItem(MAIN_PLAYER, UNOSEE_POTION);
                         }
                         else if ((locationPlayerX - 1) == (lampLocat.x - 1) && locationPlayerY == (lampLocat.y - 1)) {
-                              getLampP();
+                              getItem(MAIN_PLAYER, LAMP);
                         }
                         else if ((locationPlayerX - 1) == (gemLocat.x - 1) && locationPlayerY == (gemLocat.y - 1)) {
                               getGemP();
                         }
                         else if ((locationPlayerX - 1) == (megahealthLocat.x - 1) && locationPlayerY == (megahealthLocat.y - 1)) {
-                              getMLifeP();
+                              getItem(MAIN_PLAYER, MEGA_HEALTH);
                         }
                         else if ((locationPlayerX - 1) == (megaexpLocat.x - 1) && locationPlayerY == (megaexpLocat.y - 1)) {
-                              getMExpP();
+                              getItem(MAIN_PLAYER, MEGA_EXPERIENCE);
                         }
                         else if ((locationPlayerX - 1) == (ghostpotionLocat.x - 1) && locationPlayerY == (ghostpotionLocat.y - 1)) {
-                              getGhostP();
+                              getItem(MAIN_PLAYER, GHOST_POTION);
                         }
                         else if (kohmode && (locationPlayerX - 1) == (kohlocat.x - 1) && locationPlayerY == (kohlocat.y - 1)) {
                               getFlagP();
                         }
                         else if ((locationPlayerX - 1) == (extraLifeLocat.x - 1) && locationPlayerY == (extraLifeLocat.y - 1)) {
-                              getExLife();
+                              getItem(MAIN_PLAYER, ONE_UP);
                         }
                         else if ((locationPlayerX - 1) == (painkLocat.x - 1) && locationPlayerY == (painkLocat.y - 1)) {
-                              getPainKillerP();
+                              getItem(MAIN_PLAYER, PAINKILLER);
                         }
                         else if ((locationPlayerX - 1) == (weaponboxLocat.x - 1) && locationPlayerY == (weaponboxLocat.y - 1) && playerWeapon == -1) {
-                              getWeaponP();
+                              getItem(MAIN_PLAYER, WEAPON);
                         }
                         else if ((locationPlayerX - 1) == (levelboxLocat.x - 1) && locationPlayerY == (levelboxLocat.y - 1) && playerLevel < (levelMax)) {
-                              getLevelP();
+                              getItem(MAIN_PLAYER, EXPERIENCE);
                         }
                         else if (x < floorsVcnt && (locationPlayerX - 1) == (floorsV[x].x) && locationPlayerY == (floorsV[x].y)) {
                               out = true;
@@ -8722,43 +8433,43 @@ public class kruxloader implements Runnable {
                         }
                         
                         if ((locationPlayerX + 1) == (healthLocat.x - 1) && locationPlayerY == (healthLocat.y - 1)) {
-                              getLifeP();
+                              getItem(MAIN_PLAYER, HEALTH);
                         }
                         else if ((locationPlayerX + 1) == (armorLocat.x - 1) && locationPlayerY == (armorLocat.y - 1)) {
-                              getArmorP();
+                              getItem(MAIN_PLAYER, ARMOR);
                         }
                         else if ((locationPlayerX + 1) == (unoseeLocat.x - 1) && locationPlayerY == (unoseeLocat.y - 1)) {
-                              getUNoSeeP();
+                              getItem(MAIN_PLAYER, UNOSEE_POTION);
                         }
                         else if ((locationPlayerX + 1) == (lampLocat.x - 1) && locationPlayerY == (lampLocat.y - 1)) {
-                              getLampP();
+                              getItem(MAIN_PLAYER, LAMP);
                         }
                         else if ((locationPlayerX + 1) == (gemLocat.x - 1) && locationPlayerY == (gemLocat.y - 1)) {
                               getGemP();
                         }
                         else if ((locationPlayerX + 1) == (megahealthLocat.x - 1) && locationPlayerY == (megahealthLocat.y - 1)) {
-                              getMLifeP();
+                              getItem(MAIN_PLAYER, MEGA_HEALTH);
                         }
                         else if ((locationPlayerX + 1) == (megaexpLocat.x - 1) && locationPlayerY == (megaexpLocat.y - 1)) {
-                              getMExpP();
+                              getItem(MAIN_PLAYER, MEGA_EXPERIENCE);
                         }
                         else if ((locationPlayerX + 1) == (ghostpotionLocat.x - 1) && locationPlayerY == (ghostpotionLocat.y - 1)) {
-                              getGhostP();
+                              getItem(MAIN_PLAYER, GHOST_POTION);
                         }
                         else if (kohmode && (locationPlayerX + 1) == (kohlocat.x - 1) && locationPlayerY == (kohlocat.y - 1)) {
                               getFlagP();
                         }
                         else if ((locationPlayerX + 1) == (extraLifeLocat.x - 1) && locationPlayerY == (extraLifeLocat.y - 1)) {
-                              getExLife();
+                              getItem(MAIN_PLAYER, ONE_UP);
                         }
                         else if ((locationPlayerX + 1) == (painkLocat.x - 1) && locationPlayerY == (painkLocat.y - 1)) {
-                              getPainKillerP();
+                              getItem(MAIN_PLAYER, PAINKILLER);
                         }
                         else if ((locationPlayerX + 1) == (weaponboxLocat.x - 1) && locationPlayerY == (weaponboxLocat.y - 1) && playerWeapon == -1) {
-                              getWeaponP();
+                              getItem(MAIN_PLAYER, WEAPON);
                         }
                         else if ((locationPlayerX + 1) == (levelboxLocat.x - 1) && locationPlayerY == (levelboxLocat.y - 1) && playerLevel < (levelMax)) {
-                              getLevelP();
+                              getItem(MAIN_PLAYER, EXPERIENCE);
                         }
                         else if (x < floorsVcnt && (locationPlayerX + 1) == (floorsV[x].x) && locationPlayerY == (floorsV[x].y)) {
                               out = true;
@@ -8930,30 +8641,30 @@ public class kruxloader implements Runnable {
 	
 /**
 *	Generic Method (Krux 4.0 ALPHA)
-* ==================================================================================
+*     ==================================================================================
 *	addBounds
 *	adds boundaries to the map matrix at a random location
 *
 *	@param		type		The boundary type identifier
 */
-   protected void addBounds(int type) {
-      if(type == BOUND_TRACK) {
-         if (countTrackers < trackingbounds.length) {
-            trackingbounds[countTrackers] = findFreeBlock();
-            countTrackers++;
-         }
+      protected void addBounds(int type) {
+            if(type == BOUND_TRACK) {
+                  if (countTrackers < trackingbounds.length) {
+                        trackingbounds[countTrackers] = findFreeBlock();
+                        countTrackers++;
+                  }
+            }
       }
-   }
    
-	/**
-	*	Generic Method (Krux 4.0 ALPHA)
-	* ==================================================================================
-	*	addBounds
-	*	adds boundaries to the map matrix at a random location
-	*
-	*	@param		amount	Boundary count
-	*	@param		type		The boundary type identifier		
-	*/
+/**
+*	Generic Method (Krux 4.0 ALPHA)
+*     ==================================================================================
+*	addBounds
+*	adds boundaries to the map matrix at a random location
+*
+*	@param		amount	Boundary count
+*	@param		type		The boundary type identifier		
+*/
    protected void addBounds(int amount, int type) {
       if (type == BOUND_SOLID) {
          for(int i = 0; i < amount; i++) {
@@ -8970,6 +8681,199 @@ public class kruxloader implements Runnable {
          }
       }
    }
+
+// MICRON UPDATED FUNCTIONS
+/**
+*	Item Control Method (Micro Development Team)
+*     ==================================================================================
+*	getItem
+*	Processes the collection of items in-game
+*
+*	@param	player	integer representing the input player
+*	@param	item		the type of item collection to process	
+*/
+protected void getItem (int player, int item) {
+//    Used for time-based items
+      int potionTime = (50 + (50 * (int)(Math.round(Math.random() * 4) + 1)));
+      int twentySidedDice = (int)((Math.random() * 20) + 1);
+      int eightSidedDice = (int)(Math.random() * 8);
+
+//    Filter Item operations based on the specific item collected
+      switch (item) {
+            case HEALTH:
+                if (player == MAIN_PLAYER) {
+                    int lifeget = 0;
+                    switch (hpboxtype) {
+                        case 1:
+                            lifeget = (maxHealthP * 2) - curHealthP;
+                            break;
+                        case 2:
+                            lifeget = maxHealthP - curHealthP;
+                            break;
+                        default:
+                            lifeget = extremeRules ? (int) Math.round(Math.random() * (18 * playerLevel)) : (int) Math.round(Math.random() * (24 * playerLevel));
+                            break;
+                    }
+
+                    if ((curHealthP + lifeget) > maxHealthP) {
+                        maxHealthP = curHealthP + lifeget;
+                        curHealthP = maxHealthP;
+                        displayAuxMessage("Life Maxed Out!");
+                    } else {
+                        curHealthP += lifeget;
+                        displayAuxMessage("Health Crate!");
+                    }
+
+                    healthLocat = OFFSCREEN;
+
+                //  Determine what the next health crate item type will be
+                    switch (eightSidedDice + 1) {
+                        case 8:
+                            hpboxtype = 2;
+                            break;
+                        case 7:
+                            hpboxtype = 1;
+                            break;
+                        default:
+                            hpboxtype = 0;
+                            break;
+                    }
+                }
+                break;
+            case EXPERIENCE:
+                if (player == MAIN_PLAYER) {
+                    exp += 200;
+                    displayAuxMessage("Level Crate!");
+                    levelboxLocat = OFFSCREEN;
+                }
+                break;
+            case ONE_UP:
+                if (player == MAIN_PLAYER) {
+                    revivelimit++;
+                    displayAuxMessage("ONE-UP!");
+                    extraLifeLocat = OFFSCREEN;
+                }
+                break;
+            case WEAPON:
+                if (player == MAIN_PLAYER) {
+                    if(twentySidedDice == 20) {
+                        playerWeapon = 8;
+                    } else {
+                        playerWeapon = eightSidedDice;
+                    }
+                    displayAuxMessage(weaponNames[playerWeapon] + " found");
+
+                    switch(playerWeapon) {
+                        case 2:
+                            pWeapUses = 5;
+                            break;
+                        case 5:
+                        case 6:
+                        case 8:
+                            pWeapUses = 1;
+                            break;
+                        default:
+                            pWeapUses = ((9 - playerWeapon) * 10);
+                            break;
+                    }
+
+                    pWeapLeft = pWeapUses;
+                    weaponboxLocat = OFFSCREEN;
+                }
+                break;
+            case MEGA_HEALTH:
+                if (player == MAIN_PLAYER) {
+                    MegaHPRemain = (extremeRules) ? (int) Math.round(Math.random() * (24 * playerLevel)) : (int) Math.round(Math.random() * (32 * playerLevel));
+                    hasMegaHP = true;
+                    displayAuxMessage("Elixir of Life");
+                    megahealthLocat = OFFSCREEN;
+                }
+                break;
+            case MEGA_EXPERIENCE:
+                if (player == MAIN_PLAYER) {
+                    MegaExpRemain = 300;
+                    hasMegaExp = true;
+                    displayAuxMessage("Vial of Wisdom");
+                    megaexpLocat = OFFSCREEN;
+                }
+                break;
+            case GHOST_POTION:
+                if (player == MAIN_PLAYER) {
+                    isGhost1 = true;
+                    u_no_see1 = false;
+
+                    displayAuxMessage("He goes unseen...");
+                    kohtimer.setText("" + potionTime);
+
+                    ghostpotionLocat = OFFSCREEN;
+                }
+                break;
+            case LAMP:
+                if (player == MAIN_PLAYER) {
+                    LampRemain = 200;
+                    hasLamp = true;
+
+                //  Display witty status message
+                    displayAuxMessage("Let there be light!");
+
+                    lampLocat = OFFSCREEN;
+                }
+                break;
+            case ARMOR:
+                if (player == MAIN_PLAYER) {
+                    if (armorP1 < 200) {
+                        armorP1 += 50;
+                    } else {
+                        armorP1 = 200;
+                    }
+
+                    armorLocat = OFFSCREEN;
+                }
+                break;
+            case UNOSEE_POTION:
+                if (player == MAIN_PLAYER) {
+                    u_no_see1 = true;
+                    isGhost1 = false;
+
+                    kohtimer.setText("" + potionTime);
+
+                    unoseeLocat = OFFSCREEN;
+                }
+                break;
+            case PAINKILLER:
+                if(player == MAIN_PLAYER) {
+                    painKillerP1 = true;
+                    painKillerRemP1 = (painKillType == 0) ? 50 : 200;
+
+                    if ((maxHealthP - curHealthP) < painKillerRemP1) {
+                        painKillerRemP1 = (maxHealthP - curHealthP);
+                        curHealthP = maxHealthP;
+                    } else {
+                        curHealthP += painKillerRemP1;
+                    }
+
+                    painkLocat = OFFSCREEN;
+                }
+                break;
+            default:
+                break;
+        }
+
+    //  Update the scoreboard
+        if(player == MAIN_PLAYER) {
+            scrboard.score += ITEMGET;
+            playSound("krux/itemget.wav");
+        
+            scoreStr.setText("" + scrboard.score);
+            items++;
+        }
+    }
+
+    protected void displayAuxMessage(String message) {
+        hasAUX = true;
+        AUX = message;
+        printDebugMessage("AUX MSG - " + message);
+    }
 	
 // ============================ System Methods ============================
    
@@ -9064,7 +8968,7 @@ public class kruxloader implements Runnable {
       try {
         // if(args.length > 0 && args[0].equals("-devmode")) {
          w.debugMode = true;
-         System.out.println("Starting Krux Series 3 RTS X2...");
+         System.out.println("Starting Krux Tourno...");
          System.out.println("== Developer Mode ==");
          System.out.println("Krux Series 3, Version " + VERSION + " Build " + BUILD);
          System.out.println("== Key Guide ==");

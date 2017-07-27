@@ -26,3 +26,4 @@ hs_err_pid*
 *.adf
 *.bat
 *.db
+debug*.txt

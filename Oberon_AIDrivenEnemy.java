@@ -39,7 +39,7 @@ public class Oberon_AIDrivenEnemy {
    public boolean enemyHater = false;
    
    public int life = 15;
-   public int maximumE = 15;
+   public int maxHealthE = 15;
    
    public static final int UP = 0;
    public static final int DOWN = 1;
@@ -263,8 +263,8 @@ public class Oberon_AIDrivenEnemy {
          
       expLast_E = exp_E;
          
-      maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-      life = maximumE;
+      maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+      life = maxHealthE;
    	
       // printDebugMessage("Constructor Call: " + src + ", " + level + ", " + x + ", " + y);
    }
@@ -322,8 +322,8 @@ public class Oberon_AIDrivenEnemy {
          
       expLast_E = exp_E;
          
-      maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-      life = maximumE;
+      maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+      life = maxHealthE;
       
       myBotsName = botnames[(int)(Math.random() * botnames.length)];
    }
@@ -353,8 +353,8 @@ public class Oberon_AIDrivenEnemy {
          strength    = source.CalculateStat(strengthIV, strengthB, strengthEV, enemyLevel);
          endurance   = source.CalculateStat(enduranceIV, enduranceB, enduranceEV, enemyLevel);
          
-         maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-         life = maximumE;
+         maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+         life = maxHealthE;
       
          expForNext_E = source.CalculateEXP(enemyLevel + 1);
       
@@ -371,8 +371,8 @@ public class Oberon_AIDrivenEnemy {
          strength    = source.CalculateStat(strengthIV, strengthB, strengthEV, enemyLevel);
          endurance   = source.CalculateStat(enduranceIV, enduranceB, enduranceEV, enemyLevel);
          
-         maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-         life = maximumE;
+         maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+         life = maxHealthE;
       
          expForNext_E = source.CalculateEXP(enemyLevel + 1);
       
@@ -389,8 +389,8 @@ public class Oberon_AIDrivenEnemy {
          strength    = source.CalculateStat(strengthIV, strengthB, strengthEV, enemyLevel);
          endurance   = source.CalculateStat(enduranceIV, enduranceB, enduranceEV, enemyLevel);
          
-         maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-         life = maximumE;
+         maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+         life = maxHealthE;
       
          expForNext_E = source.CalculateEXP(enemyLevel + 1);
       
@@ -407,8 +407,8 @@ public class Oberon_AIDrivenEnemy {
          strength    = source.CalculateStat(strengthIV, strengthB, strengthEV, enemyLevel);
          endurance   = source.CalculateStat(enduranceIV, enduranceB, enduranceEV, enemyLevel);
          
-         maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-         life = maximumE;
+         maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+         life = maxHealthE;
       
          expForNext_E = source.CalculateEXP(enemyLevel + 1);
       
@@ -425,8 +425,8 @@ public class Oberon_AIDrivenEnemy {
          strength    = source.CalculateStat(strengthIV, strengthB, strengthEV, enemyLevel);
          endurance   = source.CalculateStat(enduranceIV, enduranceB, enduranceEV, enemyLevel);
          
-         maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-         life = maximumE;
+         maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+         life = maxHealthE;
       
          expForNext_E = source.CalculateEXP(enemyLevel + 1);
       
@@ -443,8 +443,8 @@ public class Oberon_AIDrivenEnemy {
          strength    = source.CalculateStat(strengthIV, strengthB, strengthEV, enemyLevel);
          endurance   = source.CalculateStat(enduranceIV, enduranceB, enduranceEV, enemyLevel);
          
-         maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-         life = maximumE;
+         maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+         life = maxHealthE;
       
          expForNext_E = source.CalculateEXP(enemyLevel + 1);
       
@@ -461,8 +461,8 @@ public class Oberon_AIDrivenEnemy {
          strength    = source.CalculateStat(strengthIV, strengthB, strengthEV, enemyLevel);
          endurance   = source.CalculateStat(enduranceIV, enduranceB, enduranceEV, enemyLevel);
          
-         maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-         life = maximumE;
+         maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+         life = maxHealthE;
       
          expForNext_E = source.CalculateEXP(enemyLevel + 1);
       
@@ -479,8 +479,8 @@ public class Oberon_AIDrivenEnemy {
          strength    = source.CalculateStat(strengthIV, strengthB, strengthEV, enemyLevel);
          endurance   = source.CalculateStat(enduranceIV, enduranceB, enduranceEV, enemyLevel);
          
-         maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-         life = maximumE;
+         maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+         life = maxHealthE;
       
          expForNext_E = source.CalculateEXP(enemyLevel + 1);
       
@@ -497,8 +497,8 @@ public class Oberon_AIDrivenEnemy {
          strength    = source.CalculateStat(strengthIV, strengthB, strengthEV, enemyLevel);
          endurance   = source.CalculateStat(enduranceIV, enduranceB, enduranceEV, enemyLevel);
          
-         maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-         life = maximumE;
+         maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+         life = maxHealthE;
       
          expForNext_E = source.CalculateEXP(enemyLevel + 1);
       
@@ -515,8 +515,8 @@ public class Oberon_AIDrivenEnemy {
          strength    = source.CalculateStat(strengthIV, strengthB, strengthEV, enemyLevel);
          endurance   = source.CalculateStat(enduranceIV, enduranceB, enduranceEV, enemyLevel);
          
-         maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-         life = maximumE;
+         maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+         life = maxHealthE;
       
          expForNext_E = source.CalculateEXP(enemyLevel + 1);
       
@@ -533,8 +533,8 @@ public class Oberon_AIDrivenEnemy {
          strength    = source.CalculateStat(strengthIV, strengthB, strengthEV, enemyLevel);
          endurance   = source.CalculateStat(enduranceIV, enduranceB, enduranceEV, enemyLevel);
          
-         maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-         life = maximumE;
+         maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+         life = maxHealthE;
       
          expForNext_E = source.CalculateEXP(enemyLevel + 1);
       
@@ -551,8 +551,8 @@ public class Oberon_AIDrivenEnemy {
          strength    = source.CalculateStat(strengthIV, strengthB, strengthEV, enemyLevel);
          endurance   = source.CalculateStat(enduranceIV, enduranceB, enduranceEV, enemyLevel);
          
-         maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-         life = maximumE;
+         maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+         life = maxHealthE;
       
          expForNext_E = source.CalculateEXP(enemyLevel + 1);
       
@@ -639,8 +639,8 @@ public class Oberon_AIDrivenEnemy {
                endurance   = source.CalculateStat(enduranceIV, enduranceB, enduranceEV, enemyLevel);
             }
          
-            maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-            life = maximumE;
+            maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+            life = maxHealthE;
          
             exp_E = source.CalculateEXP(enemyLevel);	
             expForNext_E = source.CalculateEXP(enemyLevel + 1);
@@ -688,8 +688,8 @@ public class Oberon_AIDrivenEnemy {
             
             expLast_E = exp_E;
             
-            maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-            life = maximumE;
+            maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+            life = maxHealthE;
          }
       }
    }
@@ -804,14 +804,14 @@ public class Oberon_AIDrivenEnemy {
          
             int lifeget = damageE / 2;
          
-            if((oaie.life + lifeget) > oaie.maximumE) {
-               int temp = oaie.maximumE;
+            if((oaie.life + lifeget) > oaie.maxHealthE) {
+               int temp = oaie.maxHealthE;
             
-               oaie.maximumE = source.lifeEnemy + lifeget;
-               oaie.life = oaie.maximumE;
+               oaie.maxHealthE = source.curHealthE + lifeget;
+               oaie.life = oaie.maxHealthE;
             
                source.hasAUX = true;
-               source.AUX = "HP Maxed out from " + temp + " to " + source.maximumE;
+               source.AUX = "HP Maxed out from " + temp + " to " + source.maxHealthE;
             }
             else
                oaie.life += lifeget;
@@ -853,7 +853,7 @@ public class Oberon_AIDrivenEnemy {
             
                if(bnp <= 3) {
                   {
-                     source.lifePlayer = (source.lifePlayer - dam);
+                     source.curHealthP = (source.curHealthP - dam);
                      source.damagePlayerPaint = true;
                      source.isPoisoned1 = true;
                      source.poisonLevel1 += 1;
@@ -861,7 +861,7 @@ public class Oberon_AIDrivenEnemy {
                      source.hasAUX = true;
                      source.AUX = "You were burned!";
                   
-                     if(source.lifePlayer == 0) {
+                     if(source.curHealthP == 0) {
                         source.playSound("krux/explode.wav");
                         source.locationPlayerX = (source.mapsize.x * 2);
                         source.locationPlayerY = (source.mapsize.y * 2);
@@ -879,17 +879,17 @@ public class Oberon_AIDrivenEnemy {
                      source.hpDrawn = true;
                      source.hpTime = 25;
                   
-                     source.lifeEnemy = (source.lifeEnemy - dam);
+                     source.curHealthE = (source.curHealthE - dam);
                      source.damageEnemyPaint = true;
                   
                      source.isPoisoned2 = true;
                      source.poisonLevel2 += 1;
                   
-                     if(source.lifeEnemy == 0) {
+                     if(source.curHealthE == 0) {
                         source.locationEnemyX = (source.mapsize.x * 2);
                         source.locationEnemyY = (source.mapsize.y * 2);
                         source.grid.repaint();
-                        source.exp += maximumE;
+                        source.exp += maxHealthE;
                         source.rebornE();
                      }
                   }
@@ -1042,18 +1042,18 @@ public class Oberon_AIDrivenEnemy {
          
             int lifeget = damageE / 2;
          
-            if((source.lifeEnemy + lifeget) > source.maximumE) {
-               int temp = source.maximumE;
+            if((source.curHealthE + lifeget) > source.maxHealthE) {
+               int temp = source.maxHealthE;
             
-               source.maximumE = source.lifeEnemy + lifeget;
+               source.maxHealthE = source.curHealthE + lifeget;
             
-               source.lifeEnemy = (source.maximumE);
+               source.curHealthE = (source.maxHealthE);
             
                source.hasAUX = true;
-               source.AUX = "HP Maxed out from " + temp + " to " + source.maximumE;
+               source.AUX = "HP Maxed out from " + temp + " to " + source.maxHealthE;
             }
             else
-               source.lifeEnemy = (source.lifeEnemy + lifeget);
+               source.curHealthE = (source.curHealthE + lifeget);
          }
          else if (source.enemyWeapon == 5) {
             int damageE = source.CalculateDamage(source.enemyLevel, source.strengthP2, 120, endurance);
@@ -1077,11 +1077,11 @@ public class Oberon_AIDrivenEnemy {
             int damageE = source.CalculateDamage(source.enemyLevel, source.strengthP2, 80, endurance);
             int damageP = damageE / 4; // Calculate Recoil Damage        
          
-            if(source.lifeEnemy < damageP) {
+            if(source.curHealthE < damageP) {
                source.enemyWeapon = -1;
             }
             else {
-               source.lifeEnemy = (source.lifeEnemy - damageP);
+               source.curHealthE = (source.curHealthE - damageP);
                source.damageEnemyPaint = true;
             
             // Test for the radius damage
@@ -1090,7 +1090,7 @@ public class Oberon_AIDrivenEnemy {
             
                if(bnp <= 3) {
                   {
-                     source.lifePlayer = (source.lifePlayer - dam);
+                     source.curHealthP = (source.curHealthP - dam);
                      source.damagePlayerPaint = true;
                      source.isPoisoned1 = true;
                      source.poisonLevel1 += 1;
@@ -1098,7 +1098,7 @@ public class Oberon_AIDrivenEnemy {
                      source.hasAUX = true;
                      source.AUX = "You were burned!";
                   
-                     if(source.lifePlayer == 0) {
+                     if(source.curHealthP == 0) {
                         source.playSound("krux/explode.wav");
                         source.locationPlayerX = (source.mapsize.x * 2);
                         source.locationPlayerY = (source.mapsize.y * 2);
@@ -1299,18 +1299,18 @@ public class Oberon_AIDrivenEnemy {
          
             int lifeget = damageE / 2;
          
-            if((source.lifePlayer + lifeget) > source.maximumP) {
-               int temp = source.maximumP;
+            if((source.curHealthP + lifeget) > source.maxHealthP) {
+               int temp = source.maxHealthP;
             
-               source.maximumP = source.lifePlayer + lifeget;
+               source.maxHealthP = source.curHealthP + lifeget;
             
-               source.lifePlayer = (source.maximumP);
+               source.curHealthP = (source.maxHealthP);
             
                source.hasAUX = true;
-               source.AUX = "HP Maxed out from " + temp + " to " + source.maximumP;
+               source.AUX = "HP Maxed out from " + temp + " to " + source.maxHealthP;
             }
             else
-               source.lifePlayer = (source.lifePlayer + lifeget);
+               source.curHealthP = (source.curHealthP + lifeget);
          }
          else if (source.playerWeapon == 5) {
             int damageE = source.CalculateDamage(source.playerLevel, source.strengthP1, 120, endurance);
@@ -1334,11 +1334,11 @@ public class Oberon_AIDrivenEnemy {
             int damageE = source.CalculateDamage(source.playerLevel, source.strengthP1, 80, endurance);
             int damageP = damageE / 4; // Calculate Recoil Damage        
          
-            if(source.lifePlayer < damageP) {
+            if(source.curHealthP < damageP) {
                source.playerWeapon = -1;
             }
             else {
-               source.lifePlayer = (source.lifePlayer - damageP);
+               source.curHealthP = (source.curHealthP - damageP);
                source.damagePlayerPaint = true;
             
             // Test for the radius damage
@@ -1350,13 +1350,13 @@ public class Oberon_AIDrivenEnemy {
                      source.hpDrawn = true;
                      source.hpTime = 25;
                   
-                     source.lifeEnemy = (source.lifeEnemy - dam);
+                     source.curHealthE = (source.curHealthE - dam);
                      source.damageEnemyPaint = true;
                   
                      source.isPoisoned2 = true;
                      source.poisonLevel2 += 1;
                   
-                     if(source.lifeEnemy == 0) {
+                     if(source.curHealthE == 0) {
                         source.playSound("krux/explode.wav");
                         if(source.extremeRules)
                            source.score += (ENEMY_DEFEAT * enemyLevel * 2);
@@ -1367,7 +1367,7 @@ public class Oberon_AIDrivenEnemy {
                         source.locationEnemyX = (source.mapsize.x * 2);
                         source.locationEnemyY = (source.mapsize.y * 2);
                         source.grid.repaint();
-                        source.exp += maximumE;
+                        source.exp += maxHealthE;
                         source.rebornE();
                      }
                   }
@@ -1477,9 +1477,9 @@ public class Oberon_AIDrivenEnemy {
 	*	Allows non-red enemies to respawn
 	*/
    public void rebornE() {
-      maximumE = (strength + endurance) * enemyLevel;
+      maxHealthE = (strength + endurance) * enemyLevel;
       
-      life = (maximumE);
+      life = (maxHealthE);
    	
       if(enemyHater) {
          locationEnemyX = source.spawnPoint1.x;
@@ -1549,8 +1549,8 @@ public class Oberon_AIDrivenEnemy {
          
          Point searchLocation = new Point(0,0);
          
-         if(maximumE == 0) {
-            maximumE += 1;
+         if(maxHealthE == 0) {
+            maxHealthE += 1;
          }
          
          int hpr = (int) Math.pow((Math.pow((double) (locationEnemyY - source.healthLocat.y), 2) + Math.pow((double) (locationEnemyX - source.healthLocat.x), 2)), 0.5);
@@ -1567,7 +1567,7 @@ public class Oberon_AIDrivenEnemy {
          if (isOnScreen(source.unoseeLocat) && uns <= source.enemyLineOfSight) {
             enemyTarget = "unosee";
          }
-         else if((((life / maximumE) * 100) <= strategyHP)) {
+         else if((((life / maxHealthE) * 100) <= strategyHP)) {
             if(Math.min(Math.min(hpr,mhr), 5) < 5) {
                if(hpr < mhr && isOnScreen(source.healthLocat)) {
                   searchLocation = source.findFreeBlock();
@@ -1957,8 +1957,8 @@ public class Oberon_AIDrivenEnemy {
          
             expLast_E = expForNext_E;
          
-            maximumE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
-            life = maximumE;
+            maxHealthE = source.CalculateHP(lifeIV, lifeEV, enemyLevel);
+            life = maxHealthE;
          
             expForNext_E = source.CalculateEXP(enemyLevel + 1);
          }
@@ -2518,7 +2518,7 @@ public class Oberon_AIDrivenEnemy {
          source.hpDrawn = true;
          source.hpTime = 25;
          if (enemyWeapon == 6) {
-            source.lifeEnemy = (0);
+            source.curHealthE = (0);
          }
          else if (enemyWeapon == 2) {
             source.isPoisoned2 = true;
@@ -2536,7 +2536,7 @@ public class Oberon_AIDrivenEnemy {
                source.armorP2 = 0;
             }
          
-            source.lifeEnemy = (source.lifeEnemy - source.damageE);
+            source.curHealthE = (source.curHealthE - source.damageE);
             source.damageEnemyPaint = true;
             source.isZapped2 = true;
             source.zaptimer2 = (int) Math.round(Math.random() * 20);
@@ -2553,19 +2553,19 @@ public class Oberon_AIDrivenEnemy {
                source.armorP2 = 0;
             }
          
-            source.lifeEnemy = (source.lifeEnemy - source.damageE);
+            source.curHealthE = (source.curHealthE - source.damageE);
             source.damageEnemyPaint = true;
          
             int lifeget = source.damageE / 2;
-            if((life + lifeget) > maximumE) {
-               maximumE = life + lifeget;
-               life = maximumE;
+            if((life + lifeget) > maxHealthE) {
+               maxHealthE = life + lifeget;
+               life = maxHealthE;
             }
             else {
                life += lifeget;
             }
             source.hasAUX = true;
-            source.AUX = "HP Remain: " + life + " of " + maximumE;
+            source.AUX = "HP Remain: " + life + " of " + maxHealthE;
             source.grid.repaint();
          }
          else if (enemyWeapon == 5) {
@@ -2580,7 +2580,7 @@ public class Oberon_AIDrivenEnemy {
                source.armorP2 = 0;
             }
          
-            source.lifeEnemy = (source.lifeEnemy - source.damageE);
+            source.curHealthE = (source.curHealthE - source.damageE);
             source.damageEnemyPaint = true;
             source.isZapped2 = true;
             source.zaptimer2 = (int) Math.round(Math.random() * 50);
@@ -2607,7 +2607,7 @@ public class Oberon_AIDrivenEnemy {
                source.armorP2 = 0;
             }
          
-            source.lifeEnemy = (source.lifeEnemy - source.damageE);
+            source.curHealthE = (source.curHealthE - source.damageE);
             source.damageEnemyPaint = true;
          }
          if(enemyWeapon != -1) { // If I have a weapon substract one AMMO from it
@@ -2619,7 +2619,7 @@ public class Oberon_AIDrivenEnemy {
             }
          }
       
-         if(source.lifeEnemy == 0) {
+         if(source.curHealthE == 0) {
             exp_E += source.EXPGained(source.enemyLevel, enemyLevel);
             expDrawn = true;
             expTime = 25;
@@ -2641,7 +2641,7 @@ public class Oberon_AIDrivenEnemy {
             index = strength - source.enduranceP1;
       
          if (enemyWeapon == 6) {
-            source.lifePlayer = (0);
+            source.curHealthP = (0);
          }
          else if (enemyWeapon == 8) {
             source.doDamageWeapon7(locationEnemyX, locationEnemyY);
@@ -2664,7 +2664,7 @@ public class Oberon_AIDrivenEnemy {
                source.armorP1 = 0;
             }
          
-            source.lifePlayer = (source.lifePlayer - source.damageP);
+            source.curHealthP = (source.curHealthP - source.damageP);
             source.damagePlayerPaint = true;
             source.isZapped1 = true;
             source.zaptimer1 = (int) Math.round(Math.random() * 20);
@@ -2683,19 +2683,19 @@ public class Oberon_AIDrivenEnemy {
                source.armorP1 = 0;
             }
          
-            source.lifePlayer = (source.lifePlayer - source.damageP);
+            source.curHealthP = (source.curHealthP - source.damageP);
             source.damagePlayerPaint = true;
          
             int lifeget = source.damageP / 2;
-            if((life + lifeget) > maximumE) {
-               maximumE = life + lifeget;
-               life = maximumE;
+            if((life + lifeget) > maxHealthE) {
+               maxHealthE = life + lifeget;
+               life = maxHealthE;
             }
             else {
                life += lifeget;
             }
             source.hasAUX = true;
-            source.AUX = "HP Remain: " + life + " of " + maximumE;
+            source.AUX = "HP Remain: " + life + " of " + maxHealthE;
             source.grid.repaint();
          }
          else if (enemyWeapon == 5) {
@@ -2710,7 +2710,7 @@ public class Oberon_AIDrivenEnemy {
                source.armorP1 = 0;
             }
          
-            source.lifePlayer = (source.lifePlayer - source.damageP);
+            source.curHealthP = (source.curHealthP - source.damageP);
             source.damagePlayerPaint = true;
             source.isZapped1 = true;
             source.zaptimer1 = (int) Math.round(Math.random() * 50);
@@ -2736,7 +2736,7 @@ public class Oberon_AIDrivenEnemy {
                source.armorP1 = 0;
             }
          
-            source.lifePlayer = (source.lifePlayer - source.damageP);
+            source.curHealthP = (source.curHealthP - source.damageP);
             source.damagePlayerPaint = true;
          }
          if(enemyWeapon != -1) {
@@ -2748,7 +2748,7 @@ public class Oberon_AIDrivenEnemy {
             }
          }
       
-         if(source.lifePlayer == 0) {
+         if(source.curHealthP == 0) {
             exp_E += source.EXPGained(source.playerLevel, enemyLevel);
             expDrawn = true;
             expTime = 25;
@@ -3097,23 +3097,23 @@ public class Oberon_AIDrivenEnemy {
       int lifeget = 0;
       
       if(source.hpboxtype == 2) {
-         lifeget = maximumE * 2 - life;
+         lifeget = maxHealthE * 2 - life;
       }
       else if(source.hpboxtype == 1) {
-         lifeget = maximumE - life;
+         lifeget = maxHealthE - life;
       }
       else {
          lifeget = (int) Math.round(Math.random() * (32 * enemyLevel));
       }
-      if((life + lifeget) > maximumE) {
-         maximumE = life + lifeget;
-         life = maximumE;
+      if((life + lifeget) > maxHealthE) {
+         maxHealthE = life + lifeget;
+         life = maxHealthE;
       }
       else {
          life += lifeget;
       }
       source.hasAUX = true;
-      source.AUX = "HP Remain: " + life + " of " + maximumE;
+      source.AUX = "HP Remain: " + life + " of " + maxHealthE;
       source.healthLocat = source.findFreeBlock();
       int g2e = (int) ((double) Math.random() * 9);
    
@@ -3178,9 +3178,9 @@ public class Oberon_AIDrivenEnemy {
       else 
          painKillRem = 200;
       
-      if((maximumE - life) < painKillRem) {
-         painKillRem = (maximumE - life);
-         life = maximumE;
+      if((maxHealthE - life) < painKillRem) {
+         painKillRem = (maxHealthE - life);
+         life = maxHealthE;
       }
       else
          life += painKillRem;

@@ -174,7 +174,7 @@ public class kruxloader implements Runnable {
    *  Vector variable "aiEnemies" contains all instances of the OBERON_AIEnemy Class used to implement
    *  intelligent "bots". 
    */
-   protected final Vector aiEnemies = new Vector();
+   protected final Vector<Oberon_AIDrivenEnemy> aiEnemies = new Vector<Oberon_AIDrivenEnemy>();
    
    // Game Variables
    protected boolean soundOn = true;                  // Specifies the default sound status
@@ -749,7 +749,7 @@ public class kruxloader implements Runnable {
       printDebugMessage("DEBUGGER - Session Started");
       printDebugMessage("DEBUGGER - Process:\t" + this.toString());
       printDebugMessage("DEBUGGER - Class:\tkruxloader");
-      printDebugMessage("DEBUGGER - Start Time: " + new java.util.Date().getHours() + "-" + new java.util.Date().getMinutes() + "-" + new java.util.Date().getSeconds() + "\n");
+      printDebugMessage("DEBUGGER - Start Time: " + java.time.LocalDateTime.now().getHour() + "-" + java.time.LocalDateTime.now().getMinute() + "-" + java.time.LocalDateTime.now().getSecond() + "\n");
    	
       printDebugMessage("Generic - Process Started");
    	
@@ -888,7 +888,7 @@ public class kruxloader implements Runnable {
       
          String[] gametypes = { "Standard Game", "Control the Flag Mode", "Gem Hunter Mode", "Team Deatchmatch" };
       
-         final JComboBox gameSet = new JComboBox (gametypes);
+         final JComboBox<String> gameSet = new JComboBox<String>(gametypes);
          gameSet.setToolTipText("Sets the Krux gameplay mode");
       
          final JCheckBox nightSet = new JCheckBox("Enable Night Mode");
@@ -3486,37 +3486,10 @@ public class kruxloader implements Runnable {
                                  }
                                  break;
                               }
-                           case KeyEvent.VK_F9:
-                              {
-                                 Object[] mess = {"<html>Start a new game?<br><b>Note:</b> All current progress will be lost!</html>"};
-                                 String[] ops = new String[] { "Yes", "No" };            
-                                 int result = JOptionPane.showOptionDialog(
-                                    null,
-                                    mess,
-                                    "Start New Game?",
-                                    JOptionPane.DEFAULT_OPTION,
-                                    JOptionPane.QUESTION_MESSAGE,
-                                    null,
-                                    ops,
-                                    ops[0]);
-                                    
-                                 if(result == 0) {
-                                    mainwin.dispose();
-                                    controlThread.stop();
-                                 
-                                    controlThread = null;
-                                    mainwin = null;
-                                    startdiag = null;
-                                 
-                                    defaultAll();
-                                 
-                                    initialize();
-                                    resetMap();
-                                    printDebugMessage("KRUXTOURN - Recovering New Game Dialog...");
-                                 }
-                                 else {
-                                 }
-                              }
+                            case KeyEvent.VK_F9:
+                            {
+                                displayAuxMessage("New Game Not Allowed!");
+                            }
                         }
                      }
                   };
@@ -3788,7 +3761,7 @@ public class kruxloader implements Runnable {
       }
       newdiag.setContentPane(content);
       newdiag.setLocation((modalForm.getWidth() / 2) - (hsize / 2), (modalForm.getHeight() / 2) - (vsize / 2));
-      newdiag.show();
+      newdiag.setVisible(true);
       return newdiag;
    }
 
@@ -3819,7 +3792,7 @@ public class kruxloader implements Runnable {
       }
       newframe.setResizable(false);
       newframe.setIconImage(hg.getImage());
-      newframe.show();
+      newframe.setVisible(true);
       newframe.addWindowListener(
                new WindowAdapter() {
                   public void windowClosing(WindowEvent e) {
@@ -4969,169 +4942,6 @@ public class kruxloader implements Runnable {
             }
             Oberon_SeekerBot (me, bias, him);
          }
-         /**
-         *  This section contains the older STELLAR AI Engine, it is used when the game is set the Difficulty Level 1
-         *  This was AI used in the earlier "Smart Enemies" versions of Krux Tourno.  
-         *
-         *  Note: This AI is not as smart as the OBERON AI Engine, but it can still hurt you.
-         *
-         *  Programmer's Note:
-         *  =================
-         *  This AI Engine has been rendered completely obselete by the OBERON Engine an as such it is completely disabled
-         *  since Krux 3 RTS X2 as it has not been updated to such a level that I will provide any good sport anymore.
-         *  Come to think of it, I haven't even bothered to update this engine since it's original use in pre-Krux 2.4.133
-         *  versions. As such this engine does not make use of any of the new functions added to Krux 3 since that release.
-         }  
-         else {
-            think = (int) Math.round(Math.random() * 5);
-            if (think >= 2) {
-               if (((float)curHealthE / (float)maxHealthP) < ((float)healthlust / 100) && healthLocat.x < 20 && healthLocat.y < 20) {
-                  if (healthLocat.x > locationEnemyX) {
-                     dir = 3;
-                  }
-                  else if (healthLocat.x < locationEnemyX) {
-                     dir = 2;
-                  }
-                  else if (healthLocat.y < locationEnemyY) {
-                     dir = 0;
-                  }
-                  else if (healthLocat.y > locationEnemyY) {
-                     dir = 1;
-                  }
-                  else {
-                     dir = (int) Math.round(Math.random() * 4);
-                  }
-                  getEnemyMove(dir);
-               }
-               else if (flagowner != 2 && kohmode) {
-                  if (kohlocat.x - 1 > locationEnemyX) {
-                     dir = 3;
-                  }
-                  else if (kohlocat.x - 1 < locationEnemyX) {
-                     dir = 2;
-                  }
-                  else if (kohlocat.y - 1 < locationEnemyY) {
-                     dir = 0;
-                  }
-                  else if (kohlocat.y - 1 > locationEnemyY) {
-                     dir = 1;
-                  }
-                  else {
-                     dir = (int) Math.round(Math.random() * 4);
-                  }
-                  getEnemyMove(dir);
-               }
-               else if (weaponboxLocat.x < ((mapsize.x * 2) - 1) && weaponboxLocat.y < ((mapsize.y * 2) - 1)) {
-                  if(enemyWeapon > -1) {
-                     if (locationPlayerX == (mapsize.x * 2) && locationPlayerY == (mapsize.y * 2)) {
-                        dir = (int) Math.round(Math.random() * 12);
-                        getEnemyMove((dir / 3));
-                     }
-                     else {
-                        if (locationPlayerX > locationEnemyX) {
-                           dir = 3;
-                        }
-                        else if (locationPlayerX < locationEnemyX) {
-                           dir = 2;
-                        }
-                        else if (locationPlayerY < locationEnemyY) {
-                           dir = 0;
-                        }
-                        else if (locationPlayerY > locationEnemyY) {
-                           dir = 1;
-                        }
-                        else {
-                           dir = (int) Math.round(Math.random() * 4);
-                        }
-                        getEnemyMove(dir);
-                     }
-                  }
-                  else {
-                     if (weaponboxLocat.x > locationEnemyX) {
-                        dir = 3;
-                     }
-                     else if (weaponboxLocat.x < locationEnemyX) {
-                        dir = 2;
-                     }
-                     else if (weaponboxLocat.y < locationEnemyY) {
-                        dir = 0;
-                     }
-                     else if (weaponboxLocat.y > locationEnemyY) {
-                        dir = 1;
-                     }
-                     else {
-                        dir = (int) Math.round(Math.random() * 4);
-                     }
-                     getEnemyMove(dir);
-                  }
-               }
-               else if (levelboxLocat.x < ((mapsize.x * 2) - 1) && levelboxLocat.y < ((mapsize.y * 2) - 1)) {
-                  if(enemyLevel > playerLevel) {
-                     if (locationPlayerX > locationEnemyX) {
-                        dir = 3;
-                     }
-                     else if (locationPlayerX < locationEnemyX) {
-                        dir = 2;
-                     }
-                     else if (locationPlayerY < locationEnemyY) {
-                        dir = 0;
-                     }
-                     else if (locationPlayerY > locationEnemyY) {
-                        dir = 1;
-                     }
-                     else {
-                        dir = (int) Math.round(Math.random() * 4);
-                     }
-                     getEnemyMove(dir);
-                  }
-                  else {
-                     if (levelboxLocat.x > locationEnemyX) {
-                        dir = 3;
-                     }
-                     else if (levelboxLocat.x < locationEnemyX) {
-                        dir = 2;
-                     }
-                     else if (levelboxLocat.y < locationEnemyY) {
-                        dir = 0;
-                     }
-                     else if (levelboxLocat.y > locationEnemyY) {
-                        dir = 1;
-                     }
-                     else {
-                        dir = (int) Math.round(Math.random() * 4);
-                     }
-                     getEnemyMove(dir);
-                  }
-               }
-               else if (locationPlayerX == (mapsize.x * 2) && locationPlayerY == (mapsize.y * 2)) {
-                  dir = (int) Math.round(Math.random() * 12);
-                  getEnemyMove((dir / 3));
-               }
-               else {
-                  if (locationPlayerX > locationEnemyX) {
-                     dir = 3;
-                  }
-                  else if (locationPlayerX < locationEnemyX) {
-                     dir = 2;
-                  }
-                  else if (locationPlayerY < locationEnemyY) {
-                     dir = 0;
-                  }
-                  else if (locationPlayerY > locationEnemyY) {
-                     dir = 1;
-                  }
-                  else {
-                     dir = (int) Math.round(Math.random() * 4);
-                  }
-                  getEnemyMove(dir);
-               }
-            }
-            else {
-               dir = (int) Math.round(Math.random() * 12);
-               getEnemyMove((dir / 3));
-            }
-         }
-         */
       }
    }
    
@@ -6084,226 +5894,6 @@ public class kruxloader implements Runnable {
 *  Controls the recovery from Health Crates
 */
 
-/**
-*  Krux 2 Method
-* ==================================================================================
-*  getLifeE
-*  Calculates and processes the player's ability to get Life Boxes and Crates
-*/
-   public void getLifeE() { // Enemy picks up a health box
-      hpDrawn = true;
-      hpTime = 25;
-      int lifeget = 0;
-      
-      if(hpboxtype == 2) {
-         lifeget = maxHealthE * 2 - curHealthE;
-      }
-      else if(hpboxtype == 1) {
-         lifeget = maxHealthE - curHealthE;
-      }
-      else {
-         lifeget = (int) Math.round(Math.random() * (32 * enemyLevel));
-      }
-      
-      if((curHealthE + lifeget) > maxHealthE) {
-         int temp = maxHealthE;
-      
-         maxHealthE = curHealthE + lifeget;
-         
-         curHealthE = (maxHealthE);
-         
-         hasAUX = true;
-         AUX = "HP Maxed out from " + temp + " to " + maxHealthE;
-      }
-      else {
-         curHealthE = (curHealthE + lifeget);
-      }
-      scoreStr.setText("" + scrboard.score);
-      healthLocat = findFreeBlock();
-      int g2e = (int) ((double) Math.random() * 9);
-               
-      if (g2e > 7)
-         hpboxtype = 2;
-      else if (g2e > 6)
-         hpboxtype = 1;
-      else
-         hpboxtype = 0;
-      
-      
-   }
-	
-/**
- *  Krux 3 RTS 13 Method
- * ==================================================================================
- *  getPainKillerE
- *  Calculates and processes the enemys's ability to get Painkillers
- */
-   protected void getPainKillerE() {
-      painKillerP2 = true;
-   	
-   	// Life gain depends on the painKillerType
-      if(painKillType == 0)
-         painKillerRemP2 = 50;
-      else 
-         painKillerRemP2 = 200;
-      
-   	// Painkillers will only fill life to the maximum and will not push life open...
-   	// ...if the painkiller does not provide it's full life, it will reduced its...
-   	// ...life reducing effect.
-      if((maxHealthE - curHealthE) < painKillerRemP2) {
-         painKillerRemP2 = (maxHealthE - curHealthE);
-         curHealthE = maxHealthE;
-      }
-      else
-         curHealthE += painKillerRemP2;
-   	
-      painkLocat = OFFSCREEN;
-   }
-   
-   /**
-   *  Krux 3 RTS X2 Method
-   * ==================================================================================
-   *  getUNoSeeE
-   *  Calculates and processes the enemies's ability to get the U-No-See Potion
-   */
-   protected void getUNoSeeE() {
-      u_no_see2 = true;
-      isGhost2 = false;
-      u_no_see_timer = (50 + (50 * (int) (Math.round(Math.random() * 4) + 1)));
-      
-      playSound("krux/itemget.wav");
-      
-      unoseeLocat = new Point(mapsize.x * 2, mapsize.y * 2);
-   }
-   
-   /**
-   *  Krux 3 RTS 7 Method
-   * ==================================================================================
-   *  getArmorE
-   *  Calculates and processes the player's ability to get Armor
-   */
-   protected void getArmorE() {
-      if(armorP2 < 200) {
-         armorP2 += 50;
-      }
-      else {
-         armorP1 = 200;
-      }
-      
-      armorLocat = findFreeBlock();
-   }
-   
-   /**
-   *  Krux 3 Method
-   * ==================================================================================
-   *  getMLifeE
-   *  Processes the pickup of the Elixir Item
-   */
-   public void getMLifeE() { // Enemy picks up a mega health box
-      hpDrawn = true;
-      hpTime = -1;
-      MegaHPRemain_E = (int) Math.round(Math.random() * (32 * enemyLevel));
-      hasMegaHP_E = true;         
-      megahealthLocat.x = (mapsize.x * 2);
-      megahealthLocat.y = (mapsize.y * 2);
-      
-   }
-   
-   /**
-   *  Krux 3 Method
-   * ==================================================================================
-   *  getMExpE
-   *  Processes the pickup of the Vial Item
-   */
-   public void getMExpE() { // Player picks up a mega exp box
-      MegaExpRemain_E = 300;
-      hasMegaExp_E = true;
-      expDrawn = true;
-      expTime = -1;
-      megaexpLocat.x = (mapsize.x * 2);
-      megaexpLocat.y = (mapsize.y * 2);
-      
-   }
-   
-   /**
-   *  Krux 3 Method
-   * ==================================================================================
-   *  getGhostE
-   *  Processes the pickup of the Ghosting Potion Item
-   */
-   public void getGhostE() { // Player picks up a mega health box
-      isGhost2 = true;
-      u_no_see2 = false;
-      ghost_timer = 50 + (50 * (int) (Math.round(Math.random() * 4) + 1));
-               
-      hasAUX = true;
-      AUX = "He goes unseen";
-   
-      scrboard.score += ITEMGET;
-      playSound("krux/itemget.wav");
-      
-      scoreStr.setText("" + scrboard.score);
-      
-      ghostpotionLocat.x = (mapsize.x * 2);
-      ghostpotionLocat.y = (mapsize.y * 2);
-      
-   }
-   
-	/**
-   *  Krux 2 Method
-   * ==================================================================================
-   *  getLevelE
-   *  Calculates and processes the RED PLAYER's ability to get LEVEL CRATES
-   */
-   public void getLevelE() { // Enemy picks up a level box
-      exp_E += 200;
-      scoreStr.setText("" + scrboard.score);
-      expDrawn = true;
-      expTime = 25;
-      levelboxLocat = findFreeBlock();
-      
-   }
-   
-	/*
-   *  Weapon Methods
-	* ===================================================================================
-	*	Controls the weapons from weapon boxes
-	*/
-   
-	/**
-   *  Krux 2 Method
-   * ==================================================================================
-   *  getWeaponE
-   *  Calculates and processes the RED PLAYER's ability to get Weapon Crates
-   */
-   public void getWeaponE() { // Enemy picks up a weapon box
-      int weaponcounter = (int) ((Math.random() * 20) + 1);
-      if(weaponcounter == 20) {
-         enemyWeapon = 8;
-      }
-      else {
-         enemyWeapon = (int) (Math.random() * 8);
-      }
-      
-      playSound("krux/itemget.wav");
-      weaponboxLocat = findFreeBlock();
-      if(enemyWeapon >= 5 && enemyWeapon != 7) {
-         eWeapUses = 1;
-         eWeapLeft = eWeapUses; 
-      }
-      else if(enemyWeapon == 2) {
-         eWeapUses = 5;
-         eWeapLeft = eWeapUses;
-      }
-      else {
-         eWeapUses = (int) ((9 - enemyWeapon) * 10);
-         eWeapLeft = eWeapUses; 
-      }
-      scoreStr.setText("" + scrboard.score);
-      
-      
-   }
-   
    /**
    *  Krux 2 Method
    * ==================================================================================
@@ -6638,7 +6228,7 @@ public class kruxloader implements Runnable {
    *  next I play to temp file. Easy!
    */
       if (soundOn) {
-         try {
+        try {
             // grab..
             InputStream fin  = getClass().getResourceAsStream(resource);
             int count = fin.read(soundBuffer, 0, soundBuffer.length);
@@ -6649,13 +6239,25 @@ public class kruxloader implements Runnable {
             // ...play!
             dsound snd = new dsound(tempo);
             snd.playDSound();
-         }
-         catch (Throwable e) {
+        }
+        catch (FileNotFoundException e) {
             printErrMeth(e, "PLAYSOUND", true); 
-            printDebugMessage("PLAYSOUND - Exception: " + e.toString() + ": " + e.getMessage() + ", Line: 7262");
-         }
-      }
-   }
+            printDebugMessage("PLAYSOUND - FileNotFoundException: " + e.toString() + ": " + e.getMessage() + ", Line: 7262");
+        }
+        catch (IOException e) {
+            printErrMeth(e, "PLAYSOUND", true); 
+            printDebugMessage("PLAYSOUND - IOException: " + e.toString() + ": " + e.getMessage() + ", Line: 7262");
+        }
+        catch (UnsupportedAudioFileException e) {
+            printErrMeth(e, "PLAYSOUND", true); 
+            printDebugMessage("PLAYSOUND - UnsupportedAudioFileException: " + e.toString() + ": " + e.getMessage() + ", Line: 7262");
+        }
+        catch (LineUnavailableException e) {
+            printErrMeth(e, "PLAYSOUND", true); 
+            printDebugMessage("PLAYSOUND - LineUnavailableException: " + e.toString() + ": " + e.getMessage() + ", Line: 7262");
+        }
+    }
+}
    
    /*
    *  Utility Methods
@@ -7421,35 +7023,35 @@ public class kruxloader implements Runnable {
                }
             }
             else if ((locationEnemyY - 1) == (healthLocat.y - 1) && locationEnemyX == (healthLocat.x - 1)) {
-               getLifeE();
+               getItem(MAIN_ENEMY, HEALTH);
             }
             else if ((locationEnemyY - 1) == (armorLocat.y - 1) && locationEnemyX == (armorLocat.x - 1)) {
-               getArmorE();
+               getItem(MAIN_ENEMY, ARMOR);
             }
             else if ((locationEnemyY - 1) == (unoseeLocat.y - 1) && locationEnemyX == (unoseeLocat.x - 1)) {
-               getUNoSeeE();
+               getItem(MAIN_ENEMY, UNOSEE_POTION);
             }
             else if ((locationEnemyY - 1) == (gemLocat.y - 1) && locationEnemyX == (gemLocat.x - 1)) {
                getGemE();
             }
             else if ((locationEnemyY - 1) == (megahealthLocat.y - 1) && locationEnemyX == (megahealthLocat.x - 1)) {
-               getMLifeE();
+               getItem(MAIN_ENEMY, MEGA_HEALTH);
             }
             else if ((locationEnemyY - 1) == (megaexpLocat.y - 1) && locationEnemyX == (megaexpLocat.x - 1)) {
-               getMExpE();
+               getItem(MAIN_ENEMY, MEGA_EXPERIENCE);
             }
             else if ((locationEnemyY - 1) == (ghostpotionLocat.y - 1) && locationEnemyX == (ghostpotionLocat.x - 1)) {
-               getGhostE();
+               getItem(MAIN_ENEMY, GHOST_POTION);
             }
             else if ((locationEnemyY - 1) == (painkLocat.y - 1) && locationEnemyX == (painkLocat.x - 1)) {
-               getPainKillerE();
+               getItem(MAIN_ENEMY, PAINKILLER);
             }
             else if (kohmode && (locationEnemyY - 1) == (kohlocat.y - 1) && locationEnemyX == (kohlocat.x - 1)) {
                getFlagE();
             }
             else if ((locationEnemyY - 1) == (weaponboxLocat.y - 1) && locationEnemyX == (weaponboxLocat.x - 1)) {
                if (enemyWeapon == -1) {
-                  getWeaponE();
+                  getItem(MAIN_ENEMY, WEAPON);
                }
                else {
                   out = true;
@@ -7462,7 +7064,7 @@ public class kruxloader implements Runnable {
                   break;
                }
                else {
-                  getLevelE();
+                  getItem(MAIN_ENEMY, EXPERIENCE);
                }
             }
             else if (x < floorsVcnt && (locationEnemyY - 1) == (floorsV[x].y) && locationEnemyX == (floorsV[x].x)) {
@@ -7503,35 +7105,35 @@ public class kruxloader implements Runnable {
                }
             }
             else if ((locationEnemyY + 1) == (healthLocat.y - 1) && locationEnemyX == (healthLocat.x - 1)) {
-               getLifeE();
+               getItem(MAIN_ENEMY, HEALTH);
             }
             else if ((locationEnemyY + 1) == (armorLocat.y - 1) && locationEnemyX == (armorLocat.x - 1)) {
-               getArmorE();
+               getItem(MAIN_ENEMY, ARMOR);
             }
             else if ((locationEnemyY + 1) == (unoseeLocat.y - 1) && locationEnemyX == (unoseeLocat.x - 1)) {
-               getUNoSeeE();
+               getItem(MAIN_ENEMY, UNOSEE_POTION);
             }
             else if ((locationEnemyY + 1) == (gemLocat.y - 1) && locationEnemyX == (gemLocat.x - 1)) {
                getGemE();
             }
             else if ((locationEnemyY + 1) == (megahealthLocat.y - 1) && locationEnemyX == (megahealthLocat.x - 1)) {
-               getMLifeE();
+               getItem(MAIN_ENEMY, MEGA_HEALTH);
             }
             else if ((locationEnemyY + 1) == (megaexpLocat.y - 1) && locationEnemyX == (megaexpLocat.x - 1)) {
-               getMExpE();
+               getItem(MAIN_ENEMY, MEGA_EXPERIENCE);
             }
             else if ((locationEnemyY + 1) == (ghostpotionLocat.y - 1) && locationEnemyX == (ghostpotionLocat.x - 1)) {
-               getGhostE();
+               getItem(MAIN_ENEMY, GHOST_POTION);
             }
             else if ((locationEnemyY + 1) == (painkLocat.y - 1) && locationEnemyX == (painkLocat.x - 1)) {
-               getPainKillerE();
+               getItem(MAIN_ENEMY, PAINKILLER);
             }
             else if (kohmode && (locationEnemyY + 1) == (kohlocat.y - 1) && locationEnemyX == (kohlocat.x - 1)) {
                getFlagE();
             }
             else if ((locationEnemyY + 1) == (weaponboxLocat.y - 1) && locationEnemyX == (weaponboxLocat.x - 1)) {
                if (enemyWeapon == -1) {
-                  getWeaponE();
+                  getItem(MAIN_ENEMY, WEAPON);
                }
                else {
                   out = true;
@@ -7544,7 +7146,7 @@ public class kruxloader implements Runnable {
                   break;
                }
                else {
-                  getLevelE();
+                  getItem(MAIN_ENEMY, EXPERIENCE);
                }
             }
             else if (x < floorsVcnt && (locationEnemyY + 1) == (floorsV[x].y) && locationEnemyX == (floorsV[x].x)) {
@@ -7585,35 +7187,35 @@ public class kruxloader implements Runnable {
                }
             }
             else if ((locationEnemyX - 1) == (ghostpotionLocat.x - 1) && locationEnemyY == (ghostpotionLocat.y - 1)) {
-               getGhostE();
+               getItem(MAIN_ENEMY, GHOST_POTION);
             }
             else if ((locationEnemyX - 1) == (healthLocat.x - 1) && locationEnemyY == (healthLocat.y - 1)) {
-               getLifeE();
+               getItem(MAIN_ENEMY, HEALTH);
             }
             else if ((locationEnemyX - 1) == (armorLocat.x - 1) && locationEnemyY == (armorLocat.y - 1)) {
-               getArmorE();
+               getItem(MAIN_ENEMY, ARMOR);
             }
             else if ((locationEnemyX - 1) == (unoseeLocat.x - 1) && locationEnemyY == (unoseeLocat.y - 1)) {
-               getUNoSeeE();
+               getItem(MAIN_ENEMY, UNOSEE_POTION);
             }
             else if ((locationEnemyX - 1) == (gemLocat.x - 1) && locationEnemyY == (gemLocat.y - 1)) {
                getGemE();
             }
             else if ((locationEnemyX - 1) == (megahealthLocat.x - 1) && locationEnemyY == (megahealthLocat.y - 1)) {
-               getMLifeE();
+               getItem(MAIN_ENEMY, MEGA_HEALTH);
             }
             else if ((locationEnemyX - 1) == (megaexpLocat.x - 1) && locationEnemyY == (megaexpLocat.y - 1)) {
-               getMExpE();
+               getItem(MAIN_ENEMY, MEGA_EXPERIENCE);
             }
             else if ((locationEnemyX - 1) == (painkLocat.x - 1) && locationEnemyY == (painkLocat.y - 1)) {
-               getPainKillerE();
+               getItem(MAIN_ENEMY, PAINKILLER);
             }
             else if (kohmode && (locationEnemyX - 1) == (kohlocat.x - 1) && locationEnemyY == (kohlocat.y - 1)) {
                getFlagE();
             }
             else if ((locationEnemyX - 1) == (weaponboxLocat.x - 1) && locationEnemyY == (weaponboxLocat.y - 1)) {
                if (enemyWeapon == -1) {
-                  getWeaponE();
+                  getItem(MAIN_ENEMY, WEAPON);
                }
                else {
                   out = true;
@@ -7626,7 +7228,7 @@ public class kruxloader implements Runnable {
                   break;
                }
                else {
-                  getLevelE();
+                  getItem(MAIN_ENEMY, EXPERIENCE);
                }
             }
             else if (x < floorsVcnt && (locationEnemyX - 1) == (floorsV[x].x) && locationEnemyY == (floorsV[x].y)) {
@@ -7667,35 +7269,35 @@ public class kruxloader implements Runnable {
                }
             }
             else if ((locationEnemyX + 1) == (healthLocat.x - 1) && locationEnemyY == (healthLocat.y - 1)) {
-               getLifeE();
+               getItem(MAIN_ENEMY, HEALTH);
             }
             else if ((locationEnemyX + 1) == (armorLocat.x - 1) && locationEnemyY == (armorLocat.y - 1)) {
-               getArmorE();
+               getItem(MAIN_ENEMY, ARMOR);
             }
             else if ((locationEnemyX + 1) == (unoseeLocat.x - 1) && locationEnemyY == (unoseeLocat.y - 1)) {
-               getUNoSeeE();
+               getItem(MAIN_ENEMY, UNOSEE_POTION);
             }
             else if ((locationEnemyX + 1) == (gemLocat.x - 1) && locationEnemyY == (gemLocat.y - 1)) {
                getGemE();
             }
             else if ((locationEnemyX + 1) == (megahealthLocat.x - 1) && locationEnemyY == (megahealthLocat.y - 1)) {
-               getMLifeE();
+               getItem(MAIN_ENEMY, MEGA_HEALTH);
             }
             else if ((locationEnemyX + 1) == (megaexpLocat.x - 1) && locationEnemyY == (megaexpLocat.y - 1)) {
-               getMExpE();
+               getItem(MAIN_ENEMY, MEGA_EXPERIENCE);
             }
             else if ((locationEnemyX + 1) == (ghostpotionLocat.x - 1) && locationEnemyY == (ghostpotionLocat.y - 1)) {
-               getGhostE();
+               getItem(MAIN_ENEMY, GHOST_POTION);
             }
             else if ((locationEnemyX + 1) == (painkLocat.x - 1) && locationEnemyY == (painkLocat.y - 1)) {
-               getPainKillerE();
+               getItem(MAIN_ENEMY, PAINKILLER);
             }
             else if (kohmode && (locationEnemyX + 1) == (kohlocat.x - 1) && locationEnemyY == (kohlocat.y - 1)) {
                getFlagE();
             }
             else if ((locationEnemyX + 1) == (weaponboxLocat.x - 1) && locationEnemyY == (weaponboxLocat.y - 1)) {
                if (enemyWeapon == -1) {
-                  getWeaponE();
+                  getItem(MAIN_ENEMY, WEAPON);
                }
                else {
                   out = true;
@@ -7708,7 +7310,7 @@ public class kruxloader implements Runnable {
                   break;
                }
                else {
-                  getLevelE();
+                  getItem(MAIN_ENEMY, EXPERIENCE);
                }
             }
             else if (x < floorsVcnt && (locationEnemyX + 1) == (floorsV[x].x) && locationEnemyY == (floorsV[x].y)) {
@@ -8685,12 +8287,14 @@ public class kruxloader implements Runnable {
 // MICRON UPDATED FUNCTIONS
 /**
 *	Item Control Method (Micro Development Team)
-*     ==================================================================================
+*   ==================================================================================
 *	getItem
 *	Processes the collection of items in-game
 *
+*   Quite a few bugs were fixed when creating this new method
+*
 *	@param	player	integer representing the input player
-*	@param	item		the type of item collection to process	
+*	@param	item	the type of item collection to process	
 */
 protected void getItem (int player, int item) {
 //    Used for time-based items
@@ -8701,8 +8305,8 @@ protected void getItem (int player, int item) {
 //    Filter Item operations based on the specific item collected
       switch (item) {
             case HEALTH:
+                int lifeget = 0;
                 if (player == MAIN_PLAYER) {
-                    int lifeget = 0;
                     switch (hpboxtype) {
                         case 1:
                             lifeget = (maxHealthP * 2) - curHealthP;
@@ -8723,8 +8327,32 @@ protected void getItem (int player, int item) {
                         curHealthP += lifeget;
                         displayAuxMessage("Health Crate!");
                     }
-
+                } else if (player == MAIN_ENEMY) {
+                //  The enemy player has variables to make his HP box appear when he collects HP
+                    hpDrawn = true;
+                    hpTime = 25;
+                
+                    switch (hpboxtype) {
+                        case 1:
+                            lifeget = (maxHealthE * 2) - curHealthE;
+                            break;
+                        case 2:
+                            lifeget = maxHealthE - curHealthE;
+                            break;
+                        default:
+                        //  Enemy players are not affected by the penalties of "Extreme Rules"
+                            lifeget = (int) Math.round(Math.random() * (32 * enemyLevel));
+                            break;
+                    }
                     
+                //  There was a bug in this section of code, displaying messages for the enemy collecting health...
+                //  ...well as giving the player score for the ENEMY collecting health WTH?!
+                    if ((curHealthE + lifeget) > maxHealthE) {
+                        maxHealthE = curHealthE + lifeget;
+                        curHealthE = maxHealthE;
+                    } else {
+                        curHealthE += lifeget;
+                    }
                 }
 
                 healthLocat = OFFSCREEN;
@@ -8745,6 +8373,11 @@ protected void getItem (int player, int item) {
                 if (player == MAIN_PLAYER) {
                     exp += 200;
                     displayAuxMessage("Level Crate!"); 
+                } else if (player == MAIN_ENEMY) {
+                //  Display the enemy's experience bar
+                    expDrawn = true;
+                    expTime = -1;
+                    exp_E += 200;
                 }
                 levelboxLocat = OFFSCREEN;
                 break;
@@ -8779,6 +8412,28 @@ protected void getItem (int player, int item) {
                     }
 
                     pWeapLeft = pWeapUses;
+                } else if (player == MAIN_ENEMY) {
+                    if(twentySidedDice == 20) {
+                        enemyWeapon = 8;
+                    } else {
+                        enemyWeapon = eightSidedDice;
+                    }
+
+                    switch(enemyWeapon) {
+                        case 2:
+                            eWeapUses = 5;
+                            break;
+                        case 5:
+                        case 6:
+                        case 8:
+                            eWeapUses = 1;
+                            break;
+                        default:
+                            eWeapUses = ((9 - enemyWeapon) * 10);
+                            break;
+                    }
+
+                    eWeapLeft = eWeapUses;
                 }
                 weaponboxLocat = OFFSCREEN;
                 break;
@@ -8787,6 +8442,13 @@ protected void getItem (int player, int item) {
                     MegaHPRemain = (extremeRules) ? (int) Math.round(Math.random() * (24 * playerLevel)) : (int) Math.round(Math.random() * (32 * playerLevel));
                     hasMegaHP = true;
                     displayAuxMessage("Elixir of Life");
+                } else if (player == MAIN_ENEMY) {
+                //  The enemy player has variables to make his HP box appear when he collects HP
+                    hpDrawn = true;
+                    hpTime = -1;
+                //  Enemy players are not affected by the penalties of "Extreme Rules"
+                    MegaHPRemain_E = (int) Math.round(Math.random() * (32 * playerLevel));
+                    hasMegaHP_E = true;
                 }
                 megahealthLocat = OFFSCREEN;
                 break;
@@ -8795,6 +8457,12 @@ protected void getItem (int player, int item) {
                     MegaExpRemain = 300;
                     hasMegaExp = true;
                     displayAuxMessage("Vial of Wisdom");
+                } else if (player == MAIN_ENEMY) {
+                //  Display the enemy's experience bar
+                    expDrawn = true;
+                    expTime = -1;
+                    MegaExpRemain_E = 300;
+                    hasMegaExp_E = true;
                 }
                 megaexpLocat = OFFSCREEN;
                 break;
@@ -8805,6 +8473,10 @@ protected void getItem (int player, int item) {
 
                     displayAuxMessage("He goes unseen...");
                     kohtimer.setText("" + potionTime);
+                } else if (player == MAIN_ENEMY) {
+                    isGhost2 = true;
+                    u_no_see2 = false;
+                    ghost_timer = potionTime;
                 }
                 ghostpotionLocat = OFFSCREEN;
                 break;
@@ -8825,6 +8497,12 @@ protected void getItem (int player, int item) {
                     } else {
                         armorP1 = 200;
                     }
+                } else if (player == MAIN_ENEMY) {
+                    if (armorP2 < 200) {
+                        armorP2 += 50;
+                    } else {
+                        armorP2 = 200;
+                    }
                 }
                 armorLocat = OFFSCREEN;
                 break;
@@ -8834,6 +8512,11 @@ protected void getItem (int player, int item) {
                     isGhost1 = false;
 
                     kohtimer.setText("" + potionTime);
+                } else if(player == MAIN_ENEMY) {
+                    u_no_see2 = true;
+                    isGhost2 = false;
+
+                    u_no_see_timer = potionTime;
                 }
                 unoseeLocat = OFFSCREEN;
                 break;
@@ -8847,6 +8530,16 @@ protected void getItem (int player, int item) {
                         curHealthP = maxHealthP;
                     } else {
                         curHealthP += painKillerRemP1;
+                    }
+                } else if(player == MAIN_ENEMY) {
+                    painKillerP2 = true;
+                    painKillerRemP2 = (painKillType == 0) ? 50 : 200;
+
+                    if ((maxHealthE - curHealthE) < painKillerRemP2) {
+                        painKillerRemP2 = (maxHealthE - curHealthE);
+                        curHealthE = maxHealthE;
+                    } else {
+                        curHealthE += painKillerRemP2;
                     }
                 }
                 painkLocat = OFFSCREEN;
@@ -8953,8 +8646,8 @@ protected void getItem (int player, int item) {
    
    protected void printDebugMessage(String message) {
       if(debugMode) {
-         printDebug.println("[" + new java.util.Date().getHours() + "-" + new java.util.Date().getMinutes() + "-" + new java.util.Date().getSeconds() + "] KRUXTOURN (" + this.toString() + ") - " + message);
-         System.out.println("[" + new java.util.Date().getHours() + "-" + new java.util.Date().getMinutes() + "-" + new java.util.Date().getSeconds() + "] KRUXTOURN (" + this.toString() + ") - " + message);
+         printDebug.println("[" + java.time.LocalDateTime.now().getHour() + "-" + java.time.LocalDateTime.now().getMinute() + "-" + java.time.LocalDateTime.now().getSecond() + "] KRUXTOURN (" + this.toString() + ") - " + message);
+         System.out.println("[" + java.time.LocalDateTime.now().getHour() + "-" + java.time.LocalDateTime.now().getMinute() + "-" + java.time.LocalDateTime.now().getSecond() + "] KRUXTOURN (" + this.toString() + ") - " + message);
       }
    }
 	
@@ -8978,7 +8671,7 @@ protected void getItem (int player, int item) {
          System.out.println("[9]   View C.T.F Flag Positional");
          System.out.println("[0]   View OBERON AI Target\n");
             
-         w.printDebug = new PrintWriter(new FileOutputStream(new File("debug_" + new Date().getDay() + new Date().getMonth() + new Date().getYear() + "_"  + new Date().getHours() + new Date().getMinutes() + ".txt")));
+         w.printDebug = new PrintWriter(new FileOutputStream(new File("debug_" + java.time.LocalDateTime.now().getDayOfMonth() + java.time.LocalDateTime.now().getMonth() + java.time.LocalDateTime.now().getYear() + "_"  + java.time.LocalDateTime.now().getHour() + java.time.LocalDateTime.now().getMinute() + ".txt")));
          //}
       }
       catch(Exception e) {

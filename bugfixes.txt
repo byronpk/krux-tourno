@@ -1,6 +1,0 @@
-BUGFIX: 001_1128_20120108: Fixed bug with OFFSCREEN variable handling
-BUGFIX: 002_1144_20120108: Fixed bug with multiple method calls to single method
-MODIFY: 001_1149_20120108: New 8-bit Sprite set
-BUGFIX: 003_1252_20120108: Fixed cheatcode entry box showing incorrect message
-BUGFIX: 004_1302_20120108: Version Details not showing up
-MODIFY: 002_1310_20120108: Cheat codebase fixed

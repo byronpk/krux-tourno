@@ -8724,35 +8724,36 @@ protected void getItem (int player, int item) {
                         displayAuxMessage("Health Crate!");
                     }
 
-                    healthLocat = OFFSCREEN;
+                    
+                }
 
-                //  Determine what the next health crate item type will be
-                    switch (eightSidedDice + 1) {
-                        case 8:
-                            hpboxtype = 2;
-                            break;
-                        case 7:
-                            hpboxtype = 1;
-                            break;
-                        default:
-                            hpboxtype = 0;
-                            break;
-                    }
+                healthLocat = OFFSCREEN;
+            //  Determine what the next health crate item type will be
+                switch (eightSidedDice + 1) {
+                    case 8:
+                        hpboxtype = 2;
+                        break;
+                    case 7:
+                        hpboxtype = 1;
+                        break;
+                    default:
+                        hpboxtype = 0;
+                        break;
                 }
                 break;
             case EXPERIENCE:
                 if (player == MAIN_PLAYER) {
                     exp += 200;
-                    displayAuxMessage("Level Crate!");
-                    levelboxLocat = OFFSCREEN;
+                    displayAuxMessage("Level Crate!"); 
                 }
+                levelboxLocat = OFFSCREEN;
                 break;
             case ONE_UP:
                 if (player == MAIN_PLAYER) {
                     revivelimit++;
                     displayAuxMessage("ONE-UP!");
-                    extraLifeLocat = OFFSCREEN;
                 }
+                extraLifeLocat = OFFSCREEN;
                 break;
             case WEAPON:
                 if (player == MAIN_PLAYER) {
@@ -8778,24 +8779,24 @@ protected void getItem (int player, int item) {
                     }
 
                     pWeapLeft = pWeapUses;
-                    weaponboxLocat = OFFSCREEN;
                 }
+                weaponboxLocat = OFFSCREEN;
                 break;
             case MEGA_HEALTH:
                 if (player == MAIN_PLAYER) {
                     MegaHPRemain = (extremeRules) ? (int) Math.round(Math.random() * (24 * playerLevel)) : (int) Math.round(Math.random() * (32 * playerLevel));
                     hasMegaHP = true;
                     displayAuxMessage("Elixir of Life");
-                    megahealthLocat = OFFSCREEN;
                 }
+                megahealthLocat = OFFSCREEN;
                 break;
             case MEGA_EXPERIENCE:
                 if (player == MAIN_PLAYER) {
                     MegaExpRemain = 300;
                     hasMegaExp = true;
                     displayAuxMessage("Vial of Wisdom");
-                    megaexpLocat = OFFSCREEN;
                 }
+                megaexpLocat = OFFSCREEN;
                 break;
             case GHOST_POTION:
                 if (player == MAIN_PLAYER) {
@@ -8804,9 +8805,8 @@ protected void getItem (int player, int item) {
 
                     displayAuxMessage("He goes unseen...");
                     kohtimer.setText("" + potionTime);
-
-                    ghostpotionLocat = OFFSCREEN;
                 }
+                ghostpotionLocat = OFFSCREEN;
                 break;
             case LAMP:
                 if (player == MAIN_PLAYER) {
@@ -8815,9 +8815,8 @@ protected void getItem (int player, int item) {
 
                 //  Display witty status message
                     displayAuxMessage("Let there be light!");
-
-                    lampLocat = OFFSCREEN;
                 }
+                lampLocat = OFFSCREEN;
                 break;
             case ARMOR:
                 if (player == MAIN_PLAYER) {
@@ -8826,9 +8825,8 @@ protected void getItem (int player, int item) {
                     } else {
                         armorP1 = 200;
                     }
-
-                    armorLocat = OFFSCREEN;
                 }
+                armorLocat = OFFSCREEN;
                 break;
             case UNOSEE_POTION:
                 if (player == MAIN_PLAYER) {
@@ -8836,9 +8834,8 @@ protected void getItem (int player, int item) {
                     isGhost1 = false;
 
                     kohtimer.setText("" + potionTime);
-
-                    unoseeLocat = OFFSCREEN;
                 }
+                unoseeLocat = OFFSCREEN;
                 break;
             case PAINKILLER:
                 if(player == MAIN_PLAYER) {
@@ -8851,9 +8848,8 @@ protected void getItem (int player, int item) {
                     } else {
                         curHealthP += painKillerRemP1;
                     }
-
-                    painkLocat = OFFSCREEN;
                 }
+                painkLocat = OFFSCREEN;
                 break;
             default:
                 break;
@@ -8862,9 +8858,8 @@ protected void getItem (int player, int item) {
     //  Update the scoreboard
         if(player == MAIN_PLAYER) {
             scrboard.score += ITEMGET;
-            playSound("krux/itemget.wav");
-        
             scoreStr.setText("" + scrboard.score);
+            playSound("krux/itemget.wav");
             items++;
         }
     }

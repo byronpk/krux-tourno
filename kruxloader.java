@@ -796,7 +796,8 @@ public class kruxloader implements Runnable {
       JFrame.setDefaultLookAndFeelDecorated(true);
       JDialog.setDefaultLookAndFeelDecorated(true);
       kohtimer.setEditable(false);
-     
+    
+//    Consider this game "cracked"
       prodcode = rB.runProdCodeCheck();
       isRegist = rB.runRegCheck();
      
@@ -3496,11 +3497,9 @@ public class kruxloader implements Runnable {
                });
       
       if(!loadedmap) {
-         addBounds(makebou, BOUND_SOLID); // Static boundaries are being made
-         addBounds(makembou, BOUND_SHIFT); // Shifting boundaries are being made
-         for (int i = 0; i < maketbou; i++) {
-            addBounds(BOUND_TRACK);
-         }
+        addBounds(makebou, BOUND_SOLID); // Static boundaries are being made
+        addBounds(makembou, BOUND_SHIFT); // Shifting boundaries are being made
+        addBounds(maketbou, BOUND_TRACK);
       }
       
       if(gemHunterMode) {
@@ -8249,14 +8248,14 @@ public class kruxloader implements Runnable {
 *
 *	@param		type		The boundary type identifier
 */
-      protected void addBounds(int type) {
-            if(type == BOUND_TRACK) {
-                  if (countTrackers < trackingbounds.length) {
-                        trackingbounds[countTrackers] = findFreeBlock();
-                        countTrackers++;
-                  }
+    protected void addBounds(int type) {
+        if(type == BOUND_TRACK) {
+            if (countTrackers < trackingbounds.length) {
+                trackingbounds[countTrackers] = findFreeBlock();
+                countTrackers++;
             }
-      }
+        }
+    }
    
 /**
 *	Generic Method (Krux 4.0 ALPHA)
@@ -8267,22 +8266,26 @@ public class kruxloader implements Runnable {
 *	@param		amount	Boundary count
 *	@param		type		The boundary type identifier		
 */
-   protected void addBounds(int amount, int type) {
-      if (type == BOUND_SOLID) {
-         for(int i = 0; i < amount; i++) {
-            Point adder = new Point((int) (Math.random() * (mapsize.x - 1)) + 1,(int) (Math.random() * (mapsize.y - 1)) + 1);
-            addBounds(adder.x, adder.y, BOUND_SOLID);
-            mapdata[adder.x][adder.y] = "S";
-         }
-      }
-      else if (type == BOUND_SHIFT) {
-         for(int i = 0; i < amount; i++) {
-            Point adder = new Point((int) (Math.random() * (mapsize.x - 1)) + 1,(int) (Math.random() * (mapsize.y - 1)) + 1);
-            addBounds(adder.x, adder.y, BOUND_SHIFT);
-            mapdata[adder.x][adder.y] = "M";
-         }
-      }
-   }
+    protected void addBounds(int amount, int type) {
+        if (type == BOUND_SOLID) {
+            for(int i = 0; i < amount; i++) {
+                Point adder = new Point((int) (Math.random() * (mapsize.x - 1)) + 1,(int) (Math.random() * (mapsize.y - 1)) + 1);
+                addBounds(adder.x, adder.y, BOUND_SOLID);
+                mapdata[adder.x][adder.y] = "S";
+            }
+        } else if (type == BOUND_SHIFT) {
+            for(int i = 0; i < amount; i++) {
+                Point adder = new Point((int) (Math.random() * (mapsize.x - 1)) + 1,(int) (Math.random() * (mapsize.y - 1)) + 1);
+                addBounds(adder.x, adder.y, BOUND_SHIFT);
+                mapdata[adder.x][adder.y] = "M";
+            }
+        } else if (type == BOUND_TRACK && countTrackers < trackingbounds.length) {
+            for(int i = 0; i < amount; i++) {
+                Point adder = new Point((int) (Math.random() * (mapsize.x - 1)) + 1,(int) (Math.random() * (mapsize.y - 1)) + 1);
+                addBounds(adder.x, adder.y, BOUND_TRACK);
+            }
+        }
+    }
 
 // MICRON UPDATED FUNCTIONS
 /**
@@ -8654,7 +8657,7 @@ protected void getItem (int player, int item) {
    public static void main(String[] args) {
       kruxloader w = new kruxloader();
       try {
-        // if(args.length > 0 && args[0].equals("-devmode")) {
+        if(args.length > 0 && args[0].equals("-devmode")) {
          w.debugMode = true;
          System.out.println("Starting Krux Tourno...");
          System.out.println("== Developer Mode ==");
@@ -8672,7 +8675,7 @@ protected void getItem (int player, int item) {
          System.out.println("[0]   View OBERON AI Target\n");
             
          w.printDebug = new PrintWriter(new FileOutputStream(new File("debug_" + java.time.LocalDateTime.now().getDayOfMonth() + java.time.LocalDateTime.now().getMonth() + java.time.LocalDateTime.now().getYear() + "_"  + java.time.LocalDateTime.now().getHour() + java.time.LocalDateTime.now().getMinute() + ".txt")));
-         //}
+         }
       }
       catch(Exception e) {
          e.printStackTrace();
